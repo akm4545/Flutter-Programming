@@ -36,3 +36,8 @@ lib -> 2.2 -> getter_and_setter.dart 코드 참조
   
 게터는 메서드를 선언하는 문법과 상당히 유사하지만 매개변수는 정의하지 않는다.  
   
+# **상속**  
+extends 키워드를 사용해 상속할 수 있다.  
+  
+lib -> 2.3 -> inheritance.dart 코드 참조  
+  
