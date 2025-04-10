@@ -93,5 +93,11 @@ void main() {
   final allMembers = blackPinkList.reduce((value, element) => value + ', ' + element); // 리스트를 순회하며 값들을 더한다
 
   print(allMembers);
+
+  // reduce() 함수와 마찬가지로 각 요소를 순회하며 실행된다
+  // element.length -> 글자의 길이 추출
+  final allMembers2 = blackPinkList.fold<int>(0, (value, element) => value + element.length);
+
+  print(allMembers2);
 }
 
