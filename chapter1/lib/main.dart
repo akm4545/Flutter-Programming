@@ -28,4 +28,20 @@ void main() {
 
   dynamic name2 = '코드팩토리';
   name2 = 1;
+
+  final String name3 = '블랙핑크';
+  // name3 = 'BTS'; 에러 발생 final로 선언한 변수는 선언 후 값을 변경할 수 없음
+
+  const String name4 = 'BTS';
+  // name4 = '블랙핑크'; 에러 발생 const로 선언한 변수는 선언 후 값을 변경할 수 없음
+
+  final DateTime now = DateTime.now();
+
+  print(now);
+
+  // 에러
+  // const DateTime now2 = DateTime.now();
+  //
+  // print(now);
 }
+

@@ -70,3 +70,22 @@ var 타입은 변수의 값을 사용해서 변수의 타입을 유추하는 키
   
 ![img.png](image/img8.png)  
   
+# **final/const를 사용한 변수 선언**  
+final과 const 키워드는 변수의 값을 처음 선언 후 변경할 수 없다.  
+  
+![img.png](image/img9.png)  
+  
+final은 런타임, const는 빌드 타임 상수이다. 구체적인 차이점을 현재 시간을 가져오는 DataTime.now() 함수를 이용해서 알아보자. 
+DateTime.now() 함수는 DateTime.now() 함수가 실행되는 순간의 날짜 및 시간을 제공해준다. 다시 말해서 런타임, 즉 실행을 해봐야 
+값을 알 수 있다는 뜻이다.  
+  
+![img.png](image/img10.png)  
+  
+final 키워드를 사용했으니 now 값이 한 번 저장되면 추후 변경할 수 없다.  
+  
+반면에 const를 사용하면 에러가 난다. const로 지정한 변수는 빌드 타임에 값을 알 수 있어야 하는데 DateTime.now() 함수는 
+런타임에 반환되는 값을 알 수 있기 때문이다.  
+  
+![img.png](image/img11.png)  
+  
+코드를 실행하지 않은 상태에서 값이 확정되면 const를, 실행될 때 확정되면 final을 사용하자.
