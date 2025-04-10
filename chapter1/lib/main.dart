@@ -282,6 +282,16 @@ void main() {
   }
 
   print(addTowNumbers5(1, b: 3, c: 7));
+
+  List<int> numbers = [1, 2, 3, 4, 5];
+
+  // 일반 함수로 모든 값 더하기
+  final allMembers1 = numbers.reduce((value, element){
+    return value + element;
+  });
+
+  // 람다 함수로 모든 값 더하기
+  final allMembers3 = numbers.reduce((value, element) => value + element);
 }
 
 enum Status {
