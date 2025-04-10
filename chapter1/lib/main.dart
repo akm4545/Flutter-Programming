@@ -43,5 +43,22 @@ void main() {
   // const DateTime now2 = DateTime.now();
   //
   // print(now);
+
+  // String - 문자열
+  String name5 = '코드팩토리';
+
+  // int - 정수
+  int isInt = 10;
+
+  // double - 실수
+  double isDouble = 2.5;
+
+  // bool - 불리언 (true/false)
+  bool isTrue = true;
+
+  print(name5);
+  print(isInt);
+  print(isDouble);
+  print(isTrue);
 }
 
