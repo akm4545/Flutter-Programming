@@ -112,3 +112,10 @@ final 키워드를 사용했으니 now 값이 한 번 저장되면 추후 변경
   
 List 타입에는 다트 언어에서 기본으로 제공하는 함수가 많다. 기중 가장 많이 사용하는 add(), where(), map(), reduce() 함수에 대해 알아본다.  
   
+# **add() 함수**  
+add() 함수는 List에 값을 추가할 때 사용되며 추가하고 싶은 값을 매개변수에 입력하면 된다.  
+  
+![img.png](image/img14.png)  
+![img.png](image/img15.png)  
+  
+

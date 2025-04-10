@@ -72,5 +72,8 @@ void main() {
 
   blackPinkList[3] = '코드팩토리'; // 3번 인덱스값 변경
   print(blackPinkList);
+
+  blackPinkList.add('코드팩토리'); // 리스트의 끝에 추가
+  print(blackPinkList);
 }
 
