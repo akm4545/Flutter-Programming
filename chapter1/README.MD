@@ -225,4 +225,7 @@ and와 or 연산자
 ![img.png](image2/img15.png)  
 ![img.png](image3/img.png)  
   
+# **제어문**  
+제어문으로는 if문, switch문, for문, while문을 제공한다.  
+  
 
