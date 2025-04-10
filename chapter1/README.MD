@@ -52,4 +52,7 @@
   
 ![img.png](image/img5.png)  
   
-
+# **print() 함수**  
+print() 함수는 문자열을 콘솔에 출력하는 함수이다.  
+  
+![img.png](image/img6.png)
