@@ -247,3 +247,11 @@ true이면 해당 조건의 코드 블록이 실행된다.
   
 ![img.png](image3/img5.png)  
   
+# **while문과 do...while문**  
+![img.png](image3/img6.png)  
+![img.png](image3/img7.png)  
+  
+do...while은 반복문을 실행한 후 조건을 확인한다.  
+  
+![img.png](image3/img8.png)  
+  

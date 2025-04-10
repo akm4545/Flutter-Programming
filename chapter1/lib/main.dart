@@ -228,6 +228,22 @@ void main() {
   for(int number in numberList){
     print(number);
   }
+
+  int total = 0;
+
+  while(total < 10){ // total 값이 10보다 작으면 계속 실행
+    total += 1;
+  }
+
+  print(total);
+
+  int total2 = 0;
+
+  do {
+    total2 += 1;
+  } while (total2 < 10);
+
+  print(total2);
 }
 
 enum Status {
