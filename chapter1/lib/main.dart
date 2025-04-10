@@ -99,5 +99,14 @@ void main() {
   final allMembers2 = blackPinkList.fold<int>(0, (value, element) => value + element.length);
 
   print(allMembers2);
+
+  Map<String, String> dictionary = {
+    'Harry Potter': '해리 포터', // 키 : 값
+    'Ron Weasley': '론 위즐리',
+    'Hermione Granger': '헤르미온느 그레인저',
+  };
+
+  print(dictionary['Harry Potter']);
+  print(dictionary['Hermione Granger']);
 }
 
