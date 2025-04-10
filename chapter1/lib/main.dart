@@ -75,5 +75,12 @@ void main() {
 
   blackPinkList.add('코드팩토리'); // 리스트의 끝에 추가
   print(blackPinkList);
+
+  final newList = blackPinkList.where(
+      (name) => name == '리사' || name == '지수', // 리사 또는 지수만 유지
+  );
+
+  print(newList);
+  print(newList.toList()); // Iterable을 List로 다시 변환할 때 .toList() 사용
 }
 
