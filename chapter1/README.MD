@@ -162,4 +162,9 @@ fold() 함수는 reduce() 함수의 특수한 형태라고 생각하면 된다. 
   
 ![img.png](image2/img5.png)  
   
+# **키와 값 반환받기**  
+모든 Map 타입은 키와 값을 모두 반환받을 수 있다. 값을 반환받고 싶은 Map 타입의 변수에 key와 value 게터를 실행하면 된다.  
+  
+![img.png](image2/img6.png)  
+  
 

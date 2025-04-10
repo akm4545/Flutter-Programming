@@ -108,5 +108,9 @@ void main() {
 
   print(dictionary['Harry Potter']);
   print(dictionary['Hermione Granger']);
+  
+  print(dictionary.keys);
+  // Iterable이 반환되기 때문에 .toList()를 실행해서 List를 반환받을 수도 있음
+  print(dictionary.values);
 }
 
