@@ -155,6 +155,16 @@ void main() {
 
   number3 ??= 4; // null이 아니므로 3이 유지된다.
   print(number3);
+
+  int number4 = 1;
+  int number5 = 2;
+
+  print(number4 > number5); // false
+  print(number4 < number5); // true
+  print(number4 >= number5); // false
+  print(number4 <= number5); // true
+  print(number4 == number5); // false
+  print(number4 != number5); // true
 }
 
 enum Status {
