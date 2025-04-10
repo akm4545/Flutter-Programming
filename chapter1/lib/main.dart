@@ -140,6 +140,21 @@ void main() {
   number -= 2; // 0
   number *= 2; // 4
   number /= 2; // 1
+
+  // 타입 뒤에 ?를 명시해서 null값을 가질 수 있다
+  double? number1 = 1;
+
+  // 타입 뒤에 ?를 명시하지 않아 에러가 난다
+  // double number2 = null;
+
+  double? number3; // 자동으로 null값 지정
+  print(number3);
+
+  number ??= 3; // ??를 사용하면 기존 값이 null일 때만 저장
+  print(number3);
+
+  number3 ??= 4; // null이 아니므로 3이 유지된다.
+  print(number3);
 }
 
 enum Status {
