@@ -14,4 +14,15 @@ void main() {
   /// 문서 주석을 작성할 수 있다
   /// DartDoc이나 안드로이드 스튜디오 같은 
   /// IDE에서 문서(Documentation)로 인식한다
+
+  var name = '코드팩토리';
+  print(name);
+
+  // 변수값 변경 가능
+  name = '골든래빗';
+  print(name);
+
+  // 변수명 중복은 붕가능
+  // 그래서 다음 코드에서 주석을 제거하면 코드에서 에러 발생
+  // var name = '김고은';
 }
