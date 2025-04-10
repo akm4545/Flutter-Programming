@@ -234,4 +234,8 @@ true이면 해당 조건의 코드 블록이 실행된다.
   
 ![img.png](image3/img2.png)  
   
-
+# **switch문**  
+입력된 상수값에 따라 알맞은 case 블록을 수행한다. break 키워드를 사용하면 switch문 밖으로 나갈 수 있다. case 끝에 break 키워드를 
+빼먹으면 컴파일 중에 에러가 발생한다. enum과 함께 사용하면 유용하다.  
+  
+![img.png](image3/img3.png)
