@@ -320,4 +320,12 @@ typedef 키워드는 함수의 시그니처를 정의하는 값으로 보면 된
   
 calculate() 함수의 3번째 매개변수로 add() 함수를 입력했다.  
   
+# **try...catch**  
+![img.png](image4/img4.png)  
+![img.png](image4/img5.png)  
+  
+다트 언어에서는 throw 키워드를 사용해 에러를 발생시킬 수 있다.  
+  
+![img.png](image4/img6.png)  
+  
 
