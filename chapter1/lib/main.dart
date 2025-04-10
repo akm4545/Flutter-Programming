@@ -217,6 +217,17 @@ void main() {
   // Enum의 모든 수를
   // 리스트로 반환한다
   print(Status.values);
+
+  // 값 선언; 조건 설정; loop 마다 실행할 기능
+  for(int i=0; i<3; i++){
+    print(i);
+  }
+
+  List<int> numberList = [3, 6, 9];
+
+  for(int number in numberList){
+    print(number);
+  }
 }
 
 enum Status {

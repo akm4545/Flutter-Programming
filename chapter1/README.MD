@@ -238,4 +238,12 @@ true이면 해당 조건의 코드 블록이 실행된다.
 입력된 상수값에 따라 알맞은 case 블록을 수행한다. break 키워드를 사용하면 switch문 밖으로 나갈 수 있다. case 끝에 break 키워드를 
 빼먹으면 컴파일 중에 에러가 발생한다. enum과 함께 사용하면 유용하다.  
   
-![img.png](image3/img3.png)
+![img.png](image3/img3.png)  
+  
+# **for문**  
+![img.png](image3/img4.png)  
+  
+다트 언어에서는 for...in 패턴의 for문도 제공해준다. 일반적으로 List의 모든 값을 순회하고 싶을 때 사용된다.  
+  
+![img.png](image3/img5.png)  
+  
