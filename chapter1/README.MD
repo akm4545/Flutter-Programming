@@ -228,4 +228,10 @@ and와 or 연산자
 # **제어문**  
 제어문으로는 if문, switch문, for문, while문을 제공한다.  
   
+# **if문**  
+if문은 원하는 조건을 기준으로 다른 코드를 실행하고 싶을 떄 사용. if문, else if문, else문의 순서대로 괄호 안에 작성한 조건이 
+true이면 해당 조건의 코드 블록이 실행된다.  
+  
+![img.png](image3/img2.png)  
+  
 
