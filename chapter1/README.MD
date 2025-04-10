@@ -219,4 +219,10 @@ is 키워드를 사용하면 변수의 타입을 비교할 수 있다.
   
 ![img.png](image2/img14.png)  
   
+# **논리 연산자**  
+and와 or 연산자  
+  
+![img.png](image2/img15.png)  
+![img.png](image3/img.png)  
+  
 
