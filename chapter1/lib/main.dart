@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 void main() {
   print('hello world');
   
@@ -244,6 +246,42 @@ void main() {
   } while (total2 < 10);
 
   print(total2);
+
+  int addTwoNumbers(int a, int b){
+    return a + b;
+  }
+
+  print(addTwoNumbers(1, 2));
+
+  int addTwoNumbers2({
+    required int a,
+    required int b,
+  }) {
+    return a + b;
+  }
+
+  print(addTwoNumbers2(a: 1, b: 2));
+
+  int addTwoNumbers3(int a, [int b = 2]){
+    return a + b;
+  }
+
+  print(addTwoNumbers3(1));
+
+  int addTwoNumbers4({
+    required int a,
+    int b = 2,
+  }){
+    return a + b;
+  }
+
+  print(addTwoNumbers4(a: 1));
+
+  int addTowNumbers5(int a, {required int b, int c = 4} ){
+    return a + b + c;
+  }
+
+  print(addTowNumbers5(1, b: 3, c: 7));
 }
 
 enum Status {
