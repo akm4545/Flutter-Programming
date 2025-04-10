@@ -165,6 +165,13 @@ void main() {
   print(number4 <= number5); // true
   print(number4 == number5); // false
   print(number4 != number5); // true
+
+  int number6 = 1;
+
+  print(number6 is int); // true
+  print(number6 is String); // false
+  print(number6 is! int); // false !는 반대를 의미
+  print(number6 is! String); // true
 }
 
 enum Status {
