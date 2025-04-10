@@ -112,5 +112,25 @@ void main() {
   print(dictionary.keys);
   // Iterable이 반환되기 때문에 .toList()를 실행해서 List를 반환받을 수도 있음
   print(dictionary.values);
+
+  Set<String> blackPinkSet = {'로제', '지수', '리사', '제니', '제니'}; // 제니 중복
+
+  print(blackPinkSet);
+  print(blackPinkSet.contains('로제')); // 값이 있는지 확인하기
+  print(blackPinkSet.toList()); // 리스트로 변환하기
+
+  List<String> blackPink2 = ['로제', '지수', '지수'];
+  print(Set.from(blackPink2)); // List 타입을 Set 타입으로 변환
+
+  Status status = Status.approved;
+  print(status); // Status.approved
 }
+
+enum Status {
+  approved,
+  pending,
+  rejected
+}
+
+
 
