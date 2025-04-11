@@ -48,3 +48,12 @@ async와 await 키워드를 사용한 함수에서도 결괏값을 받아낼 수
   
 lib -> 3.3 -> returning_value.dart 참조  
   
+# **Stream**  
+Future는 반환값을 딱 한 번 받아내는 비동기 프로그래밍에 사용한다. 지속적으로 값을 받을 떄는 Stream을 사용한다. Stream은 
+한 번 리슨하면 Stream에 주입되는 모든 값들을 지속적으로 받아올 수 있다.  
+  
+![img.png](image/img3.png)  
+  
+Future.wait() 함수는 하나의 Future로 구성된 리스트를 매개변수로 입력받는다. Future.wait()에 입력된 비동기 함수들은 
+모두 동시에 실행되며 응답값 요청을 보낸 순서대로 저장해둔다(호출한 순서대로 응답값을 받지는 않는다).
+
