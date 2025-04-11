@@ -42,3 +42,9 @@ lib -> 3.3 -> async_and_await3.dart 참조
 main() 함수에 async 키워드를 적용하고 addNumbers(1, 1)과 addNumbers(2, 2)에 await 키워드를 적용했기 때문에 코드는 
 작성한 순서대로 실행되었다.  
   
+# **결괏값 반환받기**  
+async와 await 키워드를 사용한 함수에서도 결괏값을 받아낼 수 있다. 이때 앞서 배운 Future 클래스를 사용한다. 입력된 
+두 숫자를 더한 결괏값을 반환하는 addNumbers() 함수의 코드를 수정해 자세히 알아보자.  
+  
+lib -> 3.3 -> returning_value.dart 참조  
+  
