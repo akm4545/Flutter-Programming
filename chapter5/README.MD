@@ -154,3 +154,11 @@ runApp() 함수에 MaterialApp이라는 위젯을 추가하고 그 안에 Scaffo
 3. 이제 안드로이드 에뮬레이터를 실행하고 실행한 에뮬레이터를 선택한 다음 [실행 버튼]을 누르면 화면에 'Hello Code Factory'가 
 보인다.  
   
+# **Center 위젯으로 중앙 정렬**  
+1. 'Hello Code Factory'라는 글자를 화면에 보이게 하는 데 성공했지만 맨 위에 있는 상태바에 가렸다. 글자가 잘 보이게 화면의 
+가운데로 옮기기 위해 Center 위젯을 사용한다.  
+
+lib -> main.dart 참조  
+  
+2. 실행하면 'Hello Code Factory'가 가운데에 위치한다.  
+  
