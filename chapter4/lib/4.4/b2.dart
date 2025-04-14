@@ -1,4 +1,4 @@
-import 'a1.dart';
+import 'a2.dart';
 
 // 인스턴스화 가능
 Parent parent = Parent();

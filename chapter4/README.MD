@@ -97,3 +97,8 @@ base 제한자의 기능을 모두 포함한다.
   
 lib -> 4.4 -> a2.dart, b2.dart 참조  
   
+# **interface 제한자**  
+interface 제한자는 클래스를 외부 파일에서 상속받지 못하고 재정의만 할 수 있도록 제한하는 역할을 한다.  
+  
+lib -> 4.4 -> a3.dart, b3.dart 참조  
+  
