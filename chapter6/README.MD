@@ -135,5 +135,15 @@ lib -> widgets -> floating_action_button_widget.dart 참고
 # **디자인 관련 위젯**  
 디자인 관련 위젯은 배경을 추가하거나 간격을 추가하거나 패딩을 추가하는 등 디자인적 요소를 적용할 때 사용한다.  
   
+# **Container 위젯**  
+Container 위젯은 말 그대로 다른 위젯을 담는 데 사용된다. 위젯의 너비와 높이를 지정하거나 배경이나 테두리를 추가할 때 많이 
+사용된다.  
+  
+lib -> widgets -> container_widget.dart 참고  
+  
+![img.png](image/img12.png)  
+  
+Container 위젯은 다른 위젯처럼 child 매개변수를 사용할 수 있다.  
+  
 
 
