@@ -145,5 +145,14 @@ lib -> widgets -> container_widget.dart 참고
   
 Container 위젯은 다른 위젯처럼 child 매개변수를 사용할 수 있다.  
   
+# **SizedBox 위젯**  
+SizedBox 위젯은 일반적으로 일정 크기의 공간을 공백으로 두고 싶을 때 사용된다. Container 위젯을 사용해도 공백을 만들 
+수 있지만 SizedBox는 const 생성자를 사용했을 때 퍼포먼스에서 이점을 얻을 수 있다.  
+  
+lib -> widgets -> sized_box_widget.dart 참고  
+  
+![img.png](image/img13.png)  
+  
+
 
 
