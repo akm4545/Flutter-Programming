@@ -77,3 +77,9 @@ lib -> widgets -> text_widget.dart 참고
   
 ![img.png](image/img3.png)  
   
+# **제스처 관련 위젯**  
+사용자가 키보드로 글자를 입력하는 행위 외의 모든 입력을 플러터에서는 제스처라고 부른다. 예를 들어 화면을 한 번 탭한다거나 
+두 번 탭한다거나 길게 누르는 행동 모두가 제스처이다. GestureDetector 위젯은 모든 제스터를 매개변수로 제공해준다. 제스처 
+관련 위젯은 하위 위젯에 탭이나 드래그처럼 특정 제스처가 입력됐을 때 인지하고 콜백 함수를 실행한다. Button, IconButton, 
+GestureDetector, FloatingActionButton 위젯을 알아보자.  
+  
