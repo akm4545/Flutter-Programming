@@ -153,6 +153,23 @@ lib -> widgets -> sized_box_widget.dart 참고
   
 ![img.png](image/img13.png)  
   
+# **Padding 위젯**  
+Padding 위젯은 child 위젯에 여백을 제공할 때 사용한다. Padding 위젯을 사용하면 Padding 위젯의 상위 위젯과 하위 위젯 
+사이의 여백을 둘 수 있다. Padding 위젯의 padding 매개변수는 EdgeInsets라는 값을 입력해야 한다. 또한 child 매개변수에 
+Padding을 적용하고 싶은 위젯을 입력할 수 있다.  
+  
+lib -> widgets -> padding_widget.dart 참고  
+  
+![img.png](image/img14.png)  
+  
+패딩은 적용된 위젯이 차지하는 크기 내부에서 간격이 추가된다. 플러터에서 자주 사용하지는 않지만 위젯의 바깥에 간격을 추가해주는 마진이라는 
+기능도 있다. 다만 마진은 따로 위젯이 존재하지 않고 Container 위젯에 추가할 수 있다.  
 
-
+lib -> widgets -> padding_widget.dart 참고  
+  
+![img.png](image/img15.png)  
+  
+EdgeInsets 클래스는 다양한 생성자를 제공한다. 자세한 사항은 다음 표를 참고하자.  
+  
+![img.png](image2/img.png)
 
