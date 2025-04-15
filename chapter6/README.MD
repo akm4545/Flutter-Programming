@@ -64,3 +64,16 @@ children 매개변수는 리스트를 입력받고 리스트 안에는 원하는
   
 lib -> main.dart 참고  
   
+# **텍스트 관련 위젯**  
+화면에 글자를 보여주려면 글자를 렌더링할 수 있는 위젯을 사용해야 한다. 가장 대표적인 텍스트 관련 위젯인 Text 위젯만 다룬다.  
+  
+- 플러터는 RichText 위젯과 Paragraph 같은 클래스도 제공한다.  
+https://docs.flutter.dev/development/ui/widgets/text  
+  
+Text 위젯은 글자를 적고 스타일링하는 위젯이다. 첫 번재 포지셔널 파라미터에 원하는 문자열을 작성하고 style이라는 네임드 파라미터를 
+사용해 스타일을 지정한다.  
+  
+lib -> widgets -> text_widget.dart 참고  
+  
+![img.png](image/img3.png)  
+  
