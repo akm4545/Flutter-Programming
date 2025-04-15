@@ -83,3 +83,20 @@ lib -> widgets -> text_widget.dart 참고
 관련 위젯은 하위 위젯에 탭이나 드래그처럼 특정 제스처가 입력됐을 때 인지하고 콜백 함수를 실행한다. Button, IconButton, 
 GestureDetector, FloatingActionButton 위젯을 알아보자.  
   
+# **Button 위젯**  
+플러터 머티리얼 패키지에서 기본 제공하는 버튼으로 TextButton, OutlinedButton, ElecatedButton이 있다. TextButton, 
+OutlinedButton, ElevatedButton 모두 버튼을 누르면 색이 변경되는 리플 효과를 지원한다.  
+  
+![img.png](image/img4.png)  
+  
+lib -> widgets -> text_button_widget.dart 참고  
+  
+![img.png](image/img5.png)  
+  
+lib -> widgets -> outlined_button_widget.dart 참고  
+  
+![img.png](image/img6.png)  
+
+lib -> widgets -> elevated_button_widget.dart 참고  
+  
+![img.png](image/img7.png)
