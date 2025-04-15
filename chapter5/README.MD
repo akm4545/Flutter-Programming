@@ -201,3 +201,28 @@ https://docs.flutter.dev/get-started/install/windows#android-setup
 - 안드로이드 와이파이 연결 공식 문서  
 https://developer.android.com/studio/command-line/adb  
   
+# **아이폰 실제 기기 사용하기**  
+안드로이드 실제 기기와 마찬가지로 아이폰도 실제 기기를 이용해서 플러터 앱을 실행할 수 있다. macOS 환경이 필요하다.  
+  
+1. 아이폰을 개발 컴퓨터에 연결한다. 만약에 권한 요청이 뜨면 [신뢰하기]를 누른다. iOS 16 이상을 사용한다면 [Settings (설정) ->
+Privacy & Security(개인정보 보호)] 에서 [Developer (개발자 모드)]를 활성화한다.  
+2. 터미널을 실행해서 다음 두 코드 중 하나를 실행한다. 인텔 기반 맥북인지 애플 실리콘 기반(M1 등)의 맥북인지에 따라 명령이 다르다. 
+Brew 및 CocoaPods 설치하기에서 CocoaPods를 설치했다면 CocoaPods 설치 과정은 건너뛰어도 된다.  
+  
+![img.png](image2/img2.png)  
+  
+3. Xcode를 실행하고 생성한 프로젝트의 ios/Runner.xcworkspace를 연다.  
+4. 좌측의 [Runner]를 선택한다. TARGETS의 [Runner]를 선택한다. [Signing & Capabilities] 탭을 선택한다. Bundle Identifier를 
+유니크한 값으로 변경한다. 나중에 앱을 출시할 때 앱을 구분하는 데 사용되니 출시 중이거나 개발 중으로 등록된 그 어떤 앱과도 겹치면 안 된다. 
+연습용 프로젝트이니 com.[본인 영어 이름].[복잡한 영어 단어]로 구성해서 겹치지 않는 값을 지정한다. [Automatically manage Signing]이 
+체크되지 않았다면 체크한다. 버튼을 눌러서 로그인된 계정을 선택하거나 새로운 애플 계정으로 로그인한다.  
+  
+![img.png](image2/img3.png)  
+  
+5. 안드로이드 스튜디오 실행 기기 선택 탭에서 연결된 핸드폰을 선택한 후 실행 버튼을 누른다.  
+아이폰 실제 기기 사용법은 공식 사이트에서 더욱 자세히 알아볼 수 있다.  
+- 아이폰 USB 연결 공식 문서  
+https://docs.flutter.dev/get-started/install/macos#deploy-to-ios-devices  
+  
+![img.png](image2/img4.png)  
+  
