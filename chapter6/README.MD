@@ -99,4 +99,12 @@ lib -> widgets -> outlined_button_widget.dart 참고
 
 lib -> widgets -> elevated_button_widget.dart 참고  
   
-![img.png](image/img7.png)
+![img.png](image/img7.png)  
+  
+# **IconButton 위젯**  
+IconButton은 아이콘을 버튼으로 생성하는 위젯이다. icon 매개변수에 보여주고 싶은 아이콘을 넣을 수 있다. onPressed 매개변수에 
+IconButton을 누리면 실행할 콜백 함수를 제공할 수 있다. 아이콘은 글리프(glyph) 기반의 아이콘을 사용할 수 있으며 Icons 클래스를 
+통해 플러터에서 제공하는 기본 아이콘들을 사용할 수 있다.  
+  
+lib -> widgets -> icon_button_widget.dart 참고  
+  
