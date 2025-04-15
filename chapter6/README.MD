@@ -132,5 +132,8 @@ lib -> widgets -> floating_action_button_widget.dart 참고
   
 ![img.png](image/img11.png)  
   
+# **디자인 관련 위젯**  
+디자인 관련 위젯은 배경을 추가하거나 간격을 추가하거나 패딩을 추가하는 등 디자인적 요소를 적용할 때 사용한다.  
+  
 
 
