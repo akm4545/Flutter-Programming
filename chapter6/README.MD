@@ -112,7 +112,7 @@ lib -> widgets -> icon_button_widget.dart 참고
 앱은 모든 입력을 손가락으로 한다. 그래서 손가락으로 하는 여러 가지 입력을 인지하는 위젯이 필요한데 GestureDetector가 바로 
 그 역할을 한다.  
   
-lib -> widgets -> Gesture_detector_widget.dart 참고  
+lib -> widgets -> gesture_detector_widget.dart 참고  
   
 ![img.png](image/img8.png)  
   
@@ -123,4 +123,14 @@ GestureDetector는 이뿐만 아니라 웹에서의 오른쪽 클릭, 위젯 드
 ![img.png](image/img9.png)  
 ![img.png](image/img10.png)  
   
+# **FloatingActionButton 위젯**  
+FloatingActionButton은 Material Design에서 추구하는 버튼 형태이다. 안드로이드 앱들을 사용하다 보면 화면의 오른쪽 아래에 
+동그란 플로팅 작업 버튼을 쉽게 볼 수 있다. FloatingActionButton과 Scaffold를 같이 사용하면 특별한 어려움 없이 해당 형태의 
+디자인을 구현할 수 있다.  
+  
+lib -> widgets -> floating_action_button_widget.dart 참고  
+  
+![img.png](image/img11.png)  
+  
+
 

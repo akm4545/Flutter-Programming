@@ -31,6 +31,6 @@ class GestureDetectorWidgetExample extends StatelessWidget {
           ),
         ),
       ),
-    )
+    );
   }
 }
