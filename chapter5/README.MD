@@ -226,3 +226,11 @@ https://docs.flutter.dev/get-started/install/macos#deploy-to-ios-devices
   
 ![img.png](image2/img4.png)  
   
+# **핵심 요약**  
+1. 플러터는 Embedder, Engine, Framework 세 개의 계층으로 이루어져 있다.  
+- Embedder 계층은 네이티브 플랫폼과 통신하는 역할을 한다.  
+- Engine 계층은 플러터 프레임워크의 중심이 되는 기능들을 제공한다.  
+- Framework 계층은 위젯과 애니메이션 등 플러터 개발자들이 실질적으로 사용하는 기능들을 제공한다.  
+2. Center 위젯을 사용하면 위젯을 중앙에 배치할 수 있다.  
+3. Text 위젯을 사용하면 화면을 글자에 작성할 수 있다.  
+
