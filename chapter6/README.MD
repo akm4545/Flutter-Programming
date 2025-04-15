@@ -35,4 +35,25 @@ child와 children 매개변수에 지속적으로 하위 위젯을 입력하면 
 ![img.png](image/img2.png)  
   
 이외에도 플러터에서 기본으로 제공하는 위젯들은 플러터 공식 웹사이트에서 API를 확인할 수 있다.  
-- https://flutter.dev/docs/development/ui/widgets
+- https://flutter.dev/docs/development/ui/widgets  
+  
+# **Children와 Child의 차이점**  
+플러터는 위젯 아래에 계속 위젯이 입력되는 형태로 위젯 트리를 구성하여 UI를 제작한다. child 매개변수와 children 매개변수는 
+위젯에 하위 위젯을 추가할 때 사용한다. 명칭에서도 알 수 있듯이 child는 위젯을 하나만 추가할 수 있고 children은 여럿을 추가할 
+수 있다. 대부분 위젯은 child 또는 children 매개변수를 하나만 제공한다. child와 children 매개변수를 동시에 입력받는 
+위젯은 존재하지 않는다. 다음 예제에서 child와 children 매개변수의 차이점을 알아보자.  
+  
+lib -> main.dart 참고  
+  
+1. child 매개변수에는 단 하나의 위젯만 입력할 수 있다. Center 위젯은 child 매개변수에 입력된 위젯을 가운데 정렬해주는 기능을 
+갖고 있기 때문에 Text 위젯을 가운데 정렬해준다.  
+  
+반면 children 매개변수는 여러 위젯을 리스트에 입력할 수 있다. 리스트에 입력된 순서대로 화면에 그려진다. 위젯을 세로로 배치할 
+수 있는 위젯인 Column 위젯을 사용해서 children 매개변수를 알아보자.  
+  
+lib -> main.dart 참고  
+  
+children 매개변수는 리스트를 입력받고 리스트 안에는 원하는 만큼 위젯을 입력할 수 있다. 'Code'라는 글자를 입력한 Text 위젯이 
+먼저 입력됐고 이어서 'Factory'라는 글자가 입력된 Text 위젯이 입력됐으니 2행에 걸쳐 'Code Factory'라는 글자가 화면에 
+그려진다.  
+  
