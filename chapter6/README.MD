@@ -108,3 +108,19 @@ IconButton을 누리면 실행할 콜백 함수를 제공할 수 있다. 아이�
   
 lib -> widgets -> icon_button_widget.dart 참고  
   
+# **GestureDetector 위젯**  
+앱은 모든 입력을 손가락으로 한다. 그래서 손가락으로 하는 여러 가지 입력을 인지하는 위젯이 필요한데 GestureDetector가 바로 
+그 역할을 한다.  
+  
+lib -> widgets -> Gesture_detector_widget.dart 참고  
+  
+![img.png](image/img8.png)  
+  
+GestureDetector는 이뿐만 아니라 웹에서의 오른쪽 클릭, 위젯 드래그 등의 입력도 받을 수 있다.  
+  
+다음 표는 GestureDetector가 제공하는 중요한 제스처를 정리한 표이다.  
+  
+![img.png](image/img9.png)  
+![img.png](image/img10.png)  
+  
+
