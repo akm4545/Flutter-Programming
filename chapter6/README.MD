@@ -171,5 +171,15 @@ lib -> widgets -> padding_widget.dart 참고
   
 EdgeInsets 클래스는 다양한 생성자를 제공한다. 자세한 사항은 다음 표를 참고하자.  
   
-![img.png](image2/img.png)
+![img.png](image2/img.png)  
+  
+# **SafeArea**  
+현대 핸드폰은 크기와 디자인 모두 여러 가지이다. 특히 애플 아이폰의 노치 디자인은 정말 특이한 디자인이다. 플러터는 가용되는 
+화면을 모두 사용하기 때문에 노치가 있는 핸드폰에서 노치에 위젯들이 가릴 수 있다. SafeArea 위젯을 사용하면 따로 기기별로 예외 
+처리를 하지 않고도 안전한(Safe) 화면에서만 위젯을 그릴 수 있다.  
+
+lib -> widgets -> safe_area_widget.dart 참고  
+  
+![img.png](image2/img2.png)  
+  
 
