@@ -182,4 +182,6 @@ lib -> widgets -> safe_area_widget.dart 참고
   
 ![img.png](image2/img2.png)  
   
-
+# **배치 관련 위젯**  
+배치 관련 위젯은 하위 위젯을 가로 또는 세로로 배치하거나 위젯 위에 위젯을 겹칠 때 사용한다.  
+  
