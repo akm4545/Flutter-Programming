@@ -236,6 +236,11 @@ Expanded 위젯은 Flexible 위젯을 상속하는 위젯이다. Column과 Row�
 FlexFit.loose는 자식 위젯이 필요한 만큼의 공간만 차지한다. 하지만 FlexFit.tight는 자식 위젯이 차지하는 공간과 관계없이 
 남은 공간을 모두 차지한다. Expanded 위젯은 Flexible 위젯의 fit 매개변수에 FlexFit.tight를 기본으로 제공해준 위젯이다. 
 그래서 Flexible 위젯과 다르게 남는 공간을 최대한으로 차지하게 된다.  
-
-lib -> widgets -> flexible_widget.dart 참고  
+  
+lib -> widgets -> expanded_widget.dart 참고  
+  
+![img.png](image2/img14.png)  
+  
+Expended 위젯이 두 개이기 때문에 각 위젯이 남는 공간을 똑같이 나눠서 차지한다. 이 비율은 Flexible과 마찬가지로 flex 
+매개변수의 값에 따라 변경된다.  
   
