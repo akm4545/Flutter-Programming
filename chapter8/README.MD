@@ -63,3 +63,23 @@ pubspec.yaml 참고
 웹뷰를 사용하려면 몇 가지 네이티브 설정이 필요하다. 인터넷 사용 권한을 추가하고 https 프로토콜뿐만 아니라 http 프로토콜도 
 이용할 수 있게 수정한다.  
   
+# **안드로이드 설정**  
+1. 안드로이드 설정 파일은 android/app/src/main/AndroidManifest.xml이다. 안드로이드 앱에 필요한 각종 권한을 여기서 설정할 
+수 있다. AndroidManifest.xml 파일을 연다.  
+  
+![img.png](image/img4.png)  
+  
+2. 웹뷰를 실행할 때 인터넷을 사용해야 하니 인터넷 권한을 추가한다.  
+![img.png](image/img5.png)  
+  
+자주 사용하는 안드로이드 권한은 아래 표를 참고하자.  
+  
+![img.png](image/img6.png)  
+![img.png](image/img7.png)  
+  
+3. 현대 웹사이트는 대부분 https 프로토콜을 사용하지만 아직도 http 프로토콜을 사용하는 웹사이트도 있다. 안드로이드와 iOS에서는 
+모두 기본적으로 http 웹사이트를 사용할 수 없도록 설정되어 있다. 이 설정을 해제하려면 다음 코드를 추가한다. 만약에 http 프로토콜을 
+허용할 필요가 없다면 이번 코드는 추가할 필요가 없다.  
+  
+![img.png](image/img8.png)  
+  
