@@ -140,3 +140,55 @@ Colors 클래스를 단순히 Color로 변경하고 첫 번째 위치 매개변�
 앞에 16진수를 의미하는 0x와 불투명도 100%를 의미하는 'FF'를 추가한 다음에 헥스 코드를 # 없이 입력하면 된다. 결과적으로 
 F99231이라는 색상은 0xFFF00231로 입력하면 된다.  
   
+# **위젯 정렬하기: Row & Column 위젯**  
+로딩 애니메이션 위젯을 직접 구현할 수도 있지만 이미 플러터팀이 만들어 제공하는 애니메이션 위젯을 사용한다. 애니메이션 위젯으로는 
+LinearProgressIndicator와 CircularProgreeIndicator가 있다. LinearProgressIndicator는 일자 형태로, CircularProgressIndicator는 
+동그라미 형태로 로딩 애니메이션이 실행되는 위젯이다.  
+  
+로고 아래에 동그라미 형태의 로딩 애니메이션을 사용한다. 그러려면 세로로 가운데 정렬이 필요하다. Center 위젯은 child에 
+위젯을 하나만 받을 수 있다.  
+  
+Row와 Column을 사용한다. Center 위젯은 child에 하나의 위젯만 받을 수 있지만 Row와 Column 위젯은 children 매개변수에 
+리스트로 원하는 만큼 위젯을 추가할 수 있다.  
+  
+1. 로고와 로딩 애니메이션을 정렬한다. 세로로 가운데 정렬을 할 계획이니 Center 위젯을 Column 위젯으로 변경하고 children 
+매개변수에 Image 위젯과 CircularProgressIndicator를 모두 넣으면 된다.  
+  
+lib -> main.dart  
+  
+서브에 위젯들을 입력할 때 대표적으로 child와 children 매개변수가 있다. child는 단일 위젯을 입력할 때 사용되고 children 
+매개변수는 여러 위젯을 입력할 수 있다. Column은 children 매개변수를 사용하니 리스트 안에 위젯들을 보여주고 싶은 순서대로 
+입력해야 한다. 코딩한 위젯 순서대로 로고가 먼저 나오고 로딩 위젯이 아래에서 빙글빙글 도는 걸 볼 수 있다. 하지만 Center 위젯과 
+다르게 Column 위젯을 사용하니 화면 맨 위에 로고가 위치한다.  
+  
+2. mainAxisAlignment 매개변수를 이용해서 children에 포함된 위젯들을 재배치할 수 있다. mainAxisAlignment 매개변수에는 
+MainAxisAlignment라는 enum값이 들어가는데 먼저 가운데를 위치하는 MainAxisAlignment.center를 적용한다. 기존 코드에 
+mainAxisAlignment: MainAxisAlignment.ceneter;를 추가한다. 그러면 Image 위젯과 CircularProgressIndicator 위젯이 
+가운데 정렬된다.  
+
+lib -> main.dart  
+  
+3. 이제 로고 이미지 크기를 조금 줄인다. 이미지 크기 조절에는 Image 위젯의 width 또는 height 매개변수를 사용한다. 
+width 매개변수에 200 픽셀을 입력해서 코드팩토리 로고 너비를 줄인다.  
+  
+lib -> main.dart  
+  
+주황색 배경도 통째로 작아졌다. 의도와는 다른 결과이다. Column의 경우 세로로 최대한 크기를 차지하는 특성이 있다. 하지만 
+가로로는 최소한 크기만 차지한다. 현재 Column 위젯 안에 Image 위젯과 CircularProgressIndicator 위젯만 존재하고 
+둘 중 더 큰 위젯인 Image 위젯이 가로로 200 픽셀만큼 차지하고 있기 떄문에 Column 위젯 또한 가로로 200 픽셀만 차지한다.  
+  
+4. Row 위젯은 Column 위젯과 정확히 반대로 작동한다. 가로로는 최대 크기를 차지하고 세로로는 최소 크기를 차지한다. Row 
+위젯으로 Column 위젯을 감싸면 Column 위젯과 마찬가지로 Row 위젯도 기본적으로 왼쪽부터 위젯들을 정렬한다. 하지만 가로, 
+세로로 모두 가운데 정렬을 할 계획이기 때문에 Row의 mainAxisAlignment 매개변수에도 MainAxisAlignment.center를 
+입력한다.  
+
+lib -> main.dart  
+  
+5. 마지막으로 로딩 위젯을 흰색으로 바꾼다. CircularProgressIndicator와 LinearProgressIndicator는 모두 backgroundColor와 
+valudColor라는 색상 매개변수를 제공한다. backgroundColor는 말 그대로 위젯의 배경 색상을 의미하고 valueColor는 실제로 
+애니메이션으로 움직이는 부분의 색상을 의미한다. 애니메이션으로 돌아가는 색상을 흰색으로 변경하기 위해 valueColor 매개변수를 
+활용한다. 플러터의 대부분의 색상 매개변수는 직접 Color 또는 Colors를 사용해서 색상을 입력하면 된다. 하지만 valueColor의 
+경우 색상이 애니메이션되어야 하기 떄문에 Colors.white를 직접 넣을 수 없다. 대신에 AlwaysStoppedAnimation이라는 클래스에 
+감싸서 색상을 제공한다.  
+  
+  
