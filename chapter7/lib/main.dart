@@ -12,11 +12,17 @@ class SplashScreen extends StatelessWidget{ // StatelessWidget 선언
         body: Container( // 컨테이너 위젯
           // 컨테이너를 디자인하는 클래스
           decoration: BoxDecoration(
-            color: Colors.orange, // 색상
+            // color: Colors.orange, // 색상
+            color: Color(0xFFF99231),
           ),
           child: Center( // 중앙 정렬 위젯
             // 글자를 화면에 보여주는 위젯
-            child: Text('Splash Screen'),
+            // child: Text('Splash Screen'),
+
+            // Text 위젯을 Image 위젯으로 변경
+            child: Image.asset(
+              'assets/logo.png',
+            ),
           ),
         ),
       ),
