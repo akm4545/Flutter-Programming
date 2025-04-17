@@ -185,3 +185,57 @@ lib -> widgets -> safe_area_widget.dart 참고
 # **배치 관련 위젯**  
 배치 관련 위젯은 하위 위젯을 가로 또는 세로로 배치하거나 위젯 위에 위젯을 겹칠 때 사용한다.  
   
+# **Row 위젯**  
+Row는 Column과 함께 위젯을 가로세로로 배치하는 데 사용된다. Row는 말 그대로 가로로 위젯을 배치하는 데 사용된다. 하나의 
+child 위젯을 입력받는 위젯들과 다르게 여러 개의 child 위젯을 입력받을 수 있는 children 매개변수를 노출한다. Row와 Column에는 
+주축(main axis)과 반대축(cross axis)이라는 개념이 존재하는데 Row는 가로가 주축, 세로가 반대축이 되고 Column의 경우 반대가 
+된다. 주축과 반대축을 어떻게 조합하냐에 따라 Row와 Column 위젯을 이용해서 다양하게 배치할 수 있다.  
+  
+![img.png](image2/img3.png)  
+  
+위젯을 가로로 배치하는 Row 위젯을 작성한다. Row 위젯의 crossAxisAlignment 매개변수를 테스트하려면 위젯들을 배치할 수 
+있는 공간을 확보해야 한다.  
+  
+lib -> widgets -> row_widget.dart 참고  
+  
+![img.png](image2/img4.png)  
+  
+다음 두 표에서 MainAxisAlignment와 CrossAxisAlignment를 변경했을 때 어떤 UI를 구현할 수 있는지 확인할 수 있다.  
+  
+![img.png](image2/img5.png)  
+![img.png](image2/img6.png)  
+![img.png](image2/img7.png)  
+  
+# **Column 위젯**  
+Column 위젯은 Row 위젯과 완전히 같은 매개변수들을 노출한다. 다만 Row에서 이미 설명한 것처럼 주축과 반대축이 Row와 
+반대로 이루어져 있다.  
+  
+lib -> widgets -> column_widget.dart 참고  
+  
+![img.png](image2/img8.png)  
+  
+MainAxisAlignment와 CrossAxisAlignment를 변경했을 떄 어떤 UI를 구현할 수 있는지 아래 표를 확인하자.  
+  
+![img.png](image2/img9.png)  
+![img.png](image2/img10.png)  
+![img.png](image2/img11.png)  
+![img.png](image2/img12.png)  
+  
+# **Flexible 위젯**  
+Flexible 위젯은 Row나 Column에서 사용하는 위젯이다. Flexible 위젯을 Column과 Row에서 사용하면 Flexible에 제공된 
+child가 크기를 최소한으로 차지하게 할 수 있다. 추가적으로 flex 매개변수를 이용해 각 Flexible 위젯이 얼만큼의 비율로 
+공간을 차지할지 지정할 수도 있다.  
+  
+lib -> widgets -> flexible_widget.dart 참고  
+  
+![img.png](image2/img13.png)  
+  
+# **Expanded 위젯**  
+Expanded 위젯은 Flexible 위젯을 상속하는 위젯이다. Column과 Row에서 Expanded를 사용하면 위젯이 남아 있는 공간을 최대한으로 
+차지한다. 원리는 간단하다. Flexible 위젯은 fit 매개변수에 FlexFit.tight 또는 FlexFit.loose를 입력할 수 있다. 
+FlexFit.loose는 자식 위젯이 필요한 만큼의 공간만 차지한다. 하지만 FlexFit.tight는 자식 위젯이 차지하는 공간과 관계없이 
+남은 공간을 모두 차지한다. Expanded 위젯은 Flexible 위젯의 fit 매개변수에 FlexFit.tight를 기본으로 제공해준 위젯이다. 
+그래서 Flexible 위젯과 다르게 남는 공간을 최대한으로 차지하게 된다.  
+
+lib -> widgets -> flexible_widget.dart 참고  
+  
