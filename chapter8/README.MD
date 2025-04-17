@@ -83,3 +83,23 @@ pubspec.yaml 참고
   
 ![img.png](image/img8.png)  
   
+# **iOS 설정**  
+1. ios/Runner/Info.plist 파일을 연다.  
+  
+![img.png](image/img9.png)  
+  
+Info.plist에서도 http 프로토콜을 사용하는 설정을 추가한다.  
+  
+![img.png](image/img10.png)  
+  
+Info.plist 파일은 iOS 앱의 런타임을 설정하는 파일이다. 플러터 프로젝트를 생성하면 자동으로 필수 키가 생성된다. NSAppTransportSecurity는 
+http 프로토콜을 허용하는 키값이지만 앞으로 Info.plist에 우리가 입력할 값들은 대부분 앱에서 이미지, 카메라 등 권한 요청을 
+할 때 보여줄 메시지를 정의한다.  
+  
+권한 메시지 사용 예제는 다음과 같다.  
+  
+![img.png](image/img11.png)  
+  
+![img.png](image/img12.png)  
+  
+나머지 키에 관련된 정보는 애플 공식 사이트에서 찾아볼 수 있다.
