@@ -191,4 +191,11 @@ valudColor라는 색상 매개변수를 제공한다. backgroundColor는 말 그
 경우 색상이 애니메이션되어야 하기 떄문에 Colors.white를 직접 넣을 수 없다. 대신에 AlwaysStoppedAnimation이라는 클래스에 
 감싸서 색상을 제공한다.  
   
+# **핵심 요약**  
+1. 플러터는 머티리얼 디자인을 사용하기 때문에 프로젝트의 위젯 트리 가장 상단에 MaterialApp 위젯과 Scaffold 위젯을 사용한다.  
+2. Container 위젯에는 배경색을 적용할 수 있다.  
+3. Image 위젯은 화면에 이미지를 보여줄 수 있다.  
+4. flutter pub get을 실행하면 pubspec.yaml의 변경 사항을 프로젝트에 적용할 수 있다.  
+5. Column 위젯을 이용하면 다수의 위젯을 세로로 배치할 수 있다.  
+6. Row 위젯을 이용하면 다수의 위젯을 가로로 배치할 수 있다.  
   
