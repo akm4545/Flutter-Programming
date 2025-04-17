@@ -47,3 +47,15 @@ pub.dev 소개 페이지에서 확인할 수 있다.
 - 프로젝트 이름: blog_web_app
 - 네이티브 언어: 코틀린  
   
+# **pubspec.yaml 설정하기**  
+pubspec.yaml 파일은 플러터 프로젝트와 관련된 설정을 하는 파일이다. 프로젝트에서 사용할 이미지 및 폰트를 지정하거나 
+사용할 오픈 소스 프로젝트들을 명시할 때 사용된다.  
+  
+1. webview_flutter 플러그인을 pubspec.yaml 파일에 추가하고 pub get을 실행한다.  
+  
+pubspec.yaml 참고  
+  
+다음 표는 주요 pub 명령어를 정리한 것이다.  
+  
+![img.png](image/img3.png)  
+  
