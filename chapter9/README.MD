@@ -62,3 +62,15 @@ StatefulWidget도 StatelessWidget처럼 하나의 클래스이다. 그렇기 때
 4. build()가 실행된다.  
 5. State의 상태가 clean으로 변경된다.  
   
+# **State 자체적으로 build()를 재실행할 때 생명주기**  
+StatelessWidget은 생성될 때 build() 함수가 한 번 실행되고 절대로 다시 실행되지 않는다. 반면 StatefulWidget은 
+StatefulWidget 클래스와 State 클래스로 구성돼 있는데 State 클래스는 setState() 함수를 실행해서 build() 함수를 자체적으로 
+재실행할 수 있다.  
+  
+![img.png](image/img4.png)  
+  
+1. setState()를 실행한다.  
+2. State가 dirty 상태로 변경된다.  
+3. build()가 실행된다.  
+4. State의 상태가 clean으로 변경된다.  
+  
