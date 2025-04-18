@@ -294,4 +294,16 @@ lib -> screen -> home_screen.dart
 onDateTimeChanged의 콜백 함수는 CupertinoDatePicker 위젯에서 날짜가 변경될 때마다 실행된다. 결과적으로 콜백 함수가 
 실행될 때마다 매개변수로 제공되는 date 값을 firstDay 변수에 저장해주기만 하면 된다.  
   
-2. 이제 CupertinoDatePicker에서 날짜를 변경해주면 '우리 처음 만난 날' 및 D-Day에 선택한 날짜값이 반영된다.
+2. 이제 CupertinoDatePicker에서 날짜를 변경해주면 '우리 처음 만난 날' 및 D-Day에 선택한 날짜값이 반영된다. 현재는 미래의 
+날짜도 선택할 수 있다. 오늘 이후의 날짜는 선택하지 못하도록 하려면 CupertinoDatePicker 클래스의 maximumDate 매개변수에 
+최대 날짜를 DateTime 형태로 입력하면 된다.  
+  
+# **핵심 요약**  
+1. DateTime 클래스로 날짜시간을 저장할 수 있다.  
+2. DateTime의 difference() 함수를 이용해서 두 날짜 간의 차이를 구할 수 있다.  
+3. Duration 클래스로 기간을 저장할 수 있다.  
+4. StatefulWidget에서 setState() 함수를 실행해서 build() 함수를 재실행시킬 수 있다.  
+5. MediaQuery를 사용해서 스크린 크기 정보를 받아볼 수 있다.  
+6. Theme를 이용해서 위젯들의 기본 테마를 지정할 수 있다.  
+7. showCupertinoDialog를 이용해서 iOS 스타일의 다이얼로그를 띄울 수 있다.  
+8. CupertinoDatePicker를 사용해서 iOS 스타일의 위젯으로 날짜를 입력받을 수 있다.
