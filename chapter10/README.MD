@@ -55,4 +55,14 @@ showCupertinoDialog()는 다이얼로그를 실행하는 함수이다. Cupertino
 1. 이미지와 폰트를 프로젝트에 추가한다. asset 폴더를 만들고 그 아래 font와 img 폴더를 만든다. 내려받은 예제에서 
 폰트 파일들은 font 폴더에, 그림 파일들은 img 폴더에 저장한다.  
   
-
+# **pubspec.yaml 설정하기**  
+이미지와 마찬가지로 폰트도 pubspec.yaml 파일에 추가한다. 에셋 파일은 flutter 키의 assets 키에, 폰트 파일은 flutter 
+키의 fonts 키에 입력하면 된다. 이미지와 폰트를 pubspec.yaml에 적용한다.  
+  
+pubspec.yaml 참고  
+  
+Weight는 폰트 두께를 의미한다. 폰트의 두께별로 파일이 따로 제공되기 때문에 같은 폰트라도 다른 두께를 표현하는 파일은 
+weight 값을 따로 표현해줘야 한다. 두께값은 100부터 900까지 100 단위로 사용할 수 있으며 숫자가 높을수록 두꺼운 값을 
+의미한다. 추후 플러터에서 사용할 때 fontWeight 클래스에 표현되는 두께값과 같다(예: weight: 500 = FontWeight.w500).  
+  
+2. pub get을 실행해서 변경 사항을 반영한다.
