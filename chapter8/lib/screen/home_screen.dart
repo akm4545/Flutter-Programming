@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// 웹뷰 플러그인 불러오기
+import 'package:webview_flutter/webview_flutter.dart';
+
 class HomeScreen extends StatelessWidget {
   // HomeScreen 클래스의 생성자(HomeScreen({Key? key}))가 호출됨 → 위젯 인스턴스가 만들어짐
   // Flutter 프레임워크가 화면에 이 위젯을 렌더링하려고 할 때 build(BuildContext context) 메서드를 호출함
@@ -23,7 +26,10 @@ class HomeScreen extends StatelessWidget {
         // 가운데 정렬
         centerTitle: true,
       ),
-      body: Text('Home Screen'),
+      // body: Text('Home Screen'),
+      body: WebViewWidget( // 웹뷰 위젯 추가하기 (에러 잠시 무시하기)
+          controller: webViewController, //에러 발생
+      ),
     );
   }   
 }

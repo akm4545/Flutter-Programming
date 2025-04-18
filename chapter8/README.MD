@@ -156,5 +156,15 @@ AppBar 위젯은 일반적으로 Scaffold 위젯의 appBar 매개변수로 넣�
 배경색을 주황색으로 변경한다. AppBar의 중간에 넣어줄 위젯이다. 보통은 Text를 넣어주지만 어떤 위젯을 넣어도 상관없다. 
 Text("Code Factory")를 설정했다. centerTitle에 true를 입력해 title을 가운데 정렬한다. false를 입력하면 왼쪽으로 정렬한다.  
   
-2. 코드를 작성하 후 핫 리로드를 해 앱바가 추가되었는지 확인한다.  
+2. 코드를 작성한 후 핫 리로드를 해 앱바가 추가되었는지 확인한다.  
+    
+# **웹뷰 구현하기**  
+1. 웹뷰 위젯을 구현한다.  
   
+lib -> screen -> home_screen.dart  
+  
+import 키워드를 사용해서 웹뷰 플러그인을 불러온다. body에 WebViewWidget을 입력한다. 웹뷰 위젯은 화면에 웹뷰를 렌더링해주는 
+역할을 한다. 그리고 WebViewWidget을 제어할 수 있는 controller 파라미터를 입력받는다. controller: webViewController에 
+생긴 에러는 webViewController가 아직 선언되지 않아서 발생하는 것으로 다음 과정에 선언할 예정이다.  
+  
+
