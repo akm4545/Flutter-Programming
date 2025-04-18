@@ -151,3 +151,20 @@ BoxFit.cover를 설정해주면 이미지가 최대한 전체 화면을 차지�
 ![img.png](image/img11.png)  
 ![img.png](image/img12.png)  
   
+# **상태바 색상 변경하기**  
+상태바는 앱을 실행 중에 핸드폰 배터리, 시간, 와이파이 연결 상태 등을 보여주는 영역이다. 현재 상태바의 글자 및 아이콘 
+색상이 검정색이라 잘 안보이니 잘 보이게 흰색으로 변경한다. 버전에 따라서 이미 흰색인 경우도 있다. 흰색으로 나오면 연습 
+삼아 검정으로 바꾸면 된다.  
+  
+1. HomeScreen 위젯의 build() 메서드에 상태바 아이콘들의 색상을 변경하는 코드를 추가한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+SystemChrome 클래스는 시스템 UI의 그래픽 설정을 변경하는 기능을 제공한다. SystemChrome.setSystemUIOverlayStyle()을 
+사용하면 상태바의 색상을 변경할 수 있다. 매개변수의 값으로는 검정색으로 만들어주는 SystemUiOverlayStyle.dark와 흰색으로 
+만들어주는 SystemUiOverlayStyle.light가 있다.  
+  
+![img.png](image/img13.png)  
+  
+2. 핫 리로드를 해서 상태바의 색상이 흰색으로 변경된 걸 확인하자.  
+  
