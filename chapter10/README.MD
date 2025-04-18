@@ -65,4 +65,15 @@ Weight는 폰트 두께를 의미한다. 폰트의 두께별로 파일이 따로
 weight 값을 따로 표현해줘야 한다. 두께값은 100부터 900까지 100 단위로 사용할 수 있으며 숫자가 높을수록 두꺼운 값을 
 의미한다. 추후 플러터에서 사용할 때 fontWeight 클래스에 표현되는 두께값과 같다(예: weight: 500 = FontWeight.w500).  
   
-2. pub get을 실행해서 변경 사항을 반영한다.
+2. pub get을 실행해서 변경 사항을 반영한다.  
+  
+# **프로젝트 초기화하기**  
+1. lib 폴더에 screen 폴더를 생성하고 앱의 기본 홈 화면으로 사용할 HomeScreen 위젯을 생성할 home_screen.dart를 생성한다. 
+다음과 같이 HomeScreen이라는 StatelessWidget을 생성한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. lib/main.dart 파일에서도 마찬가지로 HomeScreen을 홈 위젯으로 등록한다.  
+  
+lib -> main.dart  
+  
