@@ -126,3 +126,13 @@ lib -> main.dart
   
 ![img.png](image/img8.png)  
   
+# **페이지뷰 구현하기**  
+PageView는 여러 개의 위젯을 단독 페이지로 생성하고 가로 또는 세로 스와이프로 페이지를 넘길 수 있게 하는 위젯이다. 
+home_screen.dart에 PageView를 추가한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+PageView 위젯은 material 패키지에서 기본으로 제공해준다. children 매개변수에 페이지로 생성하고 싶은 위젯들을 넣어주면 
+된다. [1, 2, 3, 4, 5] 리스트를 생성하고 map() 함수를 사용해서 image_1.jpeg부터 image_5.jpeg까지 순서대로 PageView에 
+추가한다.  
+  
