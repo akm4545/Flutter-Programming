@@ -5,3 +5,7 @@
 실행하는 데 사용된다. 마지막으로는 StatefulWidget이다. 지금까지 StatelessWidget만 사용해왔는데 Timer를 효율적으로 
 사용하려면 StatefulWidget과 StatefulWidget의 생명주기에 대해 알아야 한다.  
   
+# **사전 지식**  
+# **위젯 생명주기**  
+위젯 생명주기는 위젯이 화면에 그려지는 순간부터 삭제되는 순간까지의 주기를 의미한다.  
+  
