@@ -100,3 +100,10 @@ Timer의 생성자는 Timer(), Timer.periodic() 두 가지다. 각각에 대해�
 1. Project에서 최상의 폴더에 asset 폴더를 생성하고 그 아래 img 폴더도 생성한다.  
 2. 깃허브 예제에서 이미지를 다운로드 받하 img 폴더에 넣는다.  
   
+# **pubspec.yaml 설정하기**  
+추가된 에셋을 pubspec.yaml에 등록한다. pubspec.yaml 파일은 프로젝트의 의존성과 에셋을 등록하는 파일이다. 프로젝트에서 
+사용할 에셋 파일을 등록해줄 때는 pubspec.yaml 파일의 중간쯤에 있는 flutter 키에 assets 키를 작성하고 사용할 에셋이 있는 
+위치(asset/img/)를 다음과 같이 적어준다. 마지막으로 pub get을 실행해주면 등록한 에셋을 프로젝트에서 사용할 수 있다.  
+  
+pubspec.yaml 참고  
+  
