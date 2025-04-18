@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// 쿠퍼티노 (iOS) 위젯 사용하기 위해 필요
+import 'package:flutter/cupertino.dart';
 
 // class HomeScreen extends StatelessWidget {
 class HomeScreen extends StatefulWidget {
@@ -40,6 +41,25 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onHeartPressed() { // 하트 눌렀을 때 실행할 함수
+    showCupertinoDialog( // 쿠퍼티노 다이얼로그 실행
+        context: context, // 보여줄 다이얼로그 빌드
+        builder: (BuildContext context) {
+          // 날짜 선택하는 다이얼로그
+          return Align( // 정렬을 지정하는 위젯
+            alignment: Alignment.bottomCenter, // 아래 중간으로 정렬
+            child: Container(
+              color: Colors.white, // 배경색 흰색 지정
+              height: 300, // 높이 300 지정
+              child: CupertinoDatePicker(
+                // 시간 제외하고 날짜만 선택하기
+                mode: CupertinoDatePickerMode.date,
+                onDateTimeChanged: (DateTime date) {},
+              ),
+            ),
+          );
+        },
+        barrierDismissible: true, // 외부 탭할 경우 다이얼로그 닫기
+    );
     // print('클릭');
     // 상태 변경 시 setState() 함수 실행
     setState(() {

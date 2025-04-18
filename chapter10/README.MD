@@ -248,4 +248,41 @@ hours, minute, seconds, milliseconds, microseconds 값들을 사용해서 원하
 firstDay 값을 새로 지정하는 코드를 setState() 함수 없이 지정하면 아무리 하트 버튼을 눌러도 UI가 반영되지 않는다. 값은 
 바뀌는데 build() 함수를 재실행하라는 신호를 받지 못한다.  
   
+# **CupertinoDatePicker로 날짜 선택 구현하기**  
+1. showCupertinoDialog() 함수와 CupertinoDatePicker 위젯을 사용해서 아이콘을 클릭하면 날짜를 선택할 수 있는 
+CupertinoDatePicker가 화면에 생성되도록 구현한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+showCupertinoDialog를 실행하면 다이얼로그를 열어준다. builder 매개변수에 입력되는 함수에 다이얼로그로 보여주고 싶은 
+위젯을 반환해주면 해당 위젯을 다이얼로그에서 보여줄 수 있다.  
+  
+CupertinoDatePicker는 Cupertino 패키지에서 기본으로 제공하는 위젯이다. 스크롤을 통해서 날짜를 정할 수 있고 정해진 
+값을 onDateTimeChanged 콜백 함수의 매개변수로 전달한다.  
+  
+mode 매개변수는 날짜를 고르는 모드를 지정할 수 있다.  
+- CupertinoDatePickerMode.date: 날짜
+- CupertinoDatePickerMode.time: 시간
+- CupertinoDatePickerMode.dateAndTime: 날짜와 시간  
+  
+2. 하트 아이콘을 눌러서 CupertinoDatePicker가 다이얼로그에 제대로 실행되는지 확인한다. 현재는 다이얼로그를 닫을 방법이 
+없다. 다이얼로그를 없애고 싶으면 Run 버튼을 눌러서 앱을 재실행한다.  
+   
+3. 하트 아이콘을 누르면 다이얼로그가 열리면서 배경이 어두워지고 CupertinoDatePicker가 보이지만 계획과 달리 아래 
+공간만 조금 차지하는 흰색 배경의 형태가 아니다. 화면 아래에서 300 픽셀만 CupertinoDatePicker가 차지하게 하고 CupertinoDatePicker의 
+배경을 흰색으로 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+Align 위젯은 자식 위젯을 어떻게 위치시킬지 정할 수 있다. Align 위젯의 alignment 매개변수에는 Alignment 값을 입력할 
+수 있다. 여기서는 Alignment.bottomCenter를 입력해서 아래 중간에 자식 위젯을 배치했다. showCupertinoDialog의 
+barrierDismissible 매개변수는 배경을 눌렀을 때의 행동을 지정한다. false값을 입력하면 배경을 눌러도 다이얼로그가 
+닫히지 않고 true 값을 누르면 배경을 눌렀을 때 다이얼로그가 닫힌다. Alignment의 정렬값은 아래 표를 참고하자.  
+  
+![img.png](image/img10.png)  
+![img.png](image/img11.png)  
+  
+4. Run 버튼을 눌러서 앱을 재시작하고 다시 하트 아이콘을 누르면 CupertinoDatePicker 위젯이 아래에 흰색 배경으로 이쁘게 
+배치되는걸 볼 수 있다. 이제 배경을 누르면 다이얼로그가 닫힌다.  
+  
 
