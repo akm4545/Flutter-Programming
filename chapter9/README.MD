@@ -121,3 +121,8 @@ lib -> main.dart
   
 ![img.png](image/img7.png)  
   
+# **구현하기**  
+구현할 프로그램의 구성은 다음과 같다.  
+  
+![img.png](image/img8.png)  
+  
