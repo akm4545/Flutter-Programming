@@ -136,3 +136,18 @@ PageView 위젯은 material 패키지에서 기본으로 제공해준다. childr
 된다. [1, 2, 3, 4, 5] 리스트를 생성하고 map() 함수를 사용해서 image_1.jpeg부터 image_5.jpeg까지 순서대로 PageView에 
 추가한다.  
   
+2. 핫 리로드를 수행해서 PageView에 이미지가 추가된 걸 확인한다.  
+3. 이미지가 PageView에 추가됐지만 핸드폰 크기와 이미지 크기가 달라서 위아래로 흰색 여백이 생길 수도 있다. 핸드폰 화면 
+비율에 따라 위아래 대신에 좌우가 남거나 운 좋게 딱 맞을 수도 있다. 여러 비율의 화면에 대응할 수 있게 이미지 핏을 조절해줘서 
+항상 전체 화면을 다 차지하도록 설정한다.  
+   
+lib -> screen -> home_screen.dart  
+  
+BoxFit.cover를 설정해주면 이미지가 최대한 전체 화면을 차지하도록 늘어난다. Image 위젯에서의 매개변수 fit은 이미지를 
+부모 위젯에 어떻게 채워넣을지 정의한다. 자세한 속성은 다음 표를 참고하자.  
+  
+![img.png](image/img9.png)  
+![img.png](image/img10.png)  
+![img.png](image/img11.png)  
+![img.png](image/img12.png)  
+  
