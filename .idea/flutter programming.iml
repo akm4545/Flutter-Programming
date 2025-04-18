@@ -21,6 +21,15 @@
       <excludeFolder url="file://$MODULE_DIR$/chapter6/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/chapter6/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/chapter6/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter7/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter7/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter7/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter8/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter8/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter8/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter9/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter9/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter9/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
