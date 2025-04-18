@@ -126,3 +126,12 @@ lib -> screen -> home_screen.dart
   
 lib -> main.dart  
   
+# **import로 임포트할 경로**  
+프로젝트가 커지면 main.dart 외에 다른 파일을 사용한다. 그러다 보면 어느 한 파일에서 다른 파일의 위젯이나 변수 등을 
+불러와서 사용해야 하는데 이때 import 키워드를 사용한다. import 키워드 뒤에 package:[프로젝트 이름]/[lib 폴더로부터의 위치]
+/파일명.dart 형식으로 적어주면 불러올 수 있다. Private으로 선언된 속성들은 불러오기에 제외된다.  
+  
+![img.png](image/img13.png)  
+  
+일반적으로 플러그인 기능은 package:[플러그인 이름]/[플러그인 이름].dart 형식으로 불러올 수 있다.  
+  
