@@ -31,3 +31,22 @@
   
 StatelessWidget과 다르게 StatefulWidget은 위젯 클래스와 스테이트 클래스 2개로 구성되어 있고 생명주기가 훨씬 복잡하다.  
   
+# **상태 변경이 없는 생명주기**  
+상태 변경이 없는 생명주기는 위젯이 화면에 나타나며 생성되고 화면에서 사라지며 삭제되는 과정을 의미한다. 중간에 위젯의 
+상태가 변경되지 않는다.  
+  
+![img.png](image/img2.png)  
+  
+1. StatefulWidget 생성자가 실행된다.  
+2. createState() 함수가 실행된다. createState() 함수는 필수로 오버라이드해야 하는 함수로 StatefulWidget과 연동되는 
+State를 생성한다.  
+3. State가 생성되면 initState()가 실행된다. initState()는 State가 생성되는 순간에만 단 한 번 실행되고 절대로 다시 
+실행되지 않는다.  
+4. didChangeDependencies()가 실행된다. initState()와 다르게 BuildContext가 제공되고 State가 의존하는 값이 변경되면 
+재실행된다.  
+5. State의 상태가 dirty로 설정된다. dirty 상태는 build()가 재실행돼야 하는 상태이다.  
+6. 따라서 build() 함수가 실행되고 UI가 반영된다.  
+7. build() 실행이 완료되면 상태가 clean 상태로 변경된다. 화면에 변화가 없으면 이 상태를 유지한다.  
+8. 위젯이 위젯 트리에서 사라지면 deactivate()가 실행된다. deactivate()는 State가 일시적 또는 영구적으로 삭제될 때 실행된다.  
+9. dispose()가 실행된다. 위젯이 영구적으로 삭제될 때 실행된다.  
+  
