@@ -88,3 +88,8 @@ Timer의 생성자는 Timer(), Timer.periodic() 두 가지다. 각각에 대해�
   
 ![img.png](image/img6.png)  
   
+# **사전 준비**  
+실습에 사용할 프로젝트를 생성한다.  
+- 프로젝트 이름: image_carousel
+- 네이티브 언어: 코틀린  
+  
