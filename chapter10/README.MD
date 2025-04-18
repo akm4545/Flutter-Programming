@@ -30,3 +30,18 @@ setState() 함수를 실행하는 방법은 매우 간단하다. setState() 함�
 setState() 함수의 첫 번째 매개변수에 상태(변수) 값을 변경하는 로직을 작성한다. 예제에서는 number라는 값을 1만큼 
 증가시키고 다시 build() 함수를 실행한다.  
   
+# **showCupertinoDialog() 함수**  
+showCupertinoDialog()는 다이얼로그를 실행하는 함수이다. Cupertino라고 정의된 만큼 iOS 스타일로 다이얼로그가 실행되며 
+실행 시 모든 애니메이션과 작동이 iOS 스타일로 적용된다.  
+  
+![img.png](image/img3.png)  
+  
+1. Cupertino 위젯을 사용하려면 Cupertino 패키지를 꼭 불러와야 한다.  
+2. showCupertinoDialog() 함수를 실행하면 Cupertino 스타일의 다이얼로그를 실행할 수 있다.  
+3. 모든 showDialog() 형태의 함수들은 BuildContext를 반드시 입력해야 한다.  
+4. 플러터에서 다이얼로그 위젯 외에 흐림 처리가 된 부분을 배리어라고 부른다. 예를 들어 아이럴로그 위젯의 높이가 300인데 
+화면 전체의 높이가 1000이라면 나머지 700만큼의 부분이 배리어가 된다. barrierDismissible에 true를 입력하면 배리어를 
+눌렀을 때 다이얼로그가 닫히고 false를 입력하면 닫히지 않는다.  
+5. builder() 함수에 다이얼로그로 띄우고 싶은 위젯은 반환해주면 된다.  
+  
+
