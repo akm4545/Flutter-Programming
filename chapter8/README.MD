@@ -180,4 +180,17 @@ WebViewController 타입인 webViewController 변수를 선언한다. WebViewWid
 함수이다. loadRequest() 함수는 Uri 객체를 매개변수로 입력받으며 이 입력받은 값을 통해 지정한 사이트로 이동한다. Uri 객체는 
 Uri.parse() static 함수가 존재하는데 이 함수에 이동하고 싶은 사이트의 URL을 입력하면 해당 URL이 Uri 객체로 자동 변경된다.  
   
+# **main.dart 파일 수정하기**  
+플러터 프로젝트를 실행하는 runApp() 함수는 내부적으로 WidgetsFlutterBinding.ensureInitialized() (이하 ensureInitialized() 함수) 
+함수를 실행하고 있다. ensureInitialized() 함수는 플러터 프레임워크가 앱을 실행할 준비가 됐는지 확인하는 역할을 한다. 
+일반적으로 개발자가 직접 이 함수를 실행할 필요는 없지만 StatelessWidget에서 WebViewController를 프로퍼티로 직접 
+인스턴스화하려면 ensureInitialized() 함수를 직접 실행해주는 작업을 해야 한다. ensureInitialized() 함수를 직접 실행하기 
+않고 WebViewController를 정상적으로 인스턴스화하는 방법은 StatefulWidget의 initState() 함수에서 진행하게 된다.  
+
+여기서 controller는 위젯이 렌더링되기 전에 미리 실행된다. WebViewController는 내부적으로 플랫폼 채널(Android/iOS와 통신)을 쓴다. 
+플러터 앱이 완전히 초기화된 이후에만 안정적으로 동작한다. 그래서 이 코드는 플랫폼 시스템 준비 전에 WebViewController를 생성해버려서 
+에러가 날 수 있는 구조다.  
+  
+lib -> main.dart  
+  
 
