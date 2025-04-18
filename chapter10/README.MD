@@ -187,4 +187,65 @@ build() 함수에 입력되지 않은 값들은 핫 리로드로 반영이 되�
   
 ![img.png](image/img9.png)  
   
+# **상태 관리 연습해보기**  
+UI는 목표대로 완성했다. 이제 순차적으로 기능을 추가한다.  
+  
+1. 먼저 HomeScreen을 StatefulWidget으로 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. 이번 프로젝트에서 상태 관리를 할 값은 '처음 만난 날'이다. 이 날짜를 변숫값으로 저장하고 변경하면서 사용한다. 오늘을 
+기준으로 이 변숫값을 선언한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+3. 목표하는 기능은 하트 버튼을 누르면 날짜를 고를 수 있는 UI가 나오며 날짜가 변경될 때마다 firstDay 변수를 맞춰서 
+변경시키는 기능이다. 하지만 현재 하트 버튼의 opPressed 매개변수가 _DDay 위젯에 위치해 있어 _HomeScreenState에서 버튼이 
+눌렸을 때 콜백을 받을 수 없다. _DDay 위젯에 하트 아이콘을 눌렀을 때 실행되는 콜백 함수를 매개변수로 노출해서 _HomeScreenState에서 
+상태 관리를 하도록 한다.  
+   
+lib -> screen -> home_screen.dart  
+  
+IconButton의 onPressed 매개변수에 입력할 GestureTapCallback 타입의 변수를 정의한다. GestureTapCallback은 
+Material 패키지에서 기본으로 제공하는 Typedef로 버튼의 onPressed 또는 onTap 콜백 함수들이 GestureTapCallback 
+타입으로 정의돼 있다. 아무것도 반환하지 않고 아무것도 입력받지 않는 기본 형태의 함수로 정의돼 있다.  
+  
+onHeartPressed의 값을 생성자 매개변수를 통해 외부에서 정의받는다. 기존에 정의했던 비어 있는 함수 대신에 onHeartPressed 
+값을 넣어준다. 하트 아이콘을 눌렀을 때 실행할 함수를 정의한다. _DDay 위젯 생성자에 추가된 매개변수 onHeartPressed에 
+_HomeScreenState에 정의한 onHeartPressed 함수를 입력한다.  
+  
+4. 핫 리로드를 하고 하트 아이콘을 클릭하여 콘솔에 '클릭'이 잘 출력되는지 확인한다.  
+  
+5. 하트 아이콘의 콜백 함수가 잘 실행되지만 아직 글자들이 firstDay 변수와 연동이 안 되어 있다. _DDay 생성자에 매개변수로 
+firstDay 값을 입력해주고 firstDay 변수를 기반으로 날짜와 D-Day가 렌더링되게 한다.  
+
+lib -> screen -> home_screen.dart  
+  
+위젯에서 사용할 DateTime 값을 변수로 선언한다. firstDay 변수의 값을 생성자의 매개변수로 외부에서 입력받도록 정의한다. 
+_DDay 위젯에서 현재 날짜시간 값을 now 변수에 저장한다. DateTime 타입에는 year, month, day, hour, minute, second, 
+millisecond, microsecond, weekday 등의 게터가 있다. 순서대로 DateTime 값의 년, 월, 일, 시, 분, 초, 밀리초, 마이크로초 
+값을 가져올 수 있다.  
+  
+DateTime의 생성자에는 year, month, day, hour, minute, second, millisecond, microsecond 매개변수를 사용해서 
+원하는 날짜시간을 DateTime 값으로 만들 수 있다. 그리고 DateTime은 difference() 함수를 사용해서 하나의 DateTime 값을 
+또 다른 DateTime 값과 비교할 수 있다. 추가적으로 difference() 함수는 Duration 값을 반환하는데 Duration 값에는 
+기간을 날짜로 반환하는 inDays 게터가 있다. 오늘 날짜와 firstDay 변수의 기간 차이를 일수로 계산하고 사귀는 첫 날은 
+'오늘부터 1일'로 보통 정의하기 때문에 1을 더해준다.  
+  
+6. 저장하고 핫 리로드를 하면 오늘 날짜가 처음 만난 날로 정의되고 계산된 D-Day가 렌더링된다.  
+  
+7. setState() 함수를 사용한다. 상태 관리 테스트로 하트 아이콘을 누르면 firstDay가 하루씩 늘어나는 기능을 추가한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+setState() 매개변수에 함수를 입력하고 함수에 변경하고 싶은 변숫값을 지정해주면 된다. 원하는 만큼 기간을 뺄 수 있는 
+subtract() 함수를 사용해서 하트 버튼이 눌릴 때마다 firstDay 값이 하루씩 줄어드는 기능을 추가한다.  
+DateTime은 날짜와 시간을 저장할 수 있는 변수 타입이고 Duration은 기간을 정할 수 있는 변수 타입이다. 매개변수에 days, 
+hours, minute, seconds, milliseconds, microseconds 값들을 사용해서 원하는 기간을 정의할 수 있다.  
+  
+8. 아이콘 버튼을 누르면 처음 만난 날 날짜와 D-Day가 변경된다.  
+  
+firstDay 값을 새로 지정하는 코드를 setState() 함수 없이 지정하면 아무리 하트 버튼을 눌러도 UI가 반영되지 않는다. 값은 
+바뀌는데 build() 함수를 재실행하라는 신호를 받지 못한다.  
+  
 
