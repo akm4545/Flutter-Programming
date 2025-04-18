@@ -168,3 +168,60 @@ SystemChrome 클래스는 시스템 UI의 그래픽 설정을 변경하는 기�
   
 2. 핫 리로드를 해서 상태바의 색상이 흰색으로 변경된 걸 확인하자.  
   
+# **타이머 추가하기**  
+50줄도 되지 않는 코드로 벌써 목표한 UI를 완성했다. 일정 기간마다 자동으로 페이지가 변경되는 기능을 추가할 차례다. Timer 
+클래스를 사용해서 액자가 자동으로 롤링되는 기능을 추가한다.  
+  
+Timer를 추가하려면 HomeScreen을 StatelessWidget이 아닌 StatefulWidget으로 변경해야 한다. StatelessWidget을 그대로 
+사용하면 Timer를 등록할 수 있는 위치가 build() 함수밖에 없다. build()에 Timer를 등록하면 안타깝게도 위젯이 새로 
+생성될 때마다, 즉 build() 함수가 불릴 때마다 매번 새로운 Timer가 생성된다. 그러면 메모리 누수가 생기게 된다. 하지만 
+StatefulWidget의 생명주기에서 배운 대로 initState()를 사용하면 State가 생성될 때 딱 한 번만 Timer를 생성할 수 있다. 
+그러니 HomeScreen을 StatefulWidget으로 변환한 후 Timer를 등록한다.  
+  
+1. HomeScreen 위젯을 StatefulWidget으로 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+StatefulWidget은 StatefulWidget 클래스를 상속해서 정의할 수 있다. 생명주기에서 배운 것처럼 StatefulWidget은 
+createState() 함수를 정의해야 하며 State를 반환해준다.  
+  
+_HomeScreenState 클래스는 먼저 생성한 StatefulWidget 클래스를 매개변수로 받는 State 클래스를 상속한다. 이미 배운 
+것처럼 build() 함수는 State에서 정의한다.  
+  
+2. initState() 함수에 Timer를 등록한다.  
+
+lib -> screen -> home_screen.dart  
+  
+플러터에 기본으로 제공되는 async 패키지를 불러와야 Timer를 사용할 수 있다. initState() 함수를 오버라이드하면 
+StatefulWidget 생명주기에서의 initState() 함수를 사용할 수 있다. 모든 initState() 함수는 부모의 initState() 
+함수를 실행해줘야 한다. 3초마다 실행되는 Timer를 등록했다.  
+  
+3. initState()에 작성한 코드는 핫 리로드를 했을 때 반영이 안된다. 왜냐하면 initState()는 State가 생성될 때 딱 한 
+번만 실행이 되는데 이미 StatefulWidget으로 코드를 전환하는 과정에서 State를 생성해버렸기 떄문이다. 그래서 initState()에 
+추가한 사항을 반영하려면 앱을 재실행해야 한다. 앱을 재실행하고 3초마다 "실행!"이라는 글자가 콘솔에 출력된다.  
+  
+4. 이전 프로젝트에서 웹뷰를 조작할 때 WebViewController를 사용한 것처럼 PageView는 PageController를 사용해서 PageView를 
+조작할 수 있다. PageController를 State에 선언하고 PageView에 매개변수로 입력한다.  
+   
+lib -> screen -> home_screen.dart  
+  
+사용할 pageController 변수를 정의한다. PageView의 controller 매개변수에 PageController 타입의 값을 넣어주면 해당 
+컨트롤러로 PageView를 조작할 수 있다.  
+  
+5. PageView에 컨트롤러를 등록했으니 Timer.periodic()의 콜백 함수를 변경해서 주기적으로 PageView의 페이지를 넘겨주도록 한다.  
+
+lib -> screen -> home_screen.dart  
+  
+pageController.page 게터를 사용해서 PageView의 현재 페이지를 가져올 수 있다. 페이지가 변경 중인 경우 소수점으로 표현돼서 
+double로 값이 반환된다. 하지만 animateToPage() 함수를 실행할 때 정숫값을 넣어줘야 하니 미리 toInt()를 사용해서 정수로 
+변환한다. 만약에 페이지가 null이면 무엇도 하지 않는다.  
+  
+페이지의 값이 4면 첫 번째 페이지부터 다시 시작한다. 아니면 페이지에 1을 더해서 다음 페이지로 이동한다. PageController의 
+animateToPage() 함수를 사용해서 PageView의 현재 페이지를 변경할 수 있다. 첫 번째 매개변수로 이동할 페이지가 정수로 
+입력되며 duration 매개변수는 이동할 때 소요될 시간을 지정할 수 있다. 마지막으로 curve 매개변수는 페이지가 변경되는 
+애니메이션의 작동 방식을 정할 수 있다. 플러터에서는 수십 개의 curve 기본 설정이 제공되며 플러터 공식 페이지에서 직접 
+애니메이션을 확인할 수 있다.  
+  
+6. initState() 함수를 변경했으니 앱을 재실행해서 새로 Timer.periodic()을 등록한다. 앱을 실행하면 3초가 지날 때마다 
+페이지가 자동으로 롤링되고 마지막 페이지에 다다르면 처음으로 다시 돌아간다.  
+  
