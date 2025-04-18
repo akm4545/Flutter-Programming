@@ -116,3 +116,8 @@ lib -> screen -> home_screen.dart
   
 lib -> main.dart  
   
+# **레이아웃 구상하기**  
+이번 프로젝트의 레이아웃은 좌우로 위젯을 스와이프할 수 있는 PageView 하나로 구성되어 있다.  
+  
+![img.png](image/img7.png)  
+  
