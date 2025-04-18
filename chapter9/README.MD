@@ -50,3 +50,15 @@ State를 생성한다.
 8. 위젯이 위젯 트리에서 사라지면 deactivate()가 실행된다. deactivate()는 State가 일시적 또는 영구적으로 삭제될 때 실행된다.  
 9. dispose()가 실행된다. 위젯이 영구적으로 삭제될 때 실행된다.  
   
+# **StatefulWidget 생성자의 매개변수가 변경됐을 때 생명주기**  
+StatefulWidget도 StatelessWidget처럼 하나의 클래스이다. 그렇기 때문에 매개변수를 입력받을 수 있다. 위젯이 생성된 
+후 삭제가 되기 전 매개변수가 변경되면 다음 생명주기가 실행된다.  
+  
+![img.png](image/img3.png)  
+  
+1. StatefulWidget 생성자가 실행된다.  
+2. State의 didUpdateWidget() 함수가 실행된다.  
+3. State가 dirty 상태로 변경된다.  
+4. build()가 실행된다.  
+5. State의 상태가 clean으로 변경된다.  
+  
