@@ -167,4 +167,17 @@ import 키워드를 사용해서 웹뷰 플러그인을 불러온다. body에 We
 역할을 한다. 그리고 WebViewWidget을 제어할 수 있는 controller 파라미터를 입력받는다. controller: webViewController에 
 생긴 에러는 webViewController가 아직 선언되지 않아서 발생하는 것으로 다음 과정에 선언할 예정이다.  
   
+# **웹뷰 컨트롤러 설정하기**  
+웹뷰 컨트롤러는 웹뷰 위젯을 제어하는 역할을 한다. 웹뷰 위젯은 화면에 웹뷰를 렌더링해서 웹사이트틑 보여주는 역할을 한다. 
+웹뷰 컨트롤러의 함수를 실행해서 웹뷰 위젯의 다양한 설정을 제어하고 웹사이트로 이동할 수 있다. 웹뷰 컨트롤러를 변수로 선언하고 
+웹뷰 위젯에 입력한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+WebViewController 타입인 webViewController 변수를 선언한다. WebViewWidget에 미리 webViewController 변수를 입력해뒀기 
+때문에 자동으로 컨트롤러가 입력된다. JavaScriptMode.unrestricted를 입력하면 웹페이지에서 제한 없이 Javascript가 실행될 
+수 있도록 한다. 반대 기능은 JavaScriptMode.restricted를 입력하면 된다. loadRequest() 함수는 웹뷰 위젯의 가장 중요한 
+함수이다. loadRequest() 함수는 Uri 객체를 매개변수로 입력받으며 이 입력받은 값을 통해 지정한 사이트로 이동한다. Uri 객체는 
+Uri.parse() static 함수가 존재하는데 이 함수에 이동하고 싶은 사이트의 URL을 입력하면 해당 URL이 Uri 객체로 자동 변경된다.  
+  
 
