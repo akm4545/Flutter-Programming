@@ -285,4 +285,13 @@ barrierDismissible 매개변수는 배경을 눌렀을 때의 행동을 지정�
 4. Run 버튼을 눌러서 앱을 재시작하고 다시 하트 아이콘을 누르면 CupertinoDatePicker 위젯이 아래에 흰색 배경으로 이쁘게 
 배치되는걸 볼 수 있다. 이제 배경을 누르면 다이얼로그가 닫힌다.  
   
-
+# **CupertinoDatePicker 변경 값 상태 관리에 적용하기**  
+1. CupertinoDatePicker와 setState() 함수를 연결해서 CupertinoDatePicker의 날짜 값이 변경될 때마다 firstDay 
+값을 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+onDateTimeChanged의 콜백 함수는 CupertinoDatePicker 위젯에서 날짜가 변경될 때마다 실행된다. 결과적으로 콜백 함수가 
+실행될 때마다 매개변수로 제공되는 date 값을 firstDay 변수에 저장해주기만 하면 된다.  
+  
+2. 이제 CupertinoDatePicker에서 날짜를 변경해주면 '우리 처음 만난 날' 및 D-Day에 선택한 날짜값이 반영된다.

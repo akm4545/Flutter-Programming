@@ -53,7 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: CupertinoDatePicker(
                 // 시간 제외하고 날짜만 선택하기
                 mode: CupertinoDatePickerMode.date,
-                onDateTimeChanged: (DateTime date) {},
+                onDateTimeChanged: (DateTime date) {
+                  setState(() {
+                    firstDay = date;
+                  });
+                },
               ),
             ),
           );
@@ -62,10 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     // print('클릭');
     // 상태 변경 시 setState() 함수 실행
-    setState(() {
-      // firstDay 변수에서 하루 빼기
-      firstDay = firstDay.subtract(Duration(days: 1));
-    });
+    // setState(() {
+    //   // firstDay 변수에서 하루 빼기
+    //   firstDay = firstDay.subtract(Duration(days: 1));
+    // });
   }
 }
 
