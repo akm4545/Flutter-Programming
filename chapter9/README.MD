@@ -74,3 +74,17 @@ StatefulWidget 클래스와 State 클래스로 구성돼 있는데 State 클래�
 3. build()가 실행된다.  
 4. State의 상태가 clean으로 변경된다.  
   
+# **Timer**  
+Timer는 특정 시간이 지난 후에 일회성 또는 지속적으로 함수를 실행한다. 이번 프로젝트에서는 Timer.periodic()을 사용해서 
+주기적으로 콜백 함수를 실행한다. Timer.periodic()은 매개변수 2개를 입력받는다.  
+  
+![img.png](image/img5.png)  
+  
+1. 콜백 함수를 실행할 주기를 지정한다. Duration에 days, hours, minutes, seconds, milliseconds, microseconds 매개변수를 
+이용해서 주기를 정할 수 있다.  
+2. 주기가 지날 떄마다 실행할 콜백 함수다. 매개변수에 현재 실행 중인 Timer 객체가 제공된다.  
+  
+Timer의 생성자는 Timer(), Timer.periodic() 두 가지다. 각각에 대해서는 다음 표를 참고하자.  
+  
+![img.png](image/img6.png)  
+  
