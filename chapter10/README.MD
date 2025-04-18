@@ -88,3 +88,89 @@ lib -> main.dart
 UI 구현, 상태 관리 구현, 날짜 선택 기능 구현 순서로 진행한다. UI를 먼저 작업해서 앱 전체의 틀을 잡고 상태 관리를 설정해서 
 날짜 데이터를 관리할 기반을 잡는다. 마지막으로 날짜 선택 기능을 추가해서 선택한 날짜에 따라 D-Day를 계산하는 기능을 구현한다.  
   
+# **홈 스크린 UI 구현하기**  
+1. 지금까지는 HomeScreen 위젯 하나로 모든 화면을 구현했다. 하지만 이번에는 코드가 조금 더 많아지는 만큼 위젯을 두 위젯으로 
+나눠서 화면을 구성한다. 우선 HomeScreen의 위쪽 반을 구현할 _DDay 위젯을 HomeScreen 위젯 아래에 생성한다. _DDay 위젯처럼 
+이름 첫 글자가 언더 스코어이면 다른 파일에서 접근할 수 없다. 그래서 파일을 불러오기 했을 때 불필요한 값들이 한 번에 
+불러와지는 걸 방지할 수 있다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. 다음은 HomeScreen의 아래쪽을 구현할 _CoupleImage 위젯을 _DDay 위젯 아래에 생성한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+3. 이 두 위젯을 위아래로 서로 반씩 차지하게 배치해야 한다. HomeScreen 위젯에 Column 위젯을 사용해서 _DDay 위젯과 
+_CoupleImage 위젯이 위아래에 놓이게 한다.  
+
+lib -> screen -> home_screen.dart  
+  
+아이폰 노치에 대비해서 위에는 SafeArea를 적용해주고 이미지를 자연스럽게 구현하기 위해 아래에는 미적용한다. MainAxisAlignment.
+spaceBetween을 사용해서 위아래 각각 끝에 _DDay와 _CoupleImage 위젯을 위치시킨다.  
+  
+4. 배경색을 핑크색으로 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+5. 기본값으로 적용해둔 글자들을 제거하고 목표하는 UI를 구현할 차례다. _CoupleImage 위젯에 커플 이미지를 적용하고 이미지의 
+높이를 화면 높이의 반만큼 조절한다.  
+
+lib -> screen -> home_screen.dart  
+  
+Center 위젯을 사용해서 이미지를 중앙에 배치한다. MediaQuery.of(context)를 사용하면 화면 크기와 관련된 각종 기능을 
+사용할 수 있다. 특히 여기서 사용된 size 게터를 불러 오면 화면 전체의 너비와 높이를 쉽게 가져올 수 있다. 화면의 전체 높이를 
+2로 나눠서 화면 높이의 반만큼 이미지가 차지하도록 설정한다.  
+  
+.of 생성자  
+.of(context) 생성자를 초보자들이 많이 헷갈려한다. .of(context)로 정의된 모든 생성자는 일반적으로 BuildContext를 매개변수로 
+받고 위젯 트리에서 가장 가까이에 있는 객체의 값을 찾아낸다. 결과적으로 MediaQuery.of(context)는 현재 위젯 트리에서 가장 
+가까이에 있는 MediaQuery 값을 찾아낸다.  
+  
+![img.png](image/img5.png)  
+  
+앱이 실행되면 MaterialApp이 빌드됨과 동시에 MediaQuery가 생성된다. 위젯 트리 아래에서 MediaQuery.of(context)를 
+실행하면 위젯 트리를 올라가며 가장 가까운 곳에 위치한 MediaQuery 값을 가져온다. 비슷한 예제로는 Theme.of(context)나 
+Navigator.of(context) 등이 있다.  
+  
+6. 이제 _DDay 위젯을 구현할 차례다. _DDay 위젯은 여러 Text 위젯과 하트 아이콘(IconButton)으로 이루어져있다. 사귀기 
+시작한 날짜와 며칠이 지났는지 표시하는 글자는 날짜를 변경할 때마다 자동으로 바뀌게 코딩해야 하지만 일단은 임의의 글자들을 
+넣어둔다.  
+
+lib -> screen -> home_screen.dart  
+  
+7. Text 위젯을 스타일링할 때는 style 매개변수를 사용하면 된다. 하지만 각 Text 위젯의 스타일이 아니라 Text 위젯의 기본 
+스타일을 변경하고 싶다면 공용으로 재사용 가능한 StatelessWidget을 만들어도 되지만 이런 상황에는 테마를 사용하면 편하다. 
+테마를 사용하면 13가지 Text 스타일을 따로 저장하여 프로젝트로 불러와서 사용할 수 있다.  
+  
+![img.png](image/img6.png)  
+  
+프로젝트 목표를 보면서 각 문장들을 스타일별로 나눈다. 스타일명으로 display, headline, title, body, label 등의 
+명칭을 사용할 수 있으며 각각 large, medium small 사이즈가 존재한다. 예를 들어 displayLarge, titleMedium, labelSmall 
+등의 이름으로 스타일을 미리 지정해둘 수 있다. 스타일명은 임의적으로 지정할 수 있다. 어떤 상황에 어떤 스타일명을 사용해야 
+한다는 절대적인 법칙은 없으니 자유롭게 본인만의 기준을 잡아서 스타일명을 적용하면 된다.  
+  
+8. main.dart 파일에 텍스트와 IconButton 테마를 정의한다.  
+
+lib -> main.dart  
+  
+MaterialApp에는 theme이라는 매개변수가 있다. 여기에는 ThemeData 클래스를 입력할 수 있다. ThemeData에서는 플러터가 
+기본으로 제공하는 대부분의 위젯의 기본 스타일을 지정할 수 있다. textTheme는 글자의 테마를 정할 수 있는 매개변수다. 13가지 
+글자 스타일들을 모두 여기서 정의할 수 있다.  
+  
+흔히 사용되는 ThemeData의 매개변수는 아래 표를 참고하자.  
+  
+![img.png](image/img7.png)  
+  
+이 매개변수들을 다 알고 있지 않아도 위젯이름Theme의 규칙을 이용해서 특정 위젯의 테마를 작업할 수 있다.  
+  
+9. 스타일 지정을 완료했으니 이제 Text 위젯에 스타일을 적용한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+Theme.of(context)도 MediaQuery.of(context)와 똑같이 이해하면 된다. 위젯 트리 위 가장 가까운 Theme값을 가져온다. 
+Icon의 색상도 Theme에서 지정할 수 있지만 Icon의 경우 색상이 각각 다른 경우가 많아서 직접 지정했다.  
+  
+10. 스타일을 모두 적용했으니 Run 버튼을 눌러서 프로젝트를 재시작한다. 변경한 theme는 MaterialApp의 매개변수에 입력했고 
+build() 함수에 입력되지 않은 값들은 핫 리로드로 반영이 되지 않는다.  
+  
+# **다양한 화면의 비율과 해상도에 따른 오버플로 해결하기**
