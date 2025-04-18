@@ -146,3 +146,15 @@ URL의 내용(웹페이지)을 보여준다.
   
 ![img.png](image/img15.png)  
   
+# **앱바 구현하기**  
+HomeScreen 위젯은 블로그 웹 앱이 실행되면 가장 먼저 보이는 위젯이다. HomeScreen 위젯에 앱바를 추가하고 제목을 넣어주고 
+코드팩토리 메인 색상에 어울리게 배경을 주황색으로 설정한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+AppBar 위젯은 일반적으로 Scaffold 위젯의 appBar 매개변수로 넣어준다. 우리도 여기에 앱바 위젯을 추가했다. AppBar의 
+배경색을 주황색으로 변경한다. AppBar의 중간에 넣어줄 위젯이다. 보통은 Text를 넣어주지만 어떤 위젯을 넣어도 상관없다. 
+Text("Code Factory")를 설정했다. centerTitle에 true를 입력해 title을 가운데 정렬한다. false를 입력하면 왼쪽으로 정렬한다.  
+  
+2. 코드를 작성하 후 핫 리로드를 해 앱바가 추가되었는지 확인한다.  
+  
