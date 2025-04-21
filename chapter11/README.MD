@@ -97,6 +97,11 @@ lib -> main.dart
   
 lib -> main.dart  
   
+# **레이아웃 구상하기**  
+이번 프로젝트는 BottomNavigationBar 위젯을 사용해서 화면 전환을 해야 하기 떄문에 지금까지와는 다른 형태로 구조를 
+짜야 한다. 첫 번째 화면인 HomeScreen 위젯과 두 번째 화면인 SettingsScreen을 TabBarView를 이용해서 RootScreen 위젯에 
+위치시킨다(즉 RootScreen 하나에 탭으로 홈 스크린과 설정 스크린을 감싸고 있는 헝태).  
+  
 
 
 
