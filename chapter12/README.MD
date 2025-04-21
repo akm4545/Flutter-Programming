@@ -100,4 +100,20 @@ pubspec.yaml 참고
   
 2. pub get을 실행해서 변경 사항을 반영한다.  
   
+# **네이티브 설정하기**  
+이번 프로젝트는 갤러리 관련 권한이 필요하다. 갤러리에서 사용자가 선택한 동영상을 불러오려면 안드로이드와 iOS 모두에서 
+갤러리 권한을 추가해줘야 한다.  
+  
+# **iOS 권한 추가하기**  
+iOS 권한은 Info.plist 파일에서 추가할 수 있다. NSPhotoLibraryUsageDescription 권한을 등록해주면 사용자가 허가했을 
+때 아이폰에서 갤러리 권한을 얻을 수 있다.  
+  
+![img.png](image/img9.png)  
+  
+# **안드로이드 권한 추가하기**  
+안드로이드 권한은 AndroidManifest.xml 파일에서 추가할 수 있다. android.permission.READ_EXTERNAL_STORAGE 권한을 
+추가하면 되며 이 권한을 추가하면 안드로이드에서 갤러리 이미지 또는 동영상을 읽을 수 있다.  
+  
+![img.png](image/img10.png)  
+  
 
