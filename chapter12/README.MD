@@ -93,4 +93,11 @@ iOS 시뮬레이터에서는 상대적으로 간단하게 파일을 시뮬레이
   
 1. asset 폴더를 만들고 그 아래 img 폴더를 만든다. 다운로드 받은 이미지를 넣는다.  
   
+# **pubspec.yaml 설정하기**  
+1. image_picker와 video_player, assets 설정을 입력한다.  
+  
+pubspec.yaml 참고  
+  
+2. pub get을 실행해서 변경 사항을 반영한다.  
+  
 
