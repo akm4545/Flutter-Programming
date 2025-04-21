@@ -130,5 +130,11 @@ lib -> main.dart
 위젯을 보여준다. 메인 화면을 HomeScreen이라고 부르겠다. 이 HomeScreen 위젯에서 renderEmpty() 함수와 renderVideo() 
 함수를 구현한다. 각각 동영상이 선택되기 전과 후를 담당하는 위젯을 반환하는 함수가 된다.  
   
+# **첫 화면: renderEmpty() 함수**  
+renderEmpty()는 앱을 처음 실행했을 때 화면에 보여줄 위젯은 반환하는 함수이다. 앱의 로고와 이름을 보여주고 gradient 
+배경을 적용한다.  
+  
+![img.png](image/img11.png)  
+  
 
 
