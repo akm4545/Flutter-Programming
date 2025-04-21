@@ -69,7 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget renderVideo() { // 동영상 선택 후 보여줄 위젯
-    return Container();
+    // return Container();
+    return Center(
+      child: CustomVideoPlayer(), // 동영상 재생기 위젯
+    );
   }
 }
 
