@@ -32,12 +32,26 @@ class _HomeScreenState extends State<HomeScreen> {
         // 위젯들 가운데 정렬
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _Logo(), // 로고 이미지
+          _Logo(
+            onTap: onNewVideoPressed, // 로고 탭하면 실행하는 함수
+          ), // 로고 이미지
           SizedBox(height: 30.0),
           _AppName(), // 앱 이름
         ],
       ),
     );
+  }
+
+  void onNewVideoPressed() async { // 이미지 선택하는 기능을 구현한 함수
+    final video = await ImagePicker().pickVideo(
+        source: ImageSource.gallery,
+    );
+
+    if(video != null) {
+      setState(() {
+        this.video = video;
+      });
+    }
   }
 
   BoxDecoration getBoxDecoration() {
@@ -60,12 +74,20 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _Logo extends StatelessWidget { // 로고를 보여줄 위젯
-  const _Logo({Key? key}) : super(key: key);
+  final GestureTapCallback onTap; // 탭했을 때 실행할 함수
+
+  const _Logo({
+    required this.onTap,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'asset/img/logo.png', // 로고 이미지
+    return GestureDetector(
+      onTap: onTap, // 상위 위젯으로부터 탭 콜백받기
+      child: Image.asset(
+        'asset/img/logo.png', // 로고 이미지
+      ),
     );
   }
 }

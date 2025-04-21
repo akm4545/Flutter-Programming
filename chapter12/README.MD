@@ -190,5 +190,21 @@ begin에 입력된 위치부터 end에 입력된 위치까지 순서대로 적�
   
 2. Gradient를 추가해주고 앱을 재시작하면 배경색이 반영된 걸 볼 수 있다.  
   
+# **파일 선택 기능 구현하기**  
+1. 이제 로고를 탭하면 비디오와 사진을 선택할 수 있는 기능을 구현해야 한다. UI를 직접 구현할 필요는 없고 사용자가 파일을 
+선택했을 때 변숫값을 처리하는 코드만 작성해주면 된다. 추가적으로 _Logo 위젯에 GestureDetector를 추가해서 onTap() 
+함수가 실행됐을 때 동영상을 선택하는 함수를 실행한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+_Logo 위젯을 탭했을 떄 실행되는 onTap 매개변수에 onNewVideoPressed() 함수를 입력해서 로고를 탭하면 동영상을 선택하는 
+화면이 실행되게 한다. ImagePicker().pickVideo() 함수를 실행하면 동영상을 선택하는 화면을 실행할 수 있다. 이 함수의 
+source 매개변수로 ImageSource.gallery 또는 ImageSource.camera를 선택할 수 있다. 전자는 이미 저장되어 있는 동영상을 
+갤러리로부터 선택하는 화면을 실행하고 후자는 카메라를 실행한 후 동영상 촬영을 마치면 해당 영상이 선택된다. 선택된 동영상을 
+XFile 형태로 비동기로 반환받을 수 있으며 사용자가 선택한 값이 존재하면 video 변수에 저장한다.  
+  
+Image.asset을 GestureDetector로 감싸서 onTap() 함수를 외부로부터 입력받는다. 이 예제에서는 _HomeScreenState의 
+onNewVideoPressed() 함수를 입력받는다.  
+  
 
 
