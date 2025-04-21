@@ -102,6 +102,15 @@ lib -> main.dart
 짜야 한다. 첫 번째 화면인 HomeScreen 위젯과 두 번째 화면인 SettingsScreen을 TabBarView를 이용해서 RootScreen 위젯에 
 위치시킨다(즉 RootScreen 하나에 탭으로 홈 스크린과 설정 스크린을 감싸고 있는 헝태).  
   
+# **기본 스크린 위젯**  
+기본 스크린 위젯은 이번 프로젝트에서 사용할 모든 위젯을 담고 있는 최상위 위젯이다. 주사위가 보이는 홈 스크린과 감도를 
+설정할 수 있는 설정 스크린을 탭으로 담게 된다. RootScreen 위젯이라고 이름지어 사용한다. RootScreen 위젯은 상단과 
+하단으로 나눈다. 하단에는 사용자가 직접 화면 전환을 할 수 있는 BottomNavigationBar 위젯이 위치하고 그 위에 TabBarView를 
+통해 선택된 화면을 보여준다. BottomNavigationBar에서 각 탭을 누르거나 TabBarView에서 좌우로 스크롤을 해서 화면 
+전환을 할 수 있다.  
+  
+![img.png](image/img5.png)  
+  
 
 
 
