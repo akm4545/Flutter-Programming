@@ -111,6 +111,13 @@ lib -> main.dart
   
 ![img.png](image/img5.png)  
   
+# **홈 스크린 위젯**  
+HomeScreen 위젯은 하나의 Column 위젯으로 간단하게 구현할 수 있다. 가장 위에 주사위 이미지가 위치하므로 Image 위젯을 
+사용하면 된다. "행운의 숫자"라는 글자를 작성하는 데 Text 위젯을 사용한다. 각 숫자의 눈 개수를 표현하는 데도 Text 위젯을 
+사용한다.  
+  
+![img.png](image/img6.png)  
+  
 
 
 
