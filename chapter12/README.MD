@@ -143,6 +143,37 @@ renderEmpty()는 앱을 처음 실행했을 때 화면에 보여줄 위젯은 �
   
 ![img.png](image/img12.png)  
   
+# **구현하기**  
+UI를 구현한 후 기능을 구현한다. 먼저 ImagePicker를 이용해서 동영상을 선택하는 기능을 구현하고 동영상 실행 기능을 
+구현한다.  
+  
+# **첫 화면: renderEmpty() 함수 구현하기**  
+1. 홈 스크린에서 동영상 파일 선택과 관련해서 상태 관리를 할 계획이니 HomeScreen 클래스를 StatefulWidget으로 구성한다. 
+동영상을 선택할 때 사용할 image_picker 플러그인은 이미지나 동영상을 선택했을 때 XFile이라는 클래스 형태로 선택된 값을 
+반환해준다. HomeScreen에 선택된 동영상을 의미하는 XFile 형태의 video 변수를 선언하고 이 값을 기반으로 renderEmpty() 
+함수를 보여줄지 아니면 renderVideo() 함수를 보여줄지 정한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+image_picker 플러그인을 사용하면 XFile 클래스 형태로 동영상을 받아볼 수 있다. 선택된 동영상이 있으면 이 변수에 저장한다. 
+선택된 동영상이 없으면 renderEmpty() 함수가 반환하는 위젯을 보여주고 선택된 동영상이 있으면 renderVideo() 함수가 
+반환하는 위젯을 보여준다.  
+  
+2. 레이아웃 구상하기에서 확인했듯이 매우 간단하게 renderEmpty() 함수를 설계할 수 있다. Column 위젯에 로고를 넣어주고 
+바로 아래에 앱의 이름을 넣어준다. 코드가 복잡해지면 안 되니 _Logo 위젯으로 로고 코드를 작성하고 _AppName 위젯으로 앱의 
+이름을 작업한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+_Logo 위젯과 앱 제목을 출력하는 위젯을 만든다.  
+
+lib -> screen -> home_screen.dart  
+  
+TextStyle의 copyWith 함수는 현재 속성들을 그대로 유지한 채로 특정 속성만 변경할 수 있는 함수이다. textStyle의 값을 
+모두 유지한 채로 글자 굵기만 700으로 변경한다.  
+  
+3. 코드를 다 작성하고 앱을 재시작하면 가운데에 로고가 있는 모습을 볼 수 있다.  
+  
 
 
 
