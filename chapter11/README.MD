@@ -207,6 +207,21 @@ onTap은 BottomNavigationBarItem이 눌릴 떄마다 실행되는 함수이며 �
 때 TabBarView와 화면을 동기화해줘야 하니 animateTo() 함수를 사용해서 자연스러운 애니메이션으로 지정한 탭으로 TabBarView가 
 전환되게 한다.  
   
+# **HomeScreen 위젯 구현하기**  
+1. Column 위젯 하나를 사용해서 Image 위젯과 Text 위젯들을 배치한다. 추가적으로 어떤 숫자를 보여줄지는 RootScreen 위젯에서 
+정하도록 생성자를 통해서 number 매개변숫값을 입력받는다.  
+  
+lib -> screen -> home_screen.dart  
+  
+생성자로 입력받은 number값에 해당되는 이미지와 텍스트를 화면에 그려준다.  
+  
+2. 이제 RootScreen에 임의로 입력해둔 첫 번째 Container 위젯을 대체한다. TabBarView의 첫 번째 화면에 "Tab 1"이라고 
+보여주는 대신 1이라는 number값을 입력해서 임의로 보여준다.  
+  
+lib -> screen -> root_screen.dart  
+  
+3. 앱을 재시작하면 기획대로 완성된 첫 번째 탭을 확인할 수 있다.  
+  
 
 
 
