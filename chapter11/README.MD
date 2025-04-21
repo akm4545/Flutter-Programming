@@ -125,6 +125,95 @@ SettingsScreen 위젯 가운데에 민감도를 정하는 Slider 위젯을 위�
   
 ![img.png](image/img7.png)  
   
+# **구현하기**  
+# **RootScreen 위젯 구현하기**  
+1. RootScreen 위젯 작업의 주요 요소는 BottomNavigationBar와 TabBarView이다. BottomNavigationBar을 아래 위치시키고 
+남는 공간에 TabBarView를 위치시켜서 스크린 전환이 가능한 구조를 만든다. 먼저 lib/screen 폴더에 root_screen.dart 파일을 
+만든다.  
+  
+2. 우선 TabBarView 위젯과 BottomNavigationBar 위젯을 반환해줄 renderChildren() 함수와 renderBottomNavigation() 
+함수를 작업한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+TabBarView 위젯을 이용하면 각종 Tab 위젯과 쉽게 연동할 수 있는 UI를 구현할 수 있다. PageView와 매우 비슷한 기본 
+애니메이션이 제공되며 children 매개변수에 각 탭의 화면으로 활용하고 싶은 위젯을 List로 넣어주면 된다. Scaffold 위젯은 
+BottomNavigationBar를 위치시키는 매개변수를 따로 보유한다. bottomNavigation 매개변수에 BottomNavigationBar을 
+넣어주면 쉽게 Tab을 조정할 수 있는 UI를 핸드폰의 아래에 배치할 수 있다. BottomNavigationBar에 제공될 각 탭은 (아이콘과 탭의 레이블) 
+BottomNavigationBar 위젯의 items 매개변수에 제공해주면 된다.  
+  
+3. main.dart 파일에 HomeScreen 위젯을 홈으로 등록해두었다. 하지만 홈 화면을 RootScreen 위젯으로 변경해야 한다. 
+HomeScreen은 RootScreen의 탭 중 하나 (첫 번째 탭)로 구현할 계획이기 떄문이다.  
+  
+lib -> main.dart  
+  
+4. TabBarView부터 작업한다. TabBarView는 TabController가 필수이다. 추가적으로 TabController를 초기화하려면 vsync 
+기능이 필요한데 이는 State 위젯에 TickerProviderMixin을 mixin으로 제공해줘야 사용할 수 있다. TabController는 위젯이 
+생성될 때 단 한 번만 초기화되어야 하니 HomeScreen 위젯을 StatefulWidget으로 변경하고 initState()에서 초기화한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+TickerProviderMixin과 SingleTickerProviderMixin은 애니메이션의 효율을 올려주는 역할을 한다. TabController의 
+length 매개변수에는 탭 개수를 int 값으로 제공해주고 vsync에는 TickerProviderMixin을 사용하는 State 클래스를 this 
+형태로 넣어주면 된다. 생성된 TabController는 TabBarView의 controller 매개변수에 입력해주면 된다. 그러면 
+입력된 controller를 이용해서 TabBarView를 조작할 수 있다.  
+  
+- TickerProviderMixin과 vsync  
+TickerProviderMixin은 애니메이션 효율을 담당한다. 플러터는 기기가 지원하는 대로 60FPS(초당 60프레임) 부터 120FPS를 
+지원하는데 TickerProviderMixin을 사용하면 정확히 한 틱(1FPS)마다 애니메이션을 실행한다. 간혹 애니메이션 코드를 작성하다 
+보면 실제로 화면에 그릴 수 있는 주기보다 더 자주 렌더링을 실행하게 될 때가 있는데 TickerProviderMixin을 사용하면 이런 
+비효율적인 상황을 막아준다. TabController도 마찬가지로 vsync에 TickerProviderMixin을 제공함으로써 렌더링 효율을 
+극대화할 수 있다.  
+  
+5. 이제는 BottomNavigationBar를 작업한다. BottomNavigationBar의 Items 매개변수에는 BottomNavigationBarItem이라는 
+클래스를 사용해서 각 탭의 정의를 제공해줘야 한다. BottomNavigationBarItem의 icon 매개변수와 label 매개변수를 이용해서 
+구현할 두 탭을 작업한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+BottomNavigationBarItem 클래스에는 아이콘을 지정할 수 있는 icon 매개변수와 이름을 지정할 수 있는 label 매개변수를 
+제공할 수 있다. 탭별로 BottomNavigationBarItem을 구현해서 BottomNavigationBar의 items 매개벼수에 입력해주면 간단히 
+BottomNavigation을 구현할 수 있다.  
+  
+6. BottomNavigationBar를 구현했으니 이제 각 탭을 표현해줄 위젯들을 TabBarView의 children에 제공해줘야 한다. 간단한 
+샘플 화면을 만들기 위해 HomeScreen 탭을 표현할 "Tab 1" 이라는 글자와 SettingsScreen 탭을 표현할 "Tab 2"라는 글자가 
+작성된 Container 위젯들을 renderChildren() 함수에 구현한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+7. 어느 정도 RootScreen 위젯의 구도가 나왔으니 Run 버튼을 눌러서 프로젝트를 재시작한다.  
+  
+![img.png](image/img8.png)  
+  
+8. TabBarView를 스와이프할 때는 화면 전환이 자연스럽게 잘 이루어지지만 안타깝게도 BottomNavigationBar의 탭을 누르면 
+이동되지 않는다. 그 이유는 BottomNavigationBar를 누를 때마다 TabBarView와 연동해야 하기 떄문이다. 각각 BottomNavigaionBarItem을 
+눌러도 화면 전환이 잘되도록 TabController를 연동한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+TabBarView에서 바라보고 있는 화면의 인덱스가 변경될 때마다 BottomNavigationBar을 다시 그려서 어떤 탭이 보여지고 
+있는지 표시해야 한다. addListener() 함수는 controller의 속성이 변할 때마다 특정 함수를 실행할 수 있도록 콜백 함수를 
+등록할 수 있다. 이 콜백 함수에 setState()를 실행하여 controller의 속성이 변경될 때마다 build()를 재실행하도록 한다. 
+RootScreen 위젯이 생성될 때 단 한 번만 리스너가 등록되면 되니 initState()에서 실행해준다.  
+  
+tabListener() 함수는 TabController의 속성이 변경될 때마다 실행할 함수이다. addListener를 사용하여 listener를 등록하면 
+위젯이 삭제될 때 항상 등록된 listener도 같이 삭제해줘야 한다. 위젯이 삭제될 때 실행되는 dispose() 함수를 오버라이드해서 
+controller에 붙은 리스너를 삭제한다.  
+  
+currentIndex는 BottomNavigationBar에서 현재 선택된 상태로 표시해야 하는 BottomNavigationBarItem의 index이다. 
+TabBarView와 같은 탭의 인덱스를 바라보게 해줘야 한다.  
+  
+onTap은 BottomNavigationBarItem이 눌릴 떄마다 실행되는 함수이며 매개변수로 눌린 탭의 인덱스를 전달해준다. 탭을 눌렀을 
+때 TabBarView와 화면을 동기화해줘야 하니 animateTo() 함수를 사용해서 자연스러운 애니메이션으로 지정한 탭으로 TabBarView가 
+전환되게 한다.  
+  
+
+
+
+  
+
+  
+
 
 
 

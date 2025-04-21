@@ -1,5 +1,6 @@
 import 'package:chapter11/const/colors.dart';
 import 'package:chapter11/screen/home_screen.dart';
+import 'package:chapter11/screen/root_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +23,8 @@ void main() {
           backgroundColor: backgroundColor, // 배경색
         ),
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: RootScreen(), // HomeScreen을 RootScreen으로 변경
     ),
   );
 }
