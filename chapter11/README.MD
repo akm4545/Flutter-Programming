@@ -222,6 +222,38 @@ lib -> screen -> root_screen.dart
   
 3. 앱을 재시작하면 기획대로 완성된 첫 번째 탭을 확인할 수 있다.  
   
+# **SettingsScreen 위젯 만들기**  
+1. lib -> screen에 settings_screen.dart 파일을 생성한다.  
+  
+2. SettingsScreen은 Text 위젯과 Slider 위젯으로 이루어졌다. HomeScreen 위젯과 마찬가지로 Column 위젯을 이용해서 
+Text 위젯과 Slider 위젯을 세로로 위치시킨다. Slider 위젯은 눌러서 좌우로 움직일 때 움직인 만큼의 값이 제공되는 콜백 
+함수가 실행된다. 이 값을 저장하고 다시 Slider에 넣어주는 게 Slider 위젯 사용법의 주요 포인트이다. 민감도에 대한 상태는 
+RootScreen 위젯에서 관리할 예정이니 Slider의 현잿값과 콜백 함수는 외부로 노출하고 나머지 매개변수들은 SettingsScreen에서 
+관리한다.  
+  
+lib -> screen -> settings_screen.dart  
+
+divisions는 min값과 max값을 나누는 구분 개수이다. 0.1 부터 10까지 101개의 구간으로 나눠서 각 구간을 이동할 때마다 
+0.1씩 현재값이 변경된다.  
+
+onChanged는 Slider 위젯의 콜백 함수이다. 사용자의 제스처에 의해 Slider 위젯의 원이 움직이는 만큼 콜백 함수의 매개변수로 
+이동한 값이 제공된다. onChanged 매개변수로 입력받은 현재값을 State에 저장하고 다시 value 매개변수에 같은 값을 입력하는 
+형태로 Slider 위젯이 구현된다. label 매개변수를 이용하면 Slider 위젯을 스크롤할 때마다 화면에 표시할 문자를 지정할 
+수 있다. Slider 값을 소수점 한 자리까지 표현하도록 코드를 작성했다.  
+  
+3. 이제 SettingsScreen을 RootScreen에 적용해줄 차례다. Slider 위젯의 현재값과 onChanged 매개변수를 RootScreen에서 
+입력받도록 한다.  
+  
+lib -> screen -> root_screen.dart  
+
+Slider 위젯의 현재값이 변경될 때마다 threshold 변수에 값을 저장하고 setState() 함수를 실행해서 build() 함수를 
+재실행해준다. Slider 위젯은 변경된 threshold 변수의 값을 기반으로 화면에 다시 그려진다.  
+  
+4. 앱을 재실행하면 설정 탭의 슬라이더를 좌우로 움직일 때 Slider 위젯의 값이 변경되고 현잿값이 원 위에 표시되는걸 볼 
+수 있다(label 변수).  
+  
+
+  
 
 
 

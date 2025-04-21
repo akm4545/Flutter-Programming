@@ -1,4 +1,5 @@
 import 'package:chapter11/screen/home_screen.dart';
+import 'package:chapter11/screen/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen> with
 TickerProviderStateMixin{ // TickerProviderStateMixin 사용하기
   TabController? controller; // 사용할 TabController 선언
+  double threshold = 2.7; // 민감도의 기본값 설정
 
   @override
   void initState() {
@@ -55,6 +57,10 @@ TickerProviderStateMixin{ // TickerProviderStateMixin 사용하기
     return [
       // HomeScreen을 불러와서 입력하기
       HomeScreen(number: 1),
+      SettingScreen( // 기존에 있던 Container 코드를 통째로 교체
+          threshold: threshold,
+          onThresholdChange: onThresholdChange
+      ),
       // Container( // 홈 탭
       //   child: Center(
       //     child: Text(
@@ -65,17 +71,24 @@ TickerProviderStateMixin{ // TickerProviderStateMixin 사용하기
       //     ),
       //   ),
       // ),
-      Container( // 설정 스크린 탭
-        child: Center(
-          child: Text(
-            'Tab 2',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+      // Container( // 설정 스크린 탭
+      //   child: Center(
+      //     child: Text(
+      //       'Tab 2',
+      //       style: TextStyle(
+      //         color: Colors.white,
+      //       ),
+      //     ),
+      //   ),
+      // ),
     ];
+  }
+
+  // 슬라이더값 변경 시 실행 함수
+  void onThresholdChange(double val){
+    setState(() {
+      threshold = val;
+    });
   }
 
   BottomNavigationBar renderBottomNavigation() {
