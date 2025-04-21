@@ -282,6 +282,16 @@ onPhoneShake 매개변수로 등록한 함수는 핸드폰을 흔들 때마다 �
   
 ShakeDetector도 마찬가지로 dispose()가 실행됐을 때 리스너를 제거해야 한다.  
   
+# **핵심 요약**  
+1. BottomNavigationBar를 이용하면 시중 앱에서 흔히 사용되는 화면 아래에 탭 버튼이 위치하는 UI를 쉽게 구현할 수 있다.  
+2. TabBarView를 이용하면 TabController를 이용해서 BottomNavigationBar와 동기화되는 탭 화면을 구현할 수 있다.  
+3. Slider 위젯을 이용하면 min값과 max값 사이의 double 값을 사용자에게부터 입력받을 수 있다.  
+4. initState()에 리스너들을 생성하고 dispose에서 리스너들을 삭제할 수 있다.  
+5. dart:math 패키지에서 Random 클래스를 불러오면 간단히 난수를 생성할 수 있다.  
+6. sensor_plus 패키지를 이용해서 가속도계와 자이로스크포에 접근할 수 있지만 단순히 핸드폰이 흔들어졌는지 확인하는 
+기능이 필요하다면 shake 패키지를 이용하는 게 더 유리하다.  
+7. Shake 플러그인은 Accelerometer만 사용해서 흔들림을 감지한다. 기기 회전을 이용하려면 Gyroscope를 사용해야 한다.  
+  
 
   
 
