@@ -118,6 +118,13 @@ HomeScreen 위젯은 하나의 Column 위젯으로 간단하게 구현할 수 �
   
 ![img.png](image/img6.png)  
   
+# **설정 스크린 위젯**  
+SettingsScreen 위젯 가운데에 민감도를 정하는 Slider 위젯을 위치시켜야 한다. 이 슬라이더를 사용자가 좌우로 이동해서 
+직접 흔들기 기능의 민감도를 정할 수 있다. 추가적으로 Slider 위젯의 기능을 쉽게 알 수 있도록 Text 위젯으로 레이블을 
+지정한다.  
+  
+![img.png](image/img7.png)  
+  
 
 
 
