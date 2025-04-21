@@ -92,6 +92,11 @@ lib -> screen -> home_screen.dart
   
 lib -> main.dart  
   
+# **Theme 설정하기**  
+이번 프로젝트에서도 상수를 사용하여 테마를 적용한다. main.dart 파일의 MaterialApp 위젯 안에 정의한다.  
+  
+lib -> main.dart  
+  
 
 
 
