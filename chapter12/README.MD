@@ -213,5 +213,51 @@ onNewVideoPressed() 함수를 입력받는다.
   
 lib -> screen -> home_screen.dart  
   
+# **동영상 재생기 구현하기**  
+1. lib 아래에 component 폴더를 생성하고 그 안에 custom_video_player.dart 파일을 생성한다.  
+  
+2. CustomVideoPlayer 위젯은 HomeScreen 위젯에서 선택된 동영상을 재생하는 모든 상태를 관리한다. 그러니 StatefulWidget으로 
+생성하고 위젯이 잘 렌더링되는지 확인하는 용도로 CustomVideoPlayer라는 글자만 정가운데에 위치시킨다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+3. home_screen.dart로 돌아가서 custom_video_player.dart 파일을 임포트하고 CustomVideoPlayer 위젯에 video 매개변수를 
+제공한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+4. 동영상을 선택하면 renderVideo() 함수가 잘 실행되는지 확인할 차례다. 앱을 재실행한 후 로고를 눌러서 아무 동영상이나 
+선택한다. 동영상을 선택하고 나면 video 변수가 null이 아닌 상태로 변경된다. 결과적으로 로고와 앱의 제목이 사라지고 
+CustomVideoPlayer라는 글자가 화면 가운데 보여야 한다.  
+  
+5. 이제 CustomVideoPlayer 위젯의 기능을 개선할 차례이다. 우선 video_player 패키지에서 VideoPlayerController와 
+VideoPlayer 위젯을 사용해서 선택한 동영상을 화념ㄴ에 보여주는 기능을 구현한다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+VideoPlayer 위젯은 VideoPlayerController로 조작할 수 있다. initState() 함수에서 설정할 VideoPlayerController를 
+선언한다. initializeController는 VideoPlayerController를 선언하는 역할을 한다. VideoPlayerController는 State가 
+생성되는 순간 한 번만 생성되어야 하니 initState() 함수에서 선언한다.  
+  
+동영상 파일로부터 VideoPlayerController를 생성하기 때문에 VideoPlayerController.file 생성자를 이용해서 컨트롤러를 
+만든다. VideoPlayerController를 생성하고 나면 initialize() 함수를 실행해서 동영상을 재생할 수 있는 상태로 준비해줘야 
+한다. 에러가 없이 initialize() 함수가 완료되면 VideoPlayerController를 사용할 수 있는 상태라는 뜻이니 setState() 
+함수를 이용해서 this.videoController에 준비한 videoController 변수를 저장한다.  
+  
+VideoPlayerController가 성공적으로 초기화 돼야지만 videoPlayer 변수가 null이 아닌 조건을 만들 수 있다. 만약에 
+videoPlayer 변수가 null이면 VideoPlayerController를 사용할 수 있는 상태가 아니라는 뜻이나 CircularProgressIndicator를 
+띄워서 로딩 중임을 암시해준다.  
+  
+AspectRatio는 child 매개변수에 입력되는 위젯의 비율을 정할 수 있는 위젯이다. aspectRatio 매개변수에 원하는 비율을 
+입력할 수 있다. 비율은 너비/높이로 입력하면 되며 16:9 비율을 입력하고 싶을 떄는 16/9를 입력하면 된다. VideoPlayerController를 
+선안하면 입력된 동영상의 비율을 value.aspectRatio 게터로 받아올 수 있으니 이 값을 직접 넣어준다.  
+  
+6. 앱을 재실행해서 동영상을 선택하면 선택한 동영상이 보인다.  
+VideoPlayerController를 선언할 수 있는 생성자는 다음과 같이 대표적으로 3가지가 있다.  
+  
+![img.png](image/img13.png)  
+  
+
+  
 
 

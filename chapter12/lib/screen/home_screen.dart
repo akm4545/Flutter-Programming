@@ -1,3 +1,4 @@
+import 'package:chapter12/component/custom_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -71,7 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget renderVideo() { // 동영상 선택 후 보여줄 위젯
     // return Container();
     return Center(
-      child: CustomVideoPlayer(), // 동영상 재생기 위젯
+      child: CustomVideoPlayer(
+          video: video!, // 선택한 동영상 입력해주기
+      ), // 동영상 재생기 위젯
     );
   }
 }
