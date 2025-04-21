@@ -174,5 +174,21 @@ TextStyle의 copyWith 함수는 현재 속성들을 그대로 유지한 채로 �
   
 3. 코드를 다 작성하고 앱을 재시작하면 가운데에 로고가 있는 모습을 볼 수 있다.  
   
+# **배경색 그라데이션 구현하기**  
+파란색부터 검정색으로 화면의 윗부분부터 아랫부분까지 자연스럽게 그라데이션 배경을 구현하는 데 BoxDecoration 클래스를 사용한다. 
+BoxDecoration 클래스를 사용하면 Container 위젯의 배경색, 테두리, 모서리 둥근 정도 등 전반적인 디자인을 변경할 수 있다.  
+  
+1. BoxDecoration 클래스에는 gradient라는 매개변수가 있다. 시작 부위부터 끝 부위까지 점점 색이 변하는 LinearGradient 
+또는 중앙에서 색깔이 점점 퍼져가는 형태인 RadialGradient 클래스를 이용하면 된다. 여기서는 LinearGradient를 사용한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+decoration 매개변수에 들어갈 BoxDecoration 값을 getBoxDecoration() 함수에서 구현한다. LinearGradient 클래스에 시작과 
+끝을 정하는 begin과 end 매개변수를 지정해준다. 이때 Alignment 클래스를 사용한다. Alignment 클래스는 정렬을 정의하는 
+매개변수에 자주 사용되며 정렬과 관련된 값들이 있다. colors 매개변수에 배경을 구성할 색들도 List로 입력해준다. 색상은 
+begin에 입력된 위치부터 end에 입력된 위치까지 순서대로 적용된다.  
+  
+2. Gradient를 추가해주고 앱을 재시작하면 배경색이 반영된 걸 볼 수 있다.  
+  
 
 

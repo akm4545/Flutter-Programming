@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget renderEmpty() { // 동영상 선택 전 보여줄 위젯
     return Container(
       width: MediaQuery.of(context).size.width, // 너비 최대로 늘려주기
+      decoration: getBoxDecoration(), // 함수로부터 값 가져오기
       child: Column(
         // 위젯들 가운데 정렬
         mainAxisAlignment: MainAxisAlignment.center,
@@ -35,6 +36,20 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 30.0),
           _AppName(), // 앱 이름
         ],
+      ),
+    );
+  }
+
+  BoxDecoration getBoxDecoration() {
+    return BoxDecoration(
+      // 그라데이션으로 색상 적용하기
+      gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF2A3A7C),
+            Color(0XFF000118),
+          ],
       ),
     );
   }
