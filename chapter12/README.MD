@@ -125,5 +125,10 @@ lib -> screen -> home_screen.dart
   
 lib -> main.dart  
   
+# **레이아웃 구상하기**  
+이번 프로젝트는 실질적으로 화면 하나로 구성되어 있다. 하지만 전체 화면을 차지하는 위젯 두 개를 활용해 조건에 따라 알맞은 
+위젯을 보여준다. 메인 화면을 HomeScreen이라고 부르겠다. 이 HomeScreen 위젯에서 renderEmpty() 함수와 renderVideo() 
+함수를 구현한다. 각각 동영상이 선택되기 전과 후를 담당하는 위젯을 반환하는 함수가 된다.  
+  
 
 
