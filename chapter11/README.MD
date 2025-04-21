@@ -252,6 +252,36 @@ Slider 위젯의 현재값이 변경될 때마다 threshold 변수에 값을 저
 4. 앱을 재실행하면 설정 탭의 슬라이더를 좌우로 움직일 때 Slider 위젯의 값이 변경되고 현잿값이 원 위에 표시되는걸 볼 
 수 있다(label 변수).  
   
+# **shake 플러그인 적용하기**  
+1. 아직은 RootScreen 위젯에 직접 1이라는 숫자를 입력해서 화면에서 주사위 값 1을 보여주고 있다. 하지만 이제 핸드폰을 
+흔들 때마다 매번 새로운 숫자가 생성되어야 하니 HomeScreen 위젯의 number 매개변수에 들어갈 값을 number 변수로 상태 
+관리하도록 코드를 변경한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+number 변수를 State에 선언하고 이 변수를 HomeScreen 위젯의 number 매개변수에 입력해주면 number 변수의 값을 변경할 
+때마다 HomeScreen 위젯의 렌더링 결과를 바꿀 수 있다.  
+  
+2. Shake 플러그인을 적용한다. RootScreen을 구현할 때 TabController의 addListener() 함수를 활용해서 탭의 인덱스 값이 
+변경될 때마다 특정 함수를 실행했다. 그때처럼 Shake 플러그인도 핸드폰 흔들기를 감지할 때마다 실행할 함수를 등록한다.  
+  
+lib -> screen -> root_screen.dart  
+  
+ShakeDetector의 autoStart 생성자를 이용하면 코드가 실행되는 순간부터 흔들기를 감지한다. 반면에 waitForStart 생성자를 
+이용하면 코드만 등록을 해두고 추후에 흔들기 감지를 시작하는 코드를 따로 실행해줄 수 있다.  
+
+shakeSlopTimeMS는 얼마나 자주 흔들기를 감지할지 정한다. 밀리초 단위로 입력하면 되며 한 번 흔들기를 감지하면 입력된 
+시간이 지나기까지 다시 흔들기를 감지하지 않는다. shakeThresholdGravity는 흔들기를 감지하는 민감도를 설정한다. 이 값은 
+이미 구현한 SettingsScreen의 Slider 위젯에서 받아온다.  
+  
+onPhoneShake 매개변수로 등록한 함수는 핸드폰을 흔들 때마다 난수를 생성해야 한다. 다트 언어에서 기본으로 제공하는 dart:math 
+패키지의 Random 클래스를 이용해서 목적을 이룰 수 있다. Random 클래스는 nextInt() 함수를 제공하는데 이 함수의 첫 번째 
+매개변수에 생성될 최대 int 값을 넣어주면 된다. 다만 난수는 최소 0부터 생성되니 0 ~ 5까지 생성되게 매개변수에 5를 넣어주고 
+결괏값에 1을 더해주면 1 ~ 6 사이 난수를 생성할 수 있다. 생성된 난수를 미리 만들어둔 number 변수에 setState() 함수로 
+저장하면 화면에 반영할 수 있다.  
+  
+ShakeDetector도 마찬가지로 dispose()가 실행됐을 때 리스너를 제거해야 한다.  
+  
 
   
 
