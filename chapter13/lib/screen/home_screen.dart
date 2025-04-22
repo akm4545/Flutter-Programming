@@ -1,3 +1,4 @@
+import 'package:chapter13/screen/cam_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,13 @@ class _EntryButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push( // 영상 통화 스크린으로 이동
+                MaterialPageRoute(
+                    builder: (_) => CamScreen(),
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,
               shape: RoundedRectangleBorder(

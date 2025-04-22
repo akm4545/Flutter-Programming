@@ -230,7 +230,76 @@ lib -> screen -> home_screen.dart
   
 5. 코드를 완료하고 핫 리로드를 하면 의도한 대로 홈 스크린이 보인다. (ElevatedButton 스타일이 달라 수정했음)  
   
-
+# **캠 스크린 위젯 구현하기**  
+1. 이제는 영상 통화를 진행할 CamScreen을 구현할 차례다. 우선 lib/screen/cam_screen.dart 파일을 생성하고 CamScreen 
+StatefulWidget을 만든다. 그리고 Scaffold에 AppBar를 추가해서 기본 레이아웃을 만든다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+2. CamScreen 위젯을 구현했으니 이제 HomeScreen에서 CamScreen으로 이동하는 방법을 배워야 한다. 잠시 home_screen.dart 파일로 
+이동해서 ElevatedButton 위젯을 클릭하면 CamScreen 위젯으로 화면이 넘어갈 수 있게 해야 한다. 이런 기능을 플러터에서는 
+내비게이션이라고 부르며 Navigator 클래스를 사용해서 구현할 수 있다. 최상위에 MaterialApp 위젯을 추가해주면 Navigator 
+클래스의 인스턴스가 자동으로 생성되는데 이 값을 이용해서 화면을 이동할 수 있다.  
+  
+lib -> screen -> home_screen.dart  
+  
+테마를 이용할 때 Theme.of(context)를 사용했던 것처럼 Navigator.of(context)를 실행해서 위젯 트리의 가장 가까이에 있는 
+Navigator를 가져온다. 이미 설명한 것처럼 MaterialApp으로 최상위를 감싸주면 자동으로 Navigator가 생성되며 앱 어디서든 
+Navigator.of(context)를 실행해서 값을 가져올 수 있다. push() 함수를 이용하면 새로운 화면으로 이동할 수 있으며 
+매개변수로 MaterialPageRoute 클래스의 builder() 함수에 새로운 화면으로 사용하고 싶은 위젯을 반환하는 함수를 입력하면 
+된다.  
+  
+3. [입장하기] 버튼을 누르면 CamScreen 화면으로 이동할 수 있다. Navigation 기능이 완성됐으니 이제 CamScreen에서 화상 
+통화 기능을 구현해야 한다. 화상 통화를 하려면 카메라 권한과 마이크 권한이 필요하다. init() 이라는 함수를 만들어서 화상 
+통화에 필요한 권한을 받는다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+권한을 가져오는 작업은 비동기 프로그래밍이 필요하다. 그렇기 때문에 함수를 async로 지정해주고 권한을 잘 가져왔을 땐 
+true 값을 반환해주고 문제가 있으면 메시지와 함께 에러를 던지는 로직을 작성한다.  
+  
+4. 방금 구현한 init() 함수를 사용하려면 조금 특별한 위젯이 필요하다. build() 함수는 위젯이 생성되면 그 즉시 실행된다. 
+하지만 카메라와 마이크 권한이 있을 떄 그리고 없을 때 보여줄 수 있는 화면이 달라야 한다. 문제는 init() 함수가 비동기로 
+실행되니 언제 권한 요청이 끝날지 알 수 없다. 그래서 FutureBuilder 위젯을 사용한다.  
+  
+init() 함수에서 에러를 던지면 에러 내용을 보여주고 -> 아직 로딩 중이면 CirclearProgressIndicator를 보여주고 -> 
+모든 권한이 허가되면 '모든 권한이 있습니다'라는 글자를 가운데에 보여주는 로직을 작성한다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+FutureBuilder는 말 그대로 Future를 반환하는 함수의 결과에 따라 위젯을 렌더링할 때 사용한다. FutureBuilder의 future 
+매개변수에 Future값을 반환하는 함수를 넣어주고 builder 매개변수에 Future값에 따라 다르게 렌더링해주고 싶은 로직을 
+작서앻주면 된다. builder() 함수는 BuildContext와 AsyncSnapshot을 제공해준다. AsyncSnapshot은 future 매개변수에 
+입력한 함수의 결괏값 및 에러를 제공하는 역할을 한다. 추가적으로 비동기 함수의 진행 상황도 알 수 있다. AsyncSnapshot에서 
+제공하는 값이 변경될 때마다 builder() 함수가 재실행된다.  
+  
+AsyncSnapshot의 hasError 게터는 현재 실행한 비동기 함수에서 에러가 있는지 bool 값으로 반환해준다. true면 에러, false면 
+에러가 없는 상태이다. 에러가 있을 때는 snapshot.error를 실행해서 에러값을 가져올 수 있다.  
+  
+AsyncSnapshot의 hsaData 게터는 현재 실행한 비동기 함수에서 반환받은 데이터가 있는지 확인할 수 있다. init() 함수는 
+성공적으로 실행되면 bool 값을 반환해주니 에러가 없는데 반환받은 데이터까지 없는 상황이라면 아직 비동기 함수가 실행 중이라고 
+볼 수 있다. 우리 코드에서는 사용하지 않지만 snapshot.data를 실행하면 반환된 데이터값도 받아볼 수 있다.  
+  
+만약에 모든 과정이 통과됐다면 성공적으로 권한을 받았다는 뜻이다.  
+  
+snapshot.connectionState를 실행하면 비동기 함수의 현재 실행 상태를 가져올 수 있다. 반환받을 수 있는 값은 다음 표와 
+같다.  
+  
+![img.png](image2/img.png)  
+  
+위 표의 설명대로라면 !snapshot.hasData 대신에 snapshot.connectionState == ConnectionState.waiting을 사용할 수 
+있어야 한다. ConnectionState.waiting은 로딩 상태를 의미하기 때문이다. 하지만 그렇게 코드를 작성하지 않았다. 이유는 
+캐싱 떄문이다.  
+  
+캐싱은 데이터를 일시적으로 저장하고 기억하는 걸 의미한다. FutureBuilder는 제공된 비동기 함수의 상태가 변경될 때마다 
+상위 builder() 함수가 재실행된다고 했다. 그런에 FutureBuilder는 다른 위젯과 마찬가지로 build() 함수에 영향을 받는다. 
+build()가 다시 실행되면 FutureBuilder는 다시 렌더링되고 builder() 함수도 다시 실행된다. 그리고 그럴 때마다 비동기 
+함수도 매번 다시 실행된다. 플러터에서는 무수히 많은 build() 함수를 실행한다. 이떄 매번 로딩 상태가 false로 돌아갔다가 
+함수가 끝날 때 다시 true로 변하면 build()가 실행될 때마다 CircularProgressIndicator가 렌더링되어 화면에 깜빡임이 
+생기게 된다. build() 함수에 기존 반환받았던 데이터값을 기억해두면 이 상황을 막을 수 있다. 그러면 같은 build() 함수가 
+두 번 이상 실행될 때는 snapshot.connectionState가 ConnectionState.waiting이더라도 snapshot.data에서 기존 실행했던 
+함수의 반환값을 받아볼 수 있다. 즉 화면이 깜빡거리는 현상을 막을 수 있다. 그래서 snapshot.connectionState 대신에 
+snapshot.hasData를 사용해서 로딩 상태를 인지한다.
   
 
 
