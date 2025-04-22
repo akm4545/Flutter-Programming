@@ -155,7 +155,14 @@ lib -> const -> agora.dart
 # **이미지와 폰트 추가하기**  
 1. asset 폴더를 만들고 그 아래 img 폴더를 만든다. 예제 그림 파일을 img 폴더에 저장한다.  
   
-
+# **pubspec.yaml 설정하기**  
+1. pubspec.yaml에 의존성과 에셋 파일을 추가한다.  
+  
+pubspec.yaml 참고  
+  
+2. pub get을 실행해서 변경 사항을 반영한다.  
+  
+**네이티브 설정하기**
 
 
   
