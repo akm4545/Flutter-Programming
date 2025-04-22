@@ -36,9 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # 카메라 플러그인
-  camera: 0.10.5+5
+#  camera: 0.10.5+5
 
-  agora_rtc_engine: 6.3.2
+  agora_rtc_engine: 6.5.1
   permission_handler: 11.3.1
 
 dev_dependencies:

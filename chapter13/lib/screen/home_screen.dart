@@ -46,7 +46,7 @@ class _Logo extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Row(
-            mainAxisSize: MainAxisSize.max, // 주축 최소 크기
+            mainAxisSize: MainAxisSize.min, // 주축 최소 크기
             children: [
               Icon( // 캠코더 아이콘
                 Icons.videocam,
@@ -80,8 +80,19 @@ class _EntryButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ElevatedButton(
-            onPressed: () {}, 
-            child: Text('입장하기'),
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              )
+            ),
+            child: Text(
+              '입장하기',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
         ),
       ],
     );

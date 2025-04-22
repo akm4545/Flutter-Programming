@@ -228,7 +228,9 @@ lib -> screen -> home_screen.dart
   
 lib -> screen -> home_screen.dart  
   
-5. 코드를 완료하고 핫 리로드를 하면 의도한 대로 홈 스크린이 보인다.  
+5. 코드를 완료하고 핫 리로드를 하면 의도한 대로 홈 스크린이 보인다. (ElevatedButton 스타일이 달라 수정했음)  
+  
+
   
 
 
