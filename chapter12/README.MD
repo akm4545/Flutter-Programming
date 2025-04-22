@@ -298,7 +298,78 @@ seekTo() 함수는 동영상의 재생 위치를 특정 위치로 이동해준�
   
 position.inSeconds 게터를 실행하면 현재 동영상이 실행되고 있는 위치를 받을 수 있다.  
   
-
+# **동영상 컨트롤 버튼 구현하기**  
+아직 동영상 재생하는 기능을 구현하지 않아서 Slider 위젯이 잘 작업되었는지 확인이 불가능하니 동영상을 컨트롤하는 버튼을 
+만든다.  
   
+1. 동영상 컨트롤 버튼 4개를 구현해야 한다. 첫 번째로 재생/일시정지 버튼, 뒤로 3초 돌리기 버튼, 앞으로 3초 돌리기 버튼 
+그리고 새로운 동영상 선택하기 버튼이다. 이 버튼들을 중복 코딩하면 효율적이지 못하니 일반화된 위젯을 하나 구현한다. 
+lib/component/custom_icon_button.dart 파일을 생성하고 IconButton의 onPressed 매개변수와 아이콘 모양을 결정짓는 
+IconData값만 외부에서 입력받을 수 있도록 한다.  
+  
+lib -> component -> custom_icon_button.dart  
+  
+2. 이제 버튼들을 모두 CustomIconButton 위젯으로 구현한다. Stack 위젯에서는 Positioned 위젯을 사용해서 children 위젯들을 
+정렬할 수 있다는 걸 배웠지만 Align 위젯을 사용해서 정렬할 수도 있다. Align 위젯은 alignment 매개변수를 입력할 수 있는데 
+LinearGradient 클래스의 begin, end 매개변수에 입력했던 값과 같은 Alignment 클래스를 이용해서 정렬을 지정할 수 있다. 
+Align 위젯을 사용해서 재생 버튼과 3초 앞뒤로 재생하기 버튼을 가운데로 정렬하고 새로운 동영상 선택하기 버튼은 오른쪽 위에 
+정렬한다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+새 동영상 선택하기 아이콘은 오른쪽 위에 배치한다. 나머지 세 버튼은 가운데 정렬을 하고 MainAxisAlignment.spaceEvenly를 
+사용해서 아이콘 간 간격을 동일하게 적용해준다. videoController.value.isPlaying 게터를 사용하면 현재 동영상이 재생 
+중인지 알 수 있으며 재생 중이면 true 값을 반환해준다. 그러니 동영상이 재생 중이면 가운데 버튼을 일시정지 아이콘으로 보여주고 
+일시정지 중이라면 재생 버튼을 보여준다.  
+  
+3. 저장 후 핫 리스타트를 진행하면 아이콘 버튼들이 잘 배치되어 있는걸 볼 수 있다.  
+  
+4. 이제 버튼들에 onPressed 매개변수값들을 설정할 차례이다. 동영상 재생과 관련된 세 버튼의 기능은 간단히 구현할 수 있다. 
+현재 동영상이 재생되는 위치를 변경하는 건 seekTo() 함수를 사용해서 구현할 수 있다. 가운데의 재생 버튼은 일시정지 기능을 
+하는 pause() 함수와 play() 함수를 이용해서 구현할 수 있다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+구현한 버튼들을 눌러보면 정상적으로 작동하는 것 같지만 실제 동영상의 실행 위치가 Slider 위젯에 반영되지 않고 있다.  
+  
+5. 현재 Slider 위젯은 videoController 변수에서 가져오는 현재 동영상의 실행 위치값을 value 매개변수에 입력한다. 문제는 
+동영상이 현재 실행되고 있는 위치가 바뀔 때마다 build() 함수가 계속 실행돼야 하는데 지금은 Slider 위젯이 한 번 빌드되면 
+다시 빌드되지 않고 있다. 이 문제는 생각보다 간단히 해결할 수 있다. 지금까지 다른 controller들을 사용하면서 이용했던 
+addListener() 함수를 사용해서 videoController 변수의 상태가 변경될 때마다 setState() 함수로 build() 함수를 재실행해주면 
+현재 동영상의 위치가 정상적으로 Slider 위젯에 반영될 수 있다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+addListener() 함수에 videoControllerListener() 함수를 제공해서 videoController의 속성이 변경될 떄마다 실행한다. 
+videoControllerListener() 함수는 단순히 setState() 함수를 매번 실행해서 (동영상의 현재 재생 위치 등) videoController의 
+속성이 변경될 때마다 build() 함수를 재실행한다.  
+  
+addListener() 함수를 실행하면 꼭 dispose() 함수에서 removeListener() 함수를 실행해줘서 리소스 사용을 최적화해줘야 한다.  
+  
+6. 앱을 재실행하면 Slider가 이동되고 Slider 및 버튼의 작동이 정상적으로 작동한다.  
+  
+7. 이제 마지막으로 영상 선택 버튼의 기능을 정의한다. 이 기능은 HomeScreen에 이미 정의를 해뒀기 때문에 단순히 onNewVideoPressed()
+함수를 전달하는 방식으로 작업한다.  
+  
+lib -> screen -> home_screen.dart  
+lib -> component -> custom_video_player.dart  
+  
+8. 동영상을 이미 선택한 상태에서도 새로운 동영상을 선택할 수 있어야 한다. 실제로 새로운 동영상을 선택하는 아이콘 버튼을 
+눌러보면 image_picker가 작동하며 동영상을 선택하는 창이 실행되는 걸 볼 수 있지만 안타깝게도 새로운 동영상을 선택해도 
+화면에는 새로 선택한 영상이 실행되지 않는다. 그 이유는 동영상의 소스를 videoController 변수를 인스턴스화할 때 선언했는데 
+현재 코드에서 videoController 변수는 initState() 함수에서만 선언되기 때문이다. 그래서 StatefulWidget의 생명주기의 
+또 하나의 함수인 didUpdateWidget() 함수를 사용해서 새로운 동영상이 선택되었을 때 videoController를 새로 생성하도록 
+코드를 추가해야 한다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+StatefulWidget의 생명주기를 잘 기억하면 위젯은 매개변수의 값이 변경될 때 폐기되고 새로 생성된다. 그래서 didUpdateWidget의 
+첫 번째 매개변수에 입력되는 oldWidget은 폐기되는 위젯을 의미한다. 결과적으로 만약에 폐기되는 위젯의 동영상 경로가 새로 
+생성되는 위젯의 동영상 경로와 다르다면 initializeController() 함수를 재실행해서 videoController 변수를 재생성한다.  
+  
+9. 핫 리로드를 하고 새로운 동영상을 선택하면 이제 화면에서 새로 선택한 영상을 실행할 수 있다.  
+  
+
+
 
 
