@@ -19,7 +19,23 @@ iOS 시뮬레이터는 영상 통화 관련 기능을 전혀 지원하지 않아
   
 pubspec.yaml 참고  
   
-2. 다음 코드를 main.dart 파일에 작성한다.  
+2. 다음 코드를 main.dart 파일에 작성한다.(tmp_main.dart)  
   
-![img.png](image/img2.png)  
+lib -> tmp_main.dart  
+
+WidgetsFlutterBinding.ensureInitialized()은 material.dart에서 제공된다. main() 함수의 첫 실행값이 runApp() 이면 
+불필요하지만 지금처럼 다른 코드가 먼저 실행돼야 하면 꼭 제일 먼저 실행해줘야 한다. availableCameras()는 기기에서 
+사용할 수 있는 카메라들을 가져온다. CameraController는 카메라를 제어할 수 있는 컨트롤러다.  
+  
+CameraController의 첫 번째 매개변수는 사용할 카메라를 입력하게 된다. 두 번째 매개변수는 해상도를 설정하게 된다. 
+ResolutionPreset.max는 최대 해상도를 의미한다.  
+  
+다른 값은 하단 표를 확인하자.  
+  
+![img.png](image/img.png)  
+  
+initialize()는 카메라를 초기화한다. isInitialized는 카메라 초기화가 완료된 상태인지를 알 수 있다. CameraPreview 
+위젯을 사용하면 카메라를 화면에 보여줄 수 있다. 첫 번째 매개변수에 CameraController를 입력해야 한다.  
+  
+
   

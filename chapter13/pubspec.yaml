@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  # 카메라 플러그인
+  camera: 0.10.5+5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
