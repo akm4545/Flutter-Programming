@@ -204,6 +204,32 @@ lib -> main.dart
 이번 프로젝트는 두 화면으로 구성되어 있다. 간단한 로고와 화상 채널 입장 버튼이 있는 홈 스크린과 화상 통화를 할 수 있는 
 캠 스크린이다. 순서대로 UI를 구현한 후 Agora API를 이용해서 화상 통화하는 기능을 구현한다.  
   
+# **홈 스크린 위젯 구현하기**  
+1. 우선 로고, 이미지, 버튼을 각각 위젯으로 구현해서 레이아웃 설정부터 한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. _Logo 위젯을 먼저 작업한다. _Logo 위젯은 단순히 아이콘과 글자가 Container 안에 위치한 형태이다. 로고에 그림자가 지게 
+한다. 그림자는 BoxDecoration 클래스의 boxShadow 매개변수에 원하는 만큼 그림자를 BoxShadow 클래스로 제공해서 구현할 수 
+있다.  
+  
+lib -> screen -> home_screen.dart  
+  
+boxShadow 매개변수에는 List로 BoxShadow 클래스를 제공할 수 있다. 일반적으로는 하나의 그림자만 사용하겠지만 원한다면 여러 
+BoxShadow 클래스를 입력해서 여러 그림자를 적용할 수 있다. BoxShadow 클래스에는 그림자로 적용할 색상을 color 매개변수로 
+제공해주고 blurRadius에 흐림 정도, spreadRadius에 퍼짐 정도를 double 값으로 입력할 수 있다.  
+  
+3. 다음은 _Image 위젯을 구현할 차례다. _Image 위젯은 크게 어려운 것 없이 이미지를 중앙에 위치하는 형태로 코드를 작성한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+4. 마지막으로 화상 통화 채널에 접속할 수 있는 버튼을 구현할 _EntryButton을 작업한다. 기능은 나중에 구현하고 일단 
+가로로 최대한의 길이로 늘린 ElevatedButton을 만든다.  
+  
+lib -> screen -> home_screen.dart  
+  
+5. 코드를 완료하고 핫 리로드를 하면 의도한 대로 홈 스크린이 보인다.  
+  
 
 
   
