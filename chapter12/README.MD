@@ -257,6 +257,47 @@ VideoPlayerController를 선언할 수 있는 생성자는 다음과 같이 대�
   
 ![img.png](image/img13.png)  
   
+# **Slider 위젯 동영상과 연동하기**  
+Slider 위젯을 사용해서 동영상의 현재 재생 위치와 연동시킨다. 작업할 때 두 가지 목적에 집중해야 한다. 첫 번째로 Slider 
+위젯을 사용자가 스크롤하면 동영상이 해당되는 위치로 이동되어야 한다. 두 번째는 동영상이 실행되는 위치에 따라 자동으로 
+Slider 위젯이 움직여줘야 한다.  
+  
+1. Slider 위젯을 사용해서 동영상의 현재 재생 위치와 연동을 시켜본다. 이번에 작업할 Slider 위젯은 기존과는 조금 다른 
+형태로 배치한다. 지금까지 작업해온 모든 레이아웃은 위젯들을 위아래 또는 좌우로 배치했다. 하지만 이번에는 VideoPlayer 
+위젯 위에 Slider 위젯이 위치하도록 Stack 위젯을 사용한다. return 코드만 변경해주면 된다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+Stack 위젯은 Column 위젯과 Row 위젯처럼 children 매개변수에 여러 개의 위젯이 위치할 수 있다. 위젯이 List에 입력되는 
+순서대로 아래부터 쌓아 올려진다.  
+  
+Stack 위젯은 기본적으로 children 위젯들을 정중앙에 위치시킨다. 만약에 Stack 위젯 내부의 특정 위치에 위젯을 위치시키고 
+싶다면 Positioned 위젯을 사용해서 위치를 정해줘야 한다. Positioned 위젯은 child 매개변수 외에 top, bottom, left, 
+right 매개변수를 입력할 수 있는데 각각 위아래, 왼쪽, 오른쪽에서 몇 픽셀 child 위젯을 위치할지 정할 수 있다. bottom 매개변수에 
+0을 입력하면 Stack 위젯의 가장 아래에 Slider 위젯을 위치시킬 수 있다. 하지만 Slider 위젯이 최소한 크기를 차지한다. 
+왼쪽과 오른쪽 끝까지 Slider 위젯이 늘어가 하려고 left와 right 매개변수 모두에 0값을 주면 왼쪽부터 0픽셀 그리고 오른쪽부터 
+0픽셀까지 위치시키라는 의미가 되므로 Slider 위젯을 가로 전체로 늘릴 수 있다.  
+  
+Slider 위젯의 min값은 항상 0이다. 동영상의 시작은 항상 0초부터 시작하기 떄문이다. 반대로 최댓값은 선택된 동영상의 
+재생 길이를 초 단위로 변환하면 된다. 이 값 또한 videoController 변수의 value.duration 게터를 불러와서 Duration 클래스로 
+전체 영상의 길이를 받아온 다음 inSeconds 게터를 이용해서 전체 길이를 초로 변환한 값을 가져올 수 있다. 마지막으로 max 
+매개변수는 int가 아닌 double 값을 입력해야 하므로 int 값으로 반환되는 inSeconds 게터에 toDouble() 함수를 실행해서 double 
+형태로 형변환을 해준다.  
+  
+2. 코드를 저장하면 목표한 대로 동영상 위에 Slider 위젯이 위치한다.  
+  
+3. 이제 Slider 위젯의 매개변수들의 값을 작업해야 한다. 현잿값을 의미하는 value 매개변수는 동영상의 현재 재생 위치를 
+초 단위로 변환한 값과 연동되어야 한다. onChanged 매개변수는 VideoPlayerController와 연동해 동영상 실행 위치를 
+변경해줘야 한다. 동영상이 현재 재생되고 있는 위치를 가져올 수 있는 value.position과 동영상의 재생 위치를 변경할 수 
+있는 seekTo() 함수를 사용하면 쉽게 문제를 해결할 수 있다.  
+  
+lib -> component -> custom_video_player.dart  
+  
+seekTo() 함수는 동영상의 재생 위치를 특정 위치로 이동해준다. 매개변수에는 Duration 값을 입력해야 하며 onChanged() 
+함수에 제공되는 val값을 int로 변경해서 Slider 위젯에서 입력된 재생 위치를 받을 수 있다.  
+  
+position.inSeconds 게터를 실행하면 현재 동영상이 실행되고 있는 위치를 받을 수 있다.  
+  
 
   
 

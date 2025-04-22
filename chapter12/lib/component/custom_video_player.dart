@@ -55,9 +55,32 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
     return AspectRatio( // 동영상 비율에 따른 화면 렌더링
         aspectRatio: videoController!.value.aspectRatio,
-        child: VideoPlayer(
-          videoController!,
-        ),
+        child: Stack( // children 위젯을 위로 쌓을 수 있는 위젯
+          children: [
+            VideoPlayer( // VideoPlayer 위젯을 Stack으로 이동
+              videoController!,
+            ),
+            Positioned( // child 위젯의 위치를 정할 수 있는 위젯
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Slider( // 동영상 재생 상태를 보여주는 슬라이더
+                // 슬라이더가 이동할 떄마다 실행할 함수
+                onChanged: (double val){
+                  videoController!.seekTo(
+                    Duration(seconds: val.toInt())
+                  );
+                },
+
+                // 동영상 재생 위치를 초 단위로 표현
+                value: videoController!.value.position.inSeconds.toDouble(),
+                // value: 0,
+                min: 0,
+                max: videoController!.value.duration.inSeconds.toDouble(),
+              ),
+            ),
+          ],
+        )
     );
 
     // return Center(
