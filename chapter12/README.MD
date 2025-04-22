@@ -392,6 +392,14 @@ lib -> component -> custom_video_player.dart
   
 2. 이제 화면에 현재 동영상 실행 위치와 총 길이가 표시되는 걸 확인할 수 있다.  
   
+# **핵심 요약**  
+1. Stack 위젯을 이용하면 위젯 위에 위젯을 쌓을 수 있다.  
+2. Positioned 위젯과 Align 위젯을 사용해서 Stack에서 위젯들을 정렬할 수 있다.  
+3. image_picker 플러그인을 사용하면 간편하게 유저로부터 파일 선택을 입력받을 수 있다.  
+4. 동영상 파일의 위치만 알면 video_player 플러그인을 사용해서 손쉽게 동영상을 재생할 수 있다.  
+5. StatefulWidget의 생명주기 중 하나인 didUpdateWidget() 함수를 오버라이드하면 StatefulWidget의 매개변수가 
+변경되었을 때 특점 함수를 실행할 수 있다.  
+  
 
   
 
