@@ -172,6 +172,16 @@ NSMicrophoneUsageDescription만 추가해주면 된다.
 android -> app -> src -> main -> AndroidManifest.xml  
 ios -> Runner -> Info.plist  
   
+# **프로젝트 초기화하기**  
+1. lib 폴더에 screen 폴더를 생성하고 앱의 기본 홈 화면으로 사용할 HomeScreen 위젯을 생성할 home_screen.dart를 생성한다. 
+다음과 같이 HomeScreen이라는 StatelessWidget을 생성한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. lib/main.dart 파일에서도 마찬가지로 HomeScreen을 홈 위젯으로 등록해줘야 한다.  
+  
+lib -> main.dart  
+  
 
 
   
