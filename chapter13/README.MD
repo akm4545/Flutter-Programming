@@ -162,7 +162,16 @@ pubspec.yaml 참고
   
 2. pub get을 실행해서 변경 사항을 반영한다.  
   
-**네이티브 설정하기**
+# **네이티브 설정하기**  
+안드로이드에서 추가할 네이티브 권한은 네트워크 상태를 읽는 READ_PHONE_STATE와 ACCESS_NETWORK_STATE 권한이다. 인터넷을 
+이용해서 영상을 스트리밍해야 하니 INTERNET 권한도 필수이다. 그리고 녹음과 녹화 기능과 관련된 RECORD_AUDIO, MODIFY_AUDIO_SETTINGS와 
+CAMERA 권한을 추가한다. 블루투스를 이용한 녹음 및 녹화 기능을 사용할 수도 있으니 BLUETOOTH_CONNECT 기능까지 추가한다. 
+마지막으로 모듈의 build.gradle 파일도 변경한다. iOS는 카메라 권한인 NSCameraUsageDescription과 마이크 권한인 
+NSMicrophoneUsageDescription만 추가해주면 된다.  
+  
+android -> app -> src -> main -> AndroidManifest.xml  
+ios -> Runner -> Info.plist  
+  
 
 
   
