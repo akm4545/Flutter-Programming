@@ -350,6 +350,14 @@ lib -> screen -> cam_screen.dart
   
 lib -> screen -> cam_screen.dart  
   
+# **핵심 요약**  
+1. WebRTC는 현대에서 영상 통화에 가장 많이 사용하는 오픈 소스 프로토콜이다. 실시간으로 오디오 통화, 비디오 통신 그리고 
+P2P 파일 공유를 할 수 있다.  
+2. 내비게이션은 스크린을 전환할 때 사용하는 클래스이다.  
+3. 아고라 API를 사용하면 WebRTC 기술이 잘 구현된 서비스를 이용할 수 있다.  
+4. 카메라 권한과 마이크 권한을 받으면 동영상 촬영 기능을 구현할 수 있다. iOS에서의 권한은 Info.plist에서, 안드로이드에서 
+권한은 android/app/src/main/AndroidManifest.xml에서 설정한다.  
+  
 
   
 
