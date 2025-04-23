@@ -152,6 +152,13 @@ lib -> main.dart
   
 ![img.png](image2/img.png)  
   
+# **구현하기**  
+# **앱바 구현하기**  
+1. 앱바 구현은 크게 어렵지 않다. 우선 renderAppBar() 라는 함수를 코딩해서 AppBar 위젯을 따로 정리한다. AppBar의 
+title 매개변수에 오늘도 출첵이라는 글자를 보여줄 Text 위젯을 넣어준다.  
+  
+lib -> screen -> home_screen.dart  
+  
 
   
 
