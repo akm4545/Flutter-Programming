@@ -124,4 +124,14 @@ meta-data 태그를 새로 생성해서 android:name 값을 다음과 같이 입
 ![img.png](image/img14.png)  
 ![img.png](image/img15.png)  
   
+# **iOS 설정**  
+1. ios/Runner/AppDelegate.swift 파일을 열어주고 파일 내용을 다음 코드로 완전히 덮어쓰기 해주면 된다. 그다음 API_KEY를 
+입력해준다.  
+  
+ios -> Runner -> AppDelegate.swift  
+  
+2. 마지막으로 권한 요청 메시지를 작업한다.  
+  
+ios -> Runner -> Info.plist  
+  
 
