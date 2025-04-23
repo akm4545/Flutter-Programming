@@ -299,7 +299,58 @@ build()가 다시 실행되면 FutureBuilder는 다시 렌더링되고 builder()
 생기게 된다. build() 함수에 기존 반환받았던 데이터값을 기억해두면 이 상황을 막을 수 있다. 그러면 같은 build() 함수가 
 두 번 이상 실행될 때는 snapshot.connectionState가 ConnectionState.waiting이더라도 snapshot.data에서 기존 실행했던 
 함수의 반환값을 받아볼 수 있다. 즉 화면이 깜빡거리는 현상을 막을 수 있다. 그래서 snapshot.connectionState 대신에 
-snapshot.hasData를 사용해서 로딩 상태를 인지한다.
+snapshot.hasData를 사용해서 로딩 상태를 인지한다. (현재 저 코드는 깜빡임이 발생한다고 함. initState()에서 저장해야 
+발생 안한다고 하는데 이유 파악 필요)  
+  
+5. 이제 아고라 API를 활성화시킬 차례이다. 활성화는 세 단계이다. 첫 번째로 아고라의 RtcEngine을 활성화해줘야 한다. 
+활성화하면서 각종 이벤트를 받을 수 있는 콜백 함수도 설정한다. 두 번째로는 RtcEngine을 통해서 사용하는 핸드폰의 카메라를 
+활성화해준다. 마지막으로는 미리 받아둔 아고라 API 상수값들을 사용해서 testchannel에 참여하면 된다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+engine값이 null인지 확인하고 null이면 새로운 engine을 생성하는 로직을 실행한다. RtcEngineEventHandler는 RtcEngine에 
+이벤트 콜백 함수들을 등록하는 함수이다. RtcEngineEventHandler 클래스를 사용하면 된다. onJoinChannelSuccess는 
+채널에 입장했을 때 실행되는 함수이다. 채널에 입장한 상태면 uid 변수에 나의 고유 ID를 기억해둔다.  
+- connection: 영상 통화 정보에 관련된 값. connection.localUid로 내 ID를 가져올 수 있다.  
+- elapesd: joinChannel을 실행한 후 콜백이 실행되기까지 걸린 시간  
+  
+onLeaveChannel은 내가 채널에서 나갔을 때 실행되는 콜백 함수다. 채널에서 나갔으니 uid를 null로 변환한다.  
+  
+onUserJoined는 상대방이 채널에 입장했을 때 실행되는 함수이다. 상대방의 고유 ID를 otherUid 변수에 저장한다.  
+- connection: 영상 통화 정보에 관련된 값. connection.localUid로 내 ID를 가져올 수 있다.  
+- remoteUid: 상대방 고유 ID  
+- elapsed: 내가 채널을 들어왔을 때부터 상대가 들어올 때까지 걸린 시간  
+  
+onUserOffline은 상대방이 채널에서 나갔을 때 실행되는 함수이다. otherUid 값을 null로 지정한다.  
+- connection: 영상 통화 정보에 관련된 값. connection.localUid로 내 ID를 가져올 수 있다.  
+- remoteUid: 상대방 고유 ID  
+- reason: 방에서 나가게 된 이유(직접 나가기 또는 네트워크 끊김 등)  
+  
+채널 입장하기 코드에서 options 매개변수는 영상 송출과 관련된 여러 옵션을 상세하게 지정할 수 있지만 기본 설정을 사용한다. 
+마지막 매개변수는 내 고유 ID를 지정하는 곳이다. 0을 입력하면 자동으로 고유 ID가 배정된다.  
+  
+6. testchannel에 참여하는 코드를 작성했지만 화면에 아직 아무것도 실행되지 않고 있다. 그 이유는 RtcEngine에서 송수신하는 
+정보를 화면에 그려주는 코드를 아직 작성하지 않았기 때문이다. renderMainView()와 renderSubView() 함수를 작성해서 각각 
+상대방의 화면과 내 화면을 보여준다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+renderSubView는 내 핸드폰이 찍는 화면을 렌더링하는 함수이다. uid가 null이 아닐 때는 채널에 입장한 상태이니 AgoraVideoView의 
+controller 매개변수에 VideoViewController()를 입력해서 내 핸드폰에서 찍는 화면을 보여준다.  
+  
+renderMainView는 상대방의 핸드폰에서 찍는 화면을 보여주는 역할을 한다. AgoraVideoView의 controller 매개변수에 
+VideoViewController.remote()를 입력해줘서 상대의 화면을 보여준다.  
+  
+7. 이제 작성한 함수를 build() 함수에 입력해서 화면에 보여줄 차례이다. 동영상 플레이어 앱에서 사용했던 Stack 위젯을 
+이용해서 상대방의 화면 위에 내 화면을 쌓는 방식으로 화면을 구현한다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+8. 마지막으로 나가기 버튼을 설계한다. 뒤로 가기 기능은 내비게이션의 pop() 함수를 사용한다.  
+  
+lib -> screen -> cam_screen.dart  
+  
+
   
 
 
