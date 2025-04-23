@@ -223,6 +223,16 @@ lib -> screen -> home_screen.dart
   
 lib -> screen -> home_screen.dart  
   
+# **시뮬레이터와 에뮬레이터에서 현재 위치 설정하기**  
+시뮬레이터와 에뮬레이터에는 실제 GPS가 없기 떄문에 현재 위치가 제대로 보이지 않는다. GPS 위치를 임의로 설정하는 기능을 
+사용해 현재 위치를 바꿀 수 있다.  
+  
+- iOS 시뮬레이터: [Features] -> [Location] -> [Custom Location]에서 직접 위도와 경도를 입력한다.  
+- 안드로이드 에뮬레이터: 3개의 옵션 버튼 클릭 후 [Location] -> 검색창에서 위치 검색 -> [Set Location] 버튼을 눌러서 
+변경한다.  
+  
+![img.png](image2/img2.png)  
+  
 
   
 
