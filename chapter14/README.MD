@@ -124,3 +124,4 @@ meta-data 태그를 새로 생성해서 android:name 값을 다음과 같이 입
 ![img.png](image/img14.png)  
 ![img.png](image/img15.png)  
   
+
