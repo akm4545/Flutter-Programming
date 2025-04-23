@@ -115,3 +115,12 @@ pubspec.yaml 참고
 안드로이드와 iOS 네이티브 파일에 모두 등록해줘야 구글 지도를 불러올 수 있다. 그리고 안드로이드에서는 최소 버전 설정이 
 필요하니 추가한다.  
   
+# **Android 설정**  
+1. android/app/src/main/AndroidManifest.xml에 상세 위치 권한과 미리 발급받은 구글 지도 API 키를 등록해줘야 한다. 
+먼저 상세 위치 권한을 의미하는 ACCESS_FINE_LOCATION을 등록해준다. 그리고 manifest 태그의 application 태그 안에 
+meta-data 태그를 새로 생성해서 android:name 값을 다음과 같이 입력하고 android:value 값에 발급받은 API 키를 입력한다. 
+다음으로 geolocator 플러그인을 사용하기 위해 위치 권한을 추가한다.  
+  
+![img.png](image/img14.png)  
+![img.png](image/img15.png)  
+  
