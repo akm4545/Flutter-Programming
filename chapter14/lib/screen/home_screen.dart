@@ -14,11 +14,35 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold( // 지도 위치 지정
       appBar: renderAppBar(),
-      body: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: companyLatLng,
-          zoom: 16, // 확대 정도 (높을수록 크게 보임)
-        ),
+      body: Column(
+        children: [
+          Expanded( // 2/3만큼 공간 차지
+            flex: 2,
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: companyLatLng,
+                zoom: 16, // 확대 정도 (높을수록 크게 보임)
+              ),
+            ),
+          ),
+          Expanded( // 1/3 만큼 공간 차지
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon( // 시계 아이콘
+                  Icons.timelapse_outlined,
+                  color: Colors.blue,
+                  size: 50.0,
+                ),
+                const SizedBox(height: 20.0),
+                ElevatedButton( // [출근하기] 버튼
+                    onPressed: () {},
+                    child: Text('출근하기!'),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

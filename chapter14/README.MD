@@ -177,6 +177,14 @@ GoogleMap 위젯에는 필수로 입력해야 하는 initialCameraPosition 매�
 하지만 첫 빌드 이후에는 핫 리로드를 활용할 수 있기 떄문에 빌드 시간에 대해 걱정할 필요가 없다. 빌드가 완료되면 AppBar 
 아래에 구글 지도가 보인다. 첫 위치는 initialCameraPosition에 입력한 위치이다.  
   
+# **Footer 구현하기**  
+1. 마지막으로 footer를 구현한다. 현재 GoogleMap 위젯이 화면 전체를 차지하고 있으니 footer와 body가 화면을 나눠서 
+차지하도록 Column 위젯에 감싼 후 body와 footer의 하면 차지 비율을 2:1로 구현한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. 코드를 저장해서 핫 리로드를 실행하면 기능은 없지만 거의 완성된 UI를 볼 수 있다.  
+  
 
   
 
