@@ -55,3 +55,7 @@ lib -> screen -> home_screen.dart
   
 lib -> main.dart  
   
+# **레이아웃 구상하기**  
+이번 프로젝트는 하나의 스크린으로 구성되어 있다. HomeScreen을 최상단 AppBar, 이미지를 보여주는 중앙 Body, 스티커를 
+고르는 Footer로 3등분으로 나눠서 구현한다.  
+  
