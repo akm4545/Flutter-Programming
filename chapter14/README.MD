@@ -159,6 +159,24 @@ title 매개변수에 오늘도 출첵이라는 글자를 보여줄 Text 위젯�
   
 lib -> screen -> home_screen.dart  
   
+# **Body 구현하기**  
+1. 지도에 워낙 복잡해보이는 요소가 많다 보니 구글 지도를 활용하는 게 어려울 것 같다고 느낄 수 있다. 하지만 구글 지도를 
+구현하는 방법은 생각보다 매우 간단하다. 우선 초기에 지도를 보여줄 위치를 입력해야 하니 회사의 위도, 경도 정보를 LatLng 
+클래스에 저장한다. 다음에 Scaffold 위젯의 body 매개변수에 GoogleMap 위젯을 넣어줘서 화면에 지도를 렌더링한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+LatLng 클래스는 위도와 경도로 특정 위치를 표현할 수 있는 클래스이다. 첫 번째 매개변수에 latitude에 해당되는 위도를 
+입력해주고 두 번째 매개변수에 longitude에 해당되는 경도를 입력해주면 된다.  
+  
+GoogleMap 위젯에는 필수로 입력해야 하는 initialCameraPosition 매개변수가 있다. 이 매개변수에는 CameraPosition이라는 
+클래스를 입력해주면 된다. CameraPosition의 target 매개변수에는 지도의 중심이 될 위치를 LatLng으로 입력할 수 있고 
+확대 정도를 의미하는 zoom을 double로 입력할 수 있다.  
+  
+2. 앱을 실행하면 평소보다 빌드 및 로딩이 오래 걸린다. 그 이유는 구글 관련 패키지를 내려받고 빌드하는 과정 때문이다. 
+하지만 첫 빌드 이후에는 핫 리로드를 활용할 수 있기 떄문에 빌드 시간에 대해 걱정할 필요가 없다. 빌드가 완료되면 AppBar 
+아래에 구글 지도가 보인다. 첫 위치는 initialCameraPosition에 입력한 위치이다.  
+  
 
   
 
