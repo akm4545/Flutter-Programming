@@ -25,3 +25,10 @@ GestureDetector는 플러터에서 지원하는 모든 제스처들을 구현할
 # **이미지와 폰트 추가하기**  
 1. asset 폴더를 만들고 그 아래 img 폴더를 만든다. 내려받은 이미지를 img 폴더에 저장한다.  
   
+# **pubspec.yaml 설정하기**  
+1. 다음 수정 사항을 pubspec.yaml에 적용한다.  
+  
+![img.png](image/img2.png)  
+  
+2. pub get을 실행해서 변경 사항을 저장한다.
+  
