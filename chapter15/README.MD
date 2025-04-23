@@ -83,3 +83,25 @@ lib -> main.dart
 UI부터 구현한다. 이미지를 선택하는 화면을 제외한 나머지 화면은 HomeScreen에서 작업하면 된다. HomeScreen UI 작업이 
 끝나면 스티커 붙이기 기능을 구현하고 마지막으로 이미지 선택, 이모티콘 삭제, 이미지 저장에 해당되는 기능을 구현한다.  
   
+# **AppBar 구현하기**  
+1. AppBar를 구현한다. lib/component/main_app_bar.dart 파일을 만들고 MainAppBar StatelessWidget을 구현한다.  
+  
+lib -> component -> main_app_bar.dart  
+  
+첫 번째로 IconButton 3개를 Row 위젯에 감싸서 MainAxisAlignment.spaceAround를 적용한다. 이 IconButton들은 
+각각 왼쪽부터 [이미지 선택] 버튼, [스티커 삭제] 버튼, [이미지 저장] 버튼을 담당한다. 상태 관리는 MainAppBar 위젯을 
+사용할 HomeScreen에서 수행하므로 버튼 순서대로 onPressed 매개변수를 각각 onPickImage, onSaveImage, onDeleteItem 
+이름으로 외부에서 입력받는다.  
+  
+2. 구현한 MainAppBar 위젯을 HomeScreen 위젯에 위치시킨다. MainAppBar 위젯과 Footer 위젯을 Body 위젯 위에 올려야 하니 
+위젯을 위로 쌓을 수 있는 Stack 위젯을 이용해서 배치한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+Stack 위젯의 fit 매개변수에는 StackFit을 입력할 수 있다. StackFit은 StackFit.loose와 StackFit.expand가 존재한다. 
+StackFit.loose는 자식들이 최소한의 크기만 차지하도록 하고 StackFit.expand는 자식들이 차지할 수 있는 공간의 최대한 
+크기를 차지하도록 한다.  
+  
+3. 실행하면 MainAppBar가 최상단에 위치한다.  
+  
+  
