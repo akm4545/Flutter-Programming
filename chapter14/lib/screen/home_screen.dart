@@ -9,6 +9,12 @@ class HomeScreen extends StatelessWidget {
       126.921252, // 경도
   );
 
+  // 회사 위치 마커 선언
+  static final Marker marker = Marker(
+    markerId: MarkerId('company'),
+    position: companyLatLng,
+  );
+
   const HomeScreen({Key? key}) : super(key: key);
   
   @override
@@ -36,6 +42,7 @@ class HomeScreen extends StatelessWidget {
                         target: companyLatLng,
                         zoom: 16, // 확대 정도 (높을수록 크게 보임)
                       ),
+                      markers: Set.from([marker]), // Set로 Marker 제공
                     ),
                   ),
                   Expanded( // 1/3 만큼 공간 차지
