@@ -46,3 +46,12 @@ ios -> Runner -> Info.plist
   
 android -> app -> src -> main -> mainAndroidManifest.xml  
   
+# **프로젝트 초기화하기**  
+1. lib 폴더에 screen 폴더를 생성하고 앱의 기본 홈 화면으로 사용할 HomeScreen 위젯을 생성할 home_screen.dart를 생성한다. 
+  
+lib -> screen -> home_screen.dart  
+  
+2. lib/main.dart 파일에서도 마찬가지로 HomeScreen을 홈 위젯으로 등록해준다.  
+  
+lib -> main.dart  
+  
