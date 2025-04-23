@@ -102,3 +102,11 @@ API를 발급받으려면 구글 클라우드 플랫폼을 이용해야 한다.
   
 ![img.png](image/img13.png)  
   
+# **pubspec.yaml 설정하기**  
+1. 지도 기능을 제공해주는 google_maps_flutter 플러그인과 위치 관련 기능을 제공해주는 geolocator 플러그인을  
+pubspec.yaml에 추가한다.  
+  
+pubspec.yaml 참고  
+  
+2. pub get을 실행해서 변경 사항을 반영한다.  
+  
