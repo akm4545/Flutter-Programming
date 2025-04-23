@@ -104,4 +104,17 @@ StackFit.loose는 자식들이 최소한의 크기만 차지하도록 하고 Sta
   
 3. 실행하면 MainAppBar가 최상단에 위치한다.  
   
+# **Image 선택하기**  
+1. HomeScreen 위젯에서는 상태 관리를 해줘야 하므로 StatelessWidget에서 StatefulWidget으로 변경한다. 그리고 선택한 
+이미지를 저장할 image 변수를 선언하고 onPickImage() 함수가 실행됐을 때 이미지를 선택하면 image 변수에 선택한 값을 
+저장한다. 이미지를 선택하는 창을 사용자에게 보여주는 방법은 매우 간단하다. ImagePicker 패키지를 사용하면 된다. 동영상 
+플레이어 앱에서는 pickVideo() 함수를 사용했지만 이번에는 pickImage() 함수를 사용해서 이미지를 고른다.  
+   
+lib -> screen -> home_screen.dart  
+  
+ImageSource.gallery를 선택하면 갤러리에서 직접 이미지를 고를 수 있고 ImageSource.camera를 선택하면 사용할 이미지를 
+카메라로 직접 찍을 수 있다.  
+  
+2. ImagePicker 플러그인은 네이티브 코드를 사용하는 플러그인이니 꼭 앱을 종료했다가 다시 시작해서 새로 구현한 함수를 
+테스트해야 한다. 재시작 후 이미지 선택 아이콘을 누르면 이미지를 선택하는 창이 보인다.  
   

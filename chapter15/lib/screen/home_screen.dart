@@ -1,10 +1,19 @@
 import 'package:chapter15/component/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class HomeScreen extends StatelessWidget {
+// class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-  
+
+  @override
+  State<StatefulWidget> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>{
+  XFile? image; // 선택한 이미지를 저장할 변수
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +37,14 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void onPickImage(){}
+  void onPickImage() async { 
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    
+    // 갤러리에서 이미지 선택하기
+    setState(() {
+      this.image = image; // 선택한 이미지 저장하기
+    });
+  }
 
   void onSaveImage(){}
 
