@@ -32,3 +32,17 @@ GestureDetector는 플러터에서 지원하는 모든 제스처들을 구현할
   
 2. pub get을 실행해서 변경 사항을 저장한다.
   
+# **네이티브 권한 설정하기**  
+# **iOS 권한 설정하기**  
+iOS는 이미지 관련 권한을 추가해야 한다. 사진첩(NSPhotoLibraryUsageDescription), 카메라(NSCameraUsageDescription), 
+마이크(NSMicrophoneUsageDescription) 권한을 추가한다.  
+  
+ios -> Runner -> Info.plist  
+  
+# **안드로이드 권한 설정하기**  
+안드로이드 11 버전을 기준으로 새로운 파일 저장소가 추가되었다. 하지만 사용자의 핸드폰이 안드로이드 11 버전 이전 운영체제를 
+실행 중이면 기존 파일 저장소를 사용해야 하기 때문에 requestLegacyExternalStorage 옵션을 true로 설정해줘야 한다. 
+이 값을 true로 설정하면 모든 버전에서 적절한 파일 저장소를 사용할 수 있다.  
+  
+android -> app -> src -> main -> mainAndroidManifest.xml  
+  
