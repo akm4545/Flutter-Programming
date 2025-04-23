@@ -38,3 +38,9 @@ Geolocator 플러그인의 getPositionStream() 함수를 사용하면 현재 위
   
 ![img.png](image/img5.png)  
   
+# **두 위치 간의 거리 구하기**  
+Geolocator 플러그인의 distanceBetween() 함수를 실행하면 복잡한 함수를 직접 구현할 필요 없이 두 위치 간의 거리를 미터 
+단위로 반환받을 수 있다.  
+  
+![img.png](image/img6.png)  
+  
