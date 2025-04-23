@@ -233,6 +233,13 @@ lib -> screen -> home_screen.dart
   
 ![img.png](image2/img2.png)  
   
+# **현재 위치 지도에 표시하기**  
+1. 현재 위치를 지도에 표시하는 방법은 단순하게 boolean값 하나만 제공해주면 된다. GoogleMap 위젯에 myLocationEnabled 
+매개변수가 존재하는데 이 매개변수에는 기본값으로 false가 입력돼 있다. true로 값을 변경해줘서 현재 GPS상 위치를 지도에 
+보여준다.  
+  
+lib -> screen -> home_screen.dart  
+  
 
   
 

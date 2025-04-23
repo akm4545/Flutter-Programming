@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                         target: companyLatLng,
                         zoom: 16, // 확대 정도 (높을수록 크게 보임)
                       ),
+                      myLocationEnabled: true, // 내 위치 지도에 보여주기
                       markers: Set.from([marker]), // Set로 Marker 제공
                       circles: Set.from([circle]), // Set로 Circle 제공
                     ),
