@@ -29,4 +29,12 @@ Geolocator 플러그인은 지리와 관련된 기능을 쉽게 사용할 수 �
 ![img.png](image/img2.png)  
   
 ![img.png](image/img3.png)  
+
+# **현재 위치 지속적으로 반환받기**  
+Geolocator 플러그인의 getPositionStream() 함수를 사용하면 현재 위치가 변경될 때마다 현재 위칫값을 Position 클래스 
+형태로 주기적으로 반환받을 수 있다.  
+  
+![img.png](image/img4.png)  
+  
+![img.png](image/img5.png)  
   
