@@ -208,3 +208,11 @@ Logo 위젯은 상단 로고 이미지 위젯과 아래 앱 설명으로 나눌 
   
 lib -> component -> logo.dart  
   
+# **PointNotification 위젯 구현하기**  
+내가 제미나이에게 메시지를 보낼 때마다 몇 포인트가 적립됐는지 표시해줄 알림 텍스트를 작업한다. int 타입으로 point 파라미터를 
+입력받고 이 값을 기준으로 화며에 Text 위젯을 보여준다.  
+  
+1. lib/component/point_notification.dart 파일을 생성하고 코드를 작성한다.  
+  
+lib -> component -> point_notification.dart  
+  
