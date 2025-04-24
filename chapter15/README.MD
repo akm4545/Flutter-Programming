@@ -131,4 +131,27 @@ lib -> screen -> home_screen.dart (책 주석 부분 fit과 Positioned 위젯 �
 에뮬레이터에서는 macOS에서 CMD, 윈도우에서 Ctrl 키를 누른 후 화면에 마우스를 클릭하고 드래그해서 확대 및 축소 제스처를 
 적용할 수 있다.  
   
+# **Footer 구현하기**  
+1. 이미지가 선택되고 나면 이미지에 올릴 스티커를 고르는 Footer 창이 필요하다. Footer 윚세 또한 MainAppBar 위젯에서처럼 
+lib/component/footer.dart 파일에 정의한다.  
+  
+lib -> component -> footer.dart  
+  
+이미 내려받은 asset/img 폴더에 있는 모든 이모티콘들을 Row 위젯 안에 구현한다. 그리고 SingleChildScrollView 위젯으로 
+감싸서 가로로 스크롤하도록 설정한다. 마지막으로 각 스티커가 눌릴 때마다 실행할 OnEmotionTap() 함수를 정의한다. 그다음 
+GestureDetector 위젯으로 각 이모티콘 이미지를 감싼 다음 onTap() 함수가 실행될 때마다 onEmoticonTap() 함수를 실행해서 
+몇 번째 이모티콘이 탭 됐는지 상위 위젯으로 전달해준다.  
+  
+2. Footer 위젯을 HomeScreen 위젯에 위치시킨다.  
+  
+lib -> screen -> home_screen.dart  
+  
+MainAppBar 위젯과 Footer 위젯은 Body 위에 위치해야 하니 Stack 위젯의 가장 첫 번쨰에 renderBody() 함수를 입력해주고 
+MainAppBar 위젯과 Footer 위젯을 그 아래에 위치시킨다. 더 나아가 Footer 위젯은 화면의 아래에 위치해야 하므로 Positioned 
+위젯으로 감싸서 화면의 가장 아래에 배치한다. 마지막으로 Footer 위젯은 이미지가 선택된 상태에서만 보여야 하기 떄문에 
+image 변수가 null일 때만 렌더링되도록 조건문을 사용한다.  
+  
+3. 코드를 저장한 후 핫 리로드해서 반영하면 이미지가 선택된 상태에서 좌우로 스크롤 가능한 스티커를 고를 수 있는 Footer 
+위젯이 생긴 것을 확인할 수 있다.  
+
   

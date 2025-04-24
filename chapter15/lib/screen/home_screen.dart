@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:chapter15/component/footer.dart';
 import 'package:chapter15/component/main_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,17 @@ class _HomeScreenState extends State<HomeScreen>{
               onDeleteItem: onDeleteItem,
             ),
           ),
+          // image가 선택되면 Footer 위치하기
+          if(image != null)
+            Positioned( // 맨 아래에 Footer 윚세 위치하기
+              bottom: 0,
+              // left와 right를 모두 0을 주면 좌우로 최대 크기를 차지함
+              left: 0,
+              right: 0,
+              child: Footer(
+                onEmotionTap: onEmotionTap
+              ),
+            ),
         ],
       ),
     );
@@ -67,6 +79,8 @@ class _HomeScreenState extends State<HomeScreen>{
       );
     }
   }
+
+  void onEmotionTap(int index){}
 
   void onPickImage() async { 
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
