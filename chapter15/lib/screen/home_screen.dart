@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen>{
     });
   }
 
-  void onEmotionTap(int index){
+  void onEmotionTap(int index) async {
     setState(() {
       stickers = {
         ...stickers,
@@ -132,5 +132,10 @@ class _HomeScreenState extends State<HomeScreen>{
 
   void onSaveImage(){}
 
-  void onDeleteItem(){}
+  void onDeleteItem() async {
+    setState(() {
+      // 현재 선택돼 있는 스티커를 제외해서 Set으로 변환
+      stickers = stickers.where((sticker) => sticker.id != selectedId).toSet();
+    });
+  }
 }

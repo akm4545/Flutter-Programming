@@ -236,5 +236,13 @@ lib -> screen -> home_screen.dart
 이모티콘을 누르거나 확대/축소 비율을 조절하거나 위치를 이동하면 이모티콘 이미지 주위에 파란색 테두리가 생기며 현재 선택된 
 이모티콘이라는 표시가 된다.  
   
+# **스티커 삭제하기**  
+1. 스티커 붙이기 기능이 잘 구현되었으니 이제 스티커를 삭제하는 기능을 추가해야 한다. 스티커 삭제 버튼은 이미 MainAppBar 
+위젯에 구현해놨으니 onDeleteItem() 함수만 작업해주면 된다. Set 형태인 stickers 변수에 모든 스티커 정보를 다 저장해놨으니 
+스티커 삭제 버튼이 눌릴 때마다 stickers 변수에서 각 StrickerModel을 순회하며 id를 비교해서 selectedId 변수에 해당하는 
+값을 지워주면 된다.  
+  
+lib -> screen -> home_screen.dart  
+  
 
 
