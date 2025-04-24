@@ -244,5 +244,46 @@ lib -> screen -> home_screen.dart
   
 lib -> screen -> home_screen.dart  
   
+# **이미지 저장하기**  
+1. 마지막 기능인 이미지 저장 기능을 구현한다. RepaintBoundary 위젯을 사용해서 위젯을 이미지로 추출한 후 갤러리에 
+저장한다. RepaintBoundary는 자식 위젯을 이미지로 추출하는 기능이 있다. 이 기능을 사용하려면 RepaintBoundary에 key 
+매개변수를 입력해주고 이미지를 추출할 때 이 값을 사용해야 한다. imgKey 변수를 선언하고 renderBody() 함수의 InteractiveViewer 
+위젯을 RepaintBoundary로 감싸서 이미지로 추출한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. onSaveImage() 함수에 이미지 저장 기능을 구현한다. GlobalKey를 선언해두고 RepaintBoundary 위젯의 key 매개변수에 
+입력했기 때문에 어디에서든 이 키값을 이용해서 RepaintBoundary의 기능을 접근할 수 있다. imgKey.currentContext.findRenderObject() 
+함수를 실행하면 실제 하면에 렌더링된 RepaintBoundary 위젯을 찾을 수 있다. 물론 사용한 imgKey값이 key 매개변수에 입력된 
+위젯으로 찾게 된다.  
+  
+lib -> screen -> home_screen.dart  
+  
+3. 위젯을 찾고 나면 간단히 toImage() 함수를 실행해서 RepaintBoundary가 감싸고 있는 영역을 이미지로 변환할 수 있다. 이미지를 
+갤러리에 저장할 때 사용할 플러그인인 ImageGallerySaver는 이미지를 저장하기에 앞서 이미지를 바이트 데이터로 변환해야 한다. 
+그러니 .toByteData() 함수와 asUint8List() 함수를 이용해서 이미지 정보를 바이트 데이터로 변환한다.  
 
+lib -> screen -> home_screen.dart  
+  
+RepaintBoundary가 감싸고 있는 영역을 이미지로 변환한다. toImage() 함수가 반환하는 Image 타입은 material.dart 
+패키지의 Image 위젯이 아니라 dart:ui 패키지의 Image 클래스이기 때문에 dart:ui 패키지를 ui로 선언해서 dart:ui 패키지의 
+Image 클래스를 반환받는다. toByteData는 이미지를 바이트 데이터로 변환한다. 변환되는 확장자는 png로 지정했으나 다른 
+확장자를 사용해도 상관이 없다. asUint8List()는 바이트 데이터를 8비트 정수형으로 변환한다. ImageGallerySaver 플러그인은 
+바이트 데이터가 8비트 정수형으로 변환되어 있는 걸 요구하기 때문에 필수 과정이다.  
+  
+4. 변환된 이미지 데이터를 IamgeGallerySaver.saveImage() 함수에 입력해주고 갤러리에 이미지를 저장한다. 추가적으로 
+ScaffoldMessenger의 showSanckBar() 함수를 실행해서 이미지가 저장되는 걸 사용자에게 확인시켜 준다.  
+  
+lib -> screen -> home_screen.dart  
+  
+5. 프로젝트를 저장해서 핫 리로드를 실행한 후 화면에 이모티콘을 그대로 유지한 채로 저장하기 IconButton을 누르면 하단에 
+'저장되었습니다' 메시지가 보인다. 이미지는 갤러리에 저장된다.  
+  
+# **핵심 요약**  
+1. GestureDetector를 사용하면 플러터에서 인지할 수 있는 모든 제스처 콜백을 받을 수 있다.  
+2. GestureDetector의 onScaleUpdate 콜백을 사용하면 x, y축으로의 이동 및 확대/축소값을 콜백으로 받을 수 있다.  
+3. Transform 위젯을 사용하면 자식 위젯을 이동시키거나 확대/축소할 수 있다.  
+4. ImageGallerySaverPlus 플러그인을 사용하면 이미지를 갤러리에 저장할 수 있다. path_provider 플러그인과 dart:io 
+를 사용하면 앱이 접근할 수 있는 폴더에 파일을 저장할 수 있다. 관련 정보는 아래 공식 홈페이지 링크를 참고하자.  
+https://docs.flutter.dev/cookbook/persistence/reading-writing-files
 
