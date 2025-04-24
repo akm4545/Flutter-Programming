@@ -200,3 +200,11 @@ lib -> main.dart
   
 ![img.png](image2/img2.png)  
   
+# **구현하기**
+# **Logo 위젯 구현하기**  
+Logo 위젯은 상단 로고 이미지 위젯과 아래 앱 설명으로 나눌 수 있다. Column을 이용해서 이미지와 텍스트를 위치시킨다.  
+  
+1. lib/component/logo.dart 파일을 생성하고 코드를 작성한다.  
+  
+lib -> component -> logo.dart  
+  
