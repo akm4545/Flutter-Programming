@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // 스티커를 선택할 때마다 실행할 함수의 시그니처
 // 상태관리가 포함된 함수를 외부에서 주입받기 위해 이렇게 사용하는듯 함
-// 상태관리를 최상위나 혹은 하나에 몰아두는게 좋은듯?
 typedef OnEmotionTap = void Function(int id);
 
 class Footer extends StatelessWidget {
