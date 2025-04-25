@@ -59,5 +59,15 @@ pubspec.yaml 참고
 drift_dev는 Drift와 관련된 코드를 생성하는 로직이 작성되어 있는 플러그인이고 build_runner는 Code Generation을 
 실행하는 명령어를 지원하는 플러그인이다.  
   
+# **프로젝트 초기화하기**  
+1. lib 폴더에 screen 폴더를 생성하고 앱의 기본 홈 화면으로 사용할 HomeScreen 위젯을 만들 home_screen.dart를 생성한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. lib/main.dart 파일에서도 마찬가지로 HomeScreen을 홈 위젯으로 등록한다.  
+  
+lib -> main.dart  
+  
+
 
 
