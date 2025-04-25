@@ -80,6 +80,7 @@ CreateScheduleBottomSheet 순서로 구상한다.
   
 ![img.png](image/img4.png)  
   
-
+# **ScheduleBottomSheet**  
+ScheduleBottomSheet는 일정을 추가하거나 수정할 때 사용하는 위젯이다. 
 
 
