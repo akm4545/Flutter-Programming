@@ -8,15 +8,15 @@ plugins {
 android {
     namespace = "com.example.chapter16"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.13113456"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     defaultConfig {
@@ -38,6 +38,21 @@ android {
         }
     }
 }
+
+//subprojects {
+//    afterEvaluate { project ->
+//        // android가 있는 모듈에만 적용
+//        project.extensions.findByName("android")?.let { ext ->
+//            // ext를 AndroidExtension으로 캐스팅
+//            (ext as? com.android.build.gradle.BaseExtension)?.let { androidExt ->
+//                // namespace가 null일 경우, group 값을 namespace로 설정
+//                if (androidExt.namespace == null) {
+//                    androidExt.namespace = project.group.toString()
+//                }
+//            }
+//        }
+//    }
+//}
 
 flutter {
     source = "../.."

@@ -1,3 +1,5 @@
+import com.android.build.gradle.BaseExtension
+
 allprojects {
     repositories {
         google()
@@ -13,20 +15,40 @@ subprojects {
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
 subprojects {
-    project.evaluationDependsOn(":app")
-}
-
-subprojects {
-    afterEvaluate { project ->
-        if(project.hasProperty("android")) {
-            project.android {
-                if(namespace == null) {
-                    namespace project.group
+    project.afterEvaluate {
+        val androidExtension = project.extensions.findByName("android") as? BaseExtension
+        if (androidExtension != null) {
+            try {
+                val namespaceProp = androidExtension::class.java.getMethod("setNamespace", String::class.java)
+                val currentNamespace = androidExtension::class.java.getMethod("getNamespace").invoke(androidExtension) as? String
+                if (currentNamespace == null) {
+                    namespaceProp.invoke(androidExtension, project.group.toString())
                 }
+            } catch (e: NoSuchMethodException) {
+                // ignore
             }
         }
     }
+
+    project.evaluationDependsOn(":app")
 }
+
+//subprojects {
+//    project.afterEvaluate {
+//        val androidExtension = project.extensions.findByName("android") as? BaseExtension
+//        if (androidExtension != null) {
+//            try {
+//                val namespaceProp = androidExtension::class.java.getMethod("setNamespace", String::class.java)
+//                val currentNamespace = androidExtension::class.java.getMethod("getNamespace").invoke(androidExtension) as? String
+//                if (currentNamespace == null) {
+//                    namespaceProp.invoke(androidExtension, project.group.toString())
+//                }
+//            } catch (e: NoSuchMethodException) {
+//                // ignore
+//            }
+//        }
+//    }
+//}
 
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)

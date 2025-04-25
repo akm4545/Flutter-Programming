@@ -249,4 +249,37 @@ lib -> component -> chat_text_field.dart
   
 1. lib -> model -> message_model.dart 파일을 생성한 후 코드를 작성한다.  
   
+# **HomeScreen 화면에 UI 요소 배치하기**  
+1. HomeScreen 위젯을 StatefulWidget으로 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. 적절한 가로 세로 패딩과 함께 Logo를 반환하는 _buildLogo() 함수르 작성한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+3. API 연동을 완료하기 전까지는 UI가 의도한 대로 출력되는 걸 확인하는 데 샘플 데이터를 활용한다. lib/screen/home_screen.dart 
+파일의 맨 위에 샘플 데이터를 추가한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+4. 메시지를 화면에 그리는 함수를 작성한다. 메시지당 buildMessageItem() 함수를 실행하면 화면에 메시지 하나를 그려주거나 
+날짜와 함께 메시지를 그려준다. 이 기능을 제공할 DateTime을 String으로 변환하는 getStringDate() 함수와 두 날짜를 
+다른 날짜로 인식해야 하는지 확인하는 shouldDrawDate() 함수를 만든다.  
+  
+lib -> screen -> home_screen.dart  
+  
+5. 이제 화면에 UI를 보여줄 차례다. buildMessageList() 함수를 만들어서 화면에 로고와 메시지들을 보여줄 ListView를 작업한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+6. 앱을 실행하면 로고와 메세지를 볼 수 있다.  
+  
+7. 마지막 UI 작업으로 채팅 입력 텍스트 필드를 화면 아래에 배치한다. Column 위젯으로 ListView 위젯과 TextField 위젯을 
+세로로 배치하고 약간의 패딩을 입혀주면 된다. 마지막으로 비어 있는 handleSendMessage() 함수를 정의하고 제미나이에게 
+메시지를 보내는 로직은 나중에 작업한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+
 
