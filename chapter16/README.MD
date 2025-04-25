@@ -216,3 +216,14 @@ lib -> component -> logo.dart
   
 lib -> component -> point_notification.dart  
   
+# **Message 위젯 구현하기**  
+Message 위젯은 제미나이와 내가 한 채팅 내용을 보여줄 채팅 버블이다. 코드는 약간 길지만 로직은 단순하다. Text 위젯을 
+Container 위젯으로 감싸고 테두리와 배경을 설정해서 디자인한다. 내가 보낸 채팅 메시지는 오른쪽에, 제미나이가 보낸 메시지는 
+왼쪽에 위치시킨다.  
+  
+1. 이 기능을 사용할 alignLeft 파라미터를 정의하고 true이면 왼쪽에, false이면 오른쪽에 정렬한다.  
+  
+lib -> component -> message.dart  
+  
+
+  
