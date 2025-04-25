@@ -119,7 +119,9 @@ List<IsarLinkBase<dynamic>> _messageModelGetLinks(MessageModel object) {
 }
 
 void _messageModelAttach(
-    IsarCollection<dynamic> col, Id id, MessageModel object) {}
+    IsarCollection<dynamic> col, Id id, MessageModel object) {
+  object.id = id;
+}
 
 extension MessageModelQueryWhereSort
     on QueryBuilder<MessageModel, MessageModel, QWhere> {
