@@ -342,6 +342,14 @@ WidgetsBinding.instance.addPostFrameCallback() 함수는 현재 프레임이 렌
   
 2. 이제 제미나이에게 메시지를 보내면 응답을 업데이트받을 때마다 매번 아래로 스크롤되는 걸 확인할 수 있다.  
   
+# **핵심 요약**  
+1. 제미나이 AI API를 사용하면 제미나이 AI와 REST API를 사용해서 통신할 수 있다.  
+2. ListView에 ScrollController를 입력해주면 ScrollController를 사용해서 자동으로 스크롤이 되도록 할 수 있다.  
+3. WidgetsBinding.instance.addPostFrameCallback() 함수는 렌더링이 끝난 후 딱 한번 원하는 로직을 실행할 수 있도록 
+해준다.  
+4. StreamBuilder를 사용하면 Stream으로부터 데이터를 지속적으로 받아와 UI를 업데이트할 수 있다.  
+5. Isar 데이터베이스를 사용하면 앱 데이터를 기기에 저장할 수 있다.  
+  
 
   
 
