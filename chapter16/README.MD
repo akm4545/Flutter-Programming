@@ -233,4 +233,20 @@ DateDivider 위젯으 날짜를 입력받고 화면에 '2024년 11월 23일' 형
   
 lib -> component -> date_divider.dart  
   
+# **ChatTextField 위젯 구현하기**  
+ChatTextFiled 위젯은 코드가 약간 길지만 단순 디자인 요소밖에 없다. ChatTextField 위젯은 파라미터를 네 개 입력받는다.  
+  
+1. TextField에 입력된 값을 받아올 수 있도록 controller를 입력받고 메시지 전송 버튼을 눌렀을 때 함수를 실행할 수 
+있도록 onSend를 입력받는다. 추가로 혹시 있을 에러를 보여줄 error 파라미터를 입력받고 제미나이가 답변을 생성하는 동안 
+추가로 메시지를 보낼 수 없도록 loading 파라미터를 입력받는다.  
+  
+lib -> component -> chat_text_field.dart  
+  
+# **MessageModel 구현하기**  
+제미나이와 사용자가 채팅을 하면 결괏값을 MessageModel의 규격에 맞게 저장한다. MessageModel은 고유 식별값인 ID값, 
+내가 보낸 메시지인지 확인할 수 있는 isMaine 파라미터, 주고받은 메시지를 저장하는 message 파라미터, 적립된 포인트를 알 
+수 있는 point 파라미터 그리고 생성된 날짜를 저장하는 date 파라미터가 있다.  
+  
+1. lib -> model -> message_model.dart 파일을 생성한 후 코드를 작성한다.  
+  
 
