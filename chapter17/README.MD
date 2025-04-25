@@ -68,6 +68,10 @@ lib -> screen -> home_screen.dart
   
 lib -> main.dart  
   
+# **레이아웃 구상하기**  
+프로젝트를 본격적으로 시작하기에 앞서 프로젝트에서 사용할 색상들을 한 파일에 정리한다. 그다음 HomeScreen 그리고 
+CreateScheduleBottomSheet 순서로 구상한다.  
+  
 
 
 
