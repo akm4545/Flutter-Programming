@@ -36,6 +36,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController controller = TextEditingController();
 
+  // 코드로 스크롤하기 위해 선언한다
+  final ScrollController scrollController = ScrollController();
+
   // 로딩여부를 확인하는 변수
   bool isRunning = false;
 
@@ -61,7 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   .watch(fireImmediately: true),
                 builder: (context, snapshot) {
                   final messages = snapshot.data ?? [];
-                  return buildMessageList();
+
+                  // 현재 build()가 끝나고 딱 한 번만 함수를 실행한다
+                  WidgetsBinding.instance.addPostFrameCallback((_) async =>
+                    scrollToBottom());
+
+                  return buildMessageList(messages);
                 },
               ),
             ),
@@ -84,6 +92,22 @@ class _HomeScreenState extends State<HomeScreen> {
     // return Scaffold(
     //   body: Text('Home Screen'),
     // );
+  }
+
+  // ListView의 가장 아래로 이동하는 함수
+  void scrollToBottom() {
+    // 현재 위치가 최대 스크롤 가능 위치가 아닐 때만 실행한다
+    if(scrollController.position.pixels != scrollController.position.maxScrollExtent){
+      // 원하는 위치까지 스크롤을 가능하도록 하는 함수
+      scrollController.animateTo(
+        // 최대 스크롤 가능한 위치를 pixel로 제공한다
+        scrollController.position.maxScrollExtent,
+        // 약 300ms에 걸쳐서 스크롤 애니메이션을 실행한다
+        duration: const Duration(milliseconds: 300),
+        // easeOut: 애니메이션이 끝날수록 느려지는 유형으로 실행한다
+        curve: Curves.easeOut,
+      );
+    }
   }
 
   // 메시지 보내기 버튼을 누르면 실행할 함수
@@ -211,6 +235,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // 더는 샘플 데이터를 사용하지 않고 실제 데이터를 사용한다
   Widget buildMessageList(List<MessageModel> messages) {
     return ListView.separated(
+      // 선언한 컨트롤러를 ListView에 입력한다
+      controller: scrollController,
       itemCount: messages.length + 1,
       itemBuilder: (context, index) => index == 0
         ? buildLogo()
