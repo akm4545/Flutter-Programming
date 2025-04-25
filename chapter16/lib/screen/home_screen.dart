@@ -2,7 +2,7 @@ import 'package:chapter16/component/,essage.dart';
 import 'package:chapter16/component/chat_text_field.dart';
 import 'package:chapter16/component/date_divider.dart';
 import 'package:chapter16/component/logo.dart';
-import 'package:chapter16/component/mesagge_model.dart';
+import 'package:chapter16/model/mesagge_model.dart';
 import 'package:flutter/material.dart';
 
 final sampleData = [

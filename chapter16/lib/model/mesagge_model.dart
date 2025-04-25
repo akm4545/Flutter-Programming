@@ -1,6 +1,10 @@
+import 'package:isar/isar.dart';
+part 'mesagge_model.g.dart';
+
+@collection
 class MessageModel {
   // Message ID
-  final int id;
+  final Id id;
 
   // true : 내가 보낸 메시지 / false : AI가 보낸 메시지
   final bool isMine;

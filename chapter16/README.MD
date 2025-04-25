@@ -281,5 +281,17 @@ lib -> screen -> home_screen.dart
   
 lib -> screen -> home_screen.dart  
   
+# **Isar 세팅하기**  
+1. MessageModel 클래스를 Isar 컬렉션으로 변경한다.  
+  
+lib -> model -> message_model.dart  
+  
+2. 현재 프로젝트 위치에서 터미널에 dart run build_runner build 또는 flutter pub run build_runner build를 실행해서 
+message_model.g.dart 파일을 생성한다. 그후 lib/model/message_model.g.dart 파일이 생성된 걸 확인한다.  
+  
+3. lib/main.dart 파일에 Isar 초기화를 한다. 생성된 Isar 객체를 GetIt에 등록해 프로젝트 어디에서든 사용할 수 있다.  
+  
+lib -> main.dart  
+  
 
 
