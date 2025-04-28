@@ -195,3 +195,23 @@ lib -> screen -> home_screen.dart
   
 5. 코드를 저장한 후 핫 리로드를 실행하면 일정 카드가 보인다.  
   
+# **오늘 날짜를 보여주기: TodayBanner 위젯**  
+TodayBanner 위젯은 MainCalendar 위젯과 ScheduleCard 위젯 사이에 오늘 날짜를 보여준다. 선택된 날짜와 날짜에 해당하는 
+일정 개수로 구성되어 있으니 간단하게 구현한다.  
+  
+1. 우선 lib/component/today_banner.dart 파일을 생성해서 TodayBanner StatelessWidget을 구현한다.  
+  
+lib -> component -> today_banner.dart  
+  
+TodayBanner 위젯은 선택된 날짜와 해당하는 일정 개수를 부모 위젯에서 입력받을 수 있도록 변수를 선언한다.  
+  
+2. TodayBanner 위젯을 HomeScreen에 사용한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+selectedDate 매개변수에는 selectedDate 변수를 입력해주면 되고 count 변수에는 임시로 0을 입력한다.  
+  
+3. 코드를 저장해 핫 리로드를 진행하면 목표하는 디자인과 유사한 화면을 볼 수 있다.  
+  
+
+  
