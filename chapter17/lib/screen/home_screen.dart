@@ -1,6 +1,8 @@
 import 'package:chapter17/component/main_calendar.dart';
+import 'package:chapter17/component/schedule_bottom_sheet.dart';
 import 'package:chapter17/component/schedule_card.dart';
 import 'package:chapter17/component/today_banner.dart';
+import 'package:chapter17/const/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton( // 새 일정 버튼
+        backgroundColor: PRIMARY_COLOR,
+        onPressed: () {
+          showModalBottomSheet( // BottomSheet 열기
+            context: context,
+            isDismissible: true, // 배경 탭했을 때 BottomSheet 닫기
+            builder: (_) => ScheduleBottomSheet(),
+          );
+        },
+        child: Icon(
+          Icons.add,
+        ),
+      ),
       body: SafeArea( // 시스템 UI 피해서 UI 구현하기
         child: Column( // 달력과 리스트를 세로로 배치
           children: [

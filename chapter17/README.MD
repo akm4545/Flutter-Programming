@@ -213,5 +213,26 @@ selectedDate 매개변수에는 selectedDate 변수를 입력해주면 되고 co
   
 3. 코드를 저장해 핫 리로드를 진행하면 목표하는 디자인과 유사한 화면을 볼 수 있다.  
   
-
+# **일정 입력하기**  
+ScheduleBottomSheet는 사용자가 새로 추가할 일정을 입력할 수 있는 위젯이다. 텍스트 필드 3개와 버튼 하나로 이루어져 
+있다. 시작 시간, 종료 시간, 일정 내용을 입력한 후 저장 버튼을 누르면 선택된 날짜를 기준으로 일정을 생성한다.  
+  
+![img.png](image/img7.png)  
+  
+1. lib/component/schedule_bottom_sheet.dart 파일을 생성하고 일정 정보를 입력할 수 있는 위젯인 ScheduleBottomSheet를 
+구현한다. 이 위젯에는 요소가 많이 들어가므로 큰 들만 잡아준다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+ScheduleBottomSheet StatefulWidget을 생성하고 SafeArea 위젯에 화변의 반을 차지하는 흰색 Container 위젯을 하나 배치한다.  
+  
+2. HomeScreen에서 FloatingActionButton을 누르면 ScheduleBottomSheet가 화면에 나오도록 코드를 변경한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+floatingActionButton 매개변수에 FloatingActionButton 위젯을 입력해 준 후 bottom sheet를 실행하는 showModalBottomSheet() 
+함수를 이용해서 ScheduleBottomSheet 위젯을 bottom sheet로 실행한다.  
+  
+3. 코드를 다시 실행하면 HomeScreen 위젯의 오른쪽 아래에 FloatingActionButton이 구현된다. 이 버튼을 탭하면 ScheduleBottomSheet가 
+실행된다.  
   
