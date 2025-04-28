@@ -324,4 +324,16 @@ lib -> component -> main_calendar.dart
   
 3. main.dart 파일을 변경했으니 앱을 재시작해주면 영어로 설정되었던 TableCalendar 위젯이 한국어로 변경된 것을 볼 수 있다.  
   
+# **핵심 요약**  
+1. TableCalendar 플러그인은 가장 대중적으로 사용되는 플러터 달력 플러그인이다. 여러 스타일 매개변수를 이용해서 자유롭게 
+달력을 디자인할 수 있다.  
+2. ListView는 다수의 위젯을 리스트 형태로 보여줄 수 있는 위젯이다. ListView를 Expanded로 감싸면 남는 공간만큼 차지하도록 
+할 수 있다.  
+3. FloatingActionButton은 화면의 오른쪽 아래에 위치해 오른손잡이가 접근하기 쉽다.  
+4. BottomSheet는 아래에서 위로 화면을 덮는 위젯이다. showBottomSheet() 함수를 이용해서 실행할 수 있다.  
+5. TextField와 TextFormField는 사용자에게 글자 입력을 받을 수 있는 위젯이다. 텍스트 필드를 각각 따로 관리할 때는 
+TextField 위젯을, Form으로 통합해서 관리할 떄는 TextFormField 위젯을 사용한다. TextField나 TextFormField를 이용할 
+때는 키보드가 올라왔을 때 화면을 가리지 않는지 꼭 확인해야 한다. 키보드의 높이만큼 위젯 아래에 패딩을 추가하면 키보드를 
+피해서 위젯을 렌더링할 수 있다.  
+  
 
