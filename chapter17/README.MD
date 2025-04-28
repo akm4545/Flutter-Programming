@@ -81,6 +81,12 @@ CreateScheduleBottomSheet 순서로 구상한다.
 ![img.png](image/img4.png)  
   
 # **ScheduleBottomSheet**  
-ScheduleBottomSheet는 일정을 추가하거나 수정할 때 사용하는 위젯이다. 
+ScheduleBottomSheet는 일정을 추가하거나 수정할 때 사용하는 위젯이다. BottomSheet는 아직 배우지 않았지만 U&I 앱에서 
+작업했던 다이얼로그와 매우 비슷하다. CreateScheduleBottomSheet는 텍스트 필드와 저장 버튼으르 이루어져 있다. 일정 시작 
+시간과 종료 시간을 지정할 수 있는 시간 텍스트 필드와 일정 내용을 작성할 수 있는 내용 텍스트 필드를 사용해서 일정 정보를 
+입력하고 저장 버튼을 눌러서 일정을 저장한다.  
+  
+![img.png](image/img5.png)  
+  
 
 
