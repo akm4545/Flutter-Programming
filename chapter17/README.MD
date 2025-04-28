@@ -310,4 +310,18 @@ Container의 높이가 늘어난 만큼 아래에 패딩을 추가해줘서 위�
   
 lib -> screen -> home_screen.dart  
   
+# **달력 언어 설정하기**  
+1. 현재 달력이 사용하는 언어는 영어로 설정되어 있다. intl 패키지와 TableCalendar의 언어를 변경한다. 우선 main.dart 
+파일에서 intl 패키지를 초기화한다. main() 함수를 비동기로 변경하고 코드 두 줄을 추가해서 간단하게 intl 패키지를 프로젝트에서 
+사용할 수 있다.  
+  
+lib -> main.dart  
+  
+2. intl 패키지를 초기화했으니 TableCalendar에 한국어를 적용한다. TableCalendar 위젯의 locale 매개변수에 한국어를 
+의미하는 ko_kr을 입력한다.  
+  
+lib -> component -> main_calendar.dart  
+  
+3. main.dart 파일을 변경했으니 앱을 재시작해주면 영어로 설정되었던 TableCalendar 위젯이 한국어로 변경된 것을 볼 수 있다.  
+  
 
