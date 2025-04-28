@@ -88,5 +88,11 @@ ScheduleBottomSheet는 일정을 추가하거나 수정할 때 사용하는 위�
   
 ![img.png](image/img5.png)  
   
+# **구현하기**  
+일정 조회를 담당할 HomeScreen은 3등분으로 나눠져 있다. 화면의 중앙에 날짜 정보와 일정 개수가 위치하고 위에 달력, 아래에 
+리스트가 똑같은 크기로 위치한다. 달력은 TableCalendar 플러그인을 이용해서 구현하고 리스트는 ListView 위젯을 이용해서 
+구현한다. 다음으로 ScheduleBottomSheet는 세 개의 텍스트 필드와 하나의 저장 버튼으로 이루어져 있다. ScheduleBottomSheet
+가 화면의 반을 차지하도록 구현하고 저장 버튼이 가장 아래에 위치하게 한 다음 텍스트 필드들이 나머지 공간을 차지하게 한다.  
+  
 
 
