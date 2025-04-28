@@ -100,5 +100,62 @@ ScheduleBottomSheet는 일정을 추가하거나 수정할 때 사용하는 위�
   
 lib -> const -> colors.dart  
   
-
+# **달력 구현하기**  
+1. HomeScreen 화면 윗부분의 달력을 MainCalendar 클래스로 만든다. 달력 기능은 pubspec.yaml에 이미 추가한 table_calendar 
+플러그인을 사용한다.  
+  
+lib -> component -> main_calendar.dart  
+  
+table_calendar 플러그인을 불러오면 TableCalendar라는 위젯을 사용할 수 있는데 이 위젯은 firstDay, lastDay, 그리고 
+focusedDay 매개변수를 필수로 입력해줘야 한다. firstDay 매개변수는 달력에서 선택할 수 있는 제일 오래된 날짜를 의미한다. 
+1800년 1월 1일로 설정했다. lastDay 매개변수는 달력에서 선택할 수 있는 제일 미래의 날짜를 의미한다. 이 값은 3000년 
+1월 1일로 여유롭게 설정한다. 마지막으로 focusedDay는 현재 달력이 화면에 보여줄 날짜를 의미한다. 이 날짜를 현재 날짜 
+즉, DateTime.now()로 설정해서 앱이 실행되고 있는 날짜가 보이도록 한다.  
+  
+2. home_screen.dart에 MainCalendar를 적용한다. 위쪽에는 달력이, 아래쪽에는 일정 리스트가 보여야 하는 구조이니 Column 
+위젯을 사용해서 배치한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+3. 코드를 실행하면 화면에 달력이 보인다.  
+  
+4. 달력을 띄우는 걸 성공했으니 달력을 스타일링한다. TableCalendar 위젯의 스타일은 크게 두 가지로 나눌 수 있다. 화살표와 
+년도 및 월이 보이는 최상단은 headerStyle 매개변수를 통해서 지정할 수 있고 날짜들이 배열돼 있는 아랫부분은 calendarStyle 
+매개변수를 사용해 지정할 수 있다. 그리고 이 스타일들을 이미 많이 사용해본 BoxDecoration과 TextStyle을 사용해서 정의한다.  
+  
+lib -> component -> main_calendar.dart  
+  
+titleCentered 매개변수에 true를 입력하면 연, 월을 보여주는 글자가 가운데 정렬된다. formatButtonVisible 매개변수는 
+날짜들을 매월 1주일씩 보여줄지 2주일씩 보여줄지 전체를 다 보여줄지 선택할 수 있는 버튼의 존재 여부를 지정할 수 있다. 필요 
+없는 기능이니 false를 입력한다. titleStyle 매개변수는 연, 월을 보여주는 글자의 스타일을 변경한다.  
+  
+TableCalendar는 날짜 칸을 하나하나 스타일링하도록 구현되어있다. defaultDecoration은 날짜 칸의 기본 BoxDecoration을 
+설정할 수 있는 매개변수이다. weekendDecoration은 주말 날짜 칸의 BoxDecoration을, selectedDecoration은 탭해서 선택된 
+날짜의 BoxDecoration을 설정하는 매개변수이다.  
+  
+defaultTextStyle은 날짜 칸의 기본 TextStyle을 weekendTextStyle은 주말 날짜 칸의 TextStyle을 selectedTextStyle은 
+선택된 날짜의 TextStyle을 설정하는 매개변수다.  
+  
+5. 코딩을 완료한 후 핫 리로드를 해서 목표한 UI에 근접한 달력을 확인하자.  
+  
+6. 달력에 기능을부여할 차례다. TableCalendar 위젯은 날짜가 선택될 떄마다 실행되는 콜백 함수를 등록하고 추가적으로 어떤 
+날짜가 현재 선택된 상태인지 달력에 표시해주어야 한다. HomeScreen에서 모든 상태를 관리할 계획이기 때문에 MainCalendar에 
+관련 코드를 채운다.  
+  
+lib -> component -> main_calendar.dart  
+  
+OnDaySelected 타입은 table_calendar 플러그인에서 기본 제공하는 typedef 이다. onDaySelected는 달력의 날짜가 탭될 
+때마다 실행된다. 첫 번재 매개변수에 선택된 날짜(selectedDate)를 입력받고 두 번째 매개변수에 현재 화면에 보이는 날짜를 
+입력받는다(focusedDay). selectedDayPredicate는 어떤 날짜를 선택된 날짜로 지정할지 결정하는 함수다. 현재 달력에 보이는 
+모든 날짜를 순회하며 실행하는 함수로 true가 반환되면 선택된 날짜로 표시되고 false가 반환되면 선택되지 않은 날짜로 지정된다. 
+HomeScreen에서 입력해줄 selectedDate와 연, 월, 일 값이 같으면 선택된 날짜로 지정한다.  
+  
+7. MainCalendar 위젯에 생성한 매개변수들을 HomeScreen에서 입력한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+상태 관리가 필요하니 우선 HomeScreen 위젯을 StatefulWidget으로 전환한다. 선택된 날짜를 관리할 selectedDate 변수를 
+선언한다. onDaySelected() 함수를 선언해서 날짜가 탭될 때마다 selectedDate 변수를 변경한다.  
+  
+8. 이제 앱을 재시작하고 나서 아무 날짜를 탭하면 해당 날짜가 선택된다.(그에 따라 스타일도 바뀐다)
 
