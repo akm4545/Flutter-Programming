@@ -157,5 +157,41 @@ lib -> screen -> home_screen.dart
 상태 관리가 필요하니 우선 HomeScreen 위젯을 StatefulWidget으로 전환한다. 선택된 날짜를 관리할 selectedDate 변수를 
 선언한다. onDaySelected() 함수를 선언해서 날짜가 탭될 때마다 selectedDate 변수를 변경한다.  
   
-8. 이제 앱을 재시작하고 나서 아무 날짜를 탭하면 해당 날짜가 선택된다.(그에 따라 스타일도 바뀐다)
-
+8. 이제 앱을 재시작하고 나서 아무 날짜를 탭하면 해당 날짜가 선택된다.(그에 따라 스타일도 바뀐다)  
+  
+# **선택된 날의 일정을 보여주기: ScheduleCard 위젯**  
+선택된 날짜에 해당되는 일정을 보여줄 ScheduleCard를 작업한다. 각 일정은 시간(시작 시간부터 종료 시간) 영역과 내용 
+영역으로 구성된다. ScheduleCard 위젯을 구현할 때 시간과 내용으로 자식 위젯을 추가로 분리해서 작업한다.  
+  
+![img.png](image/img6.png)  
+  
+1. lib/component/schedule_card.dart 파일을 생성한다. 먼저 시간을 표현할 _Time 위젯부터 작업한다.  
+  
+lib -> component -> schedule_card.dart  
+  
+시작 시간과 종료 시간은 외부에서 입력해줄 수 있도록 매개변수로 정의한다. 현재 시간 정보는 시작 시간이 위에, 종료 시간이 
+아래에 배치되어 있다. 세로로 배치할 때는 Column 위젯을 사용해야 하기 때문에 Column 위젯으로 시작 시간과 종료 시간을 배치한다.  
+  
+2. 내용을 렌더링할 _Content 위젯을 작업한다.  
+  
+lib -> component -> schedule_card.dart  
+  
+부모 위젯에서 내용을 String 값으로 입력해주고 Expanded 위젯에 감싸서 좌우로 최대한 크기를 차지하게 하는 게 중요하다.  
+  
+3. ScheduleCard를 완성시킬 자식 위젯들이 모두 정리되었다. 이제 ScheduleCard 위젯을 작성한다. _Time 위젯과 _Content 위젯에 
+입력할 시작 시간, 종료 시간 그리고 내용을 모두 변수로 부모 위젯으로부터 받는다.  
+  
+lib -> component -> schedule_card.dart  
+  
+IntrinsicHeight 위젯은 내부 위젯들의 높이를 최대 높이로 맞춰준다. 예를 들어 _Time 위젯은 Column 위젯을 사용 중이기 
+떄문에 ScheduleCard 위젯의 최대 크기만큼 높이를 차지한다. 하지만 _Content 위젯은 Column 위젯을 사용하지 않기 떄문에 
+최소 크기만 차지하며 세로로 가운데 정렬이 된다. 이럴 때 _Time 위젯과 _Content 위젯의 높이를 똑같이 맞춰주려면 IntrinsicHeight 
+위젯을 사용해서 최대 크기를 차지하는 위젯만큼 다른 위젯들 크기를 동일하게 맞춰주어야 한다.  
+  
+4. ScheduleCard를 완성했으니 HomeScreen에 적용한다. MainCalendar 위젯 아래에 샘플로 ScheduleCard 위젯을 위치하고 
+12시부터 14시까지 진행되는 프로그래밍 공부 일정을 샘플로 추가한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+5. 코드를 저장한 후 핫 리로드를 실행하면 일정 카드가 보인다.  
+  

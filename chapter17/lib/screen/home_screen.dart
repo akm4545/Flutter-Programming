@@ -1,4 +1,5 @@
 import 'package:chapter17/component/main_calendar.dart';
+import 'package:chapter17/component/schedule_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
             MainCalendar(
               selectedDate: selectedDate, // 선택된 날짜 전달하기
               onDaySelected: onDaySelected, // 날짜가 선택됐을 때 실행할 함수
+            ),
+            ScheduleCard( // 구현해둔 일정 카드
+              startTime: 12,
+              endTime: 14,
+              content: '프로그래밍 공부',
             ),
           ],
         ),
