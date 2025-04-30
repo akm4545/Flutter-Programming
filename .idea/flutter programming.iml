@@ -39,6 +39,21 @@
       <excludeFolder url="file://$MODULE_DIR$/chapter12/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/chapter12/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/chapter12/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter13/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter13/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter13/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter14/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter14/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter14/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter15/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter15/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter15/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter16/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter16/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter16/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter17/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter17/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chapter17/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
