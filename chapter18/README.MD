@@ -138,3 +138,66 @@ lib -> main.dart
 반복적인 코드를 너무 많이 사용해야 한다. GetIt으로 값을 한 번 등록해두면 어디서든 처음에 주입한 값 즉 같은 database 변수를 
 GetIt.I를 통해서 프로젝트 어디서든 사용할 수 있다.  
   
+# **일정 데이터 생성하기**  
+1. 일정을 데이터베이스에 생성할 차례다. 현재 ScheduleBottomSheet 위젯에 텍스트 필드를 생성만 해두고 입력된 값을 
+가져오는 기능을 아직 만들지 않았다. 텍스트 필드를 TextFormField 위젯을 기반으로 구현했기 떄문에 상위에 Form 위젯을 
+사용해주면 손쉽게 데이터를 가져올 수 있다.  
+  
+lib -> component -> custom_text_field.dart  
+  
+Form 위젯과의 호환을 위해서 CustomTextField 위젯에 onSaved와 validator 매개변수를 주입해준다. validator 매개변수는 
+Form 위젯의 validate() 함수를 실행하면 실행되는 함수이고 onSaved 매개변수는 Form 위젯의 save() 함수를 실행하면 
+실행되는 함수이다.  
+  
+2. 이제 ScheduleBottomSheet에서 Form 위젯을 사용한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+Form 위젯은 key 매개변수에 GlobalKey 값을 넣어주면 된다. 그리고 Form을 조작할 때 같은 key를 사용해서 Form 내부의 
+TextFormField를 일괄 조작한다. 그리고 모든 CustomTextField에 새로 추가한 onSaved와 validator 매개변수를 모두 입력한다.  
+  
+3. formKey는 save() 함수와 validate() 함수를 실행할 수 있다. validate() 함수를 실핼하면 Form 서브에 있는 모든 
+TextFormField의 validator 매개변수에 제공된 함수가 실행된다. 이 함수의 첫 번쨰 매개변수에는 입력된 값이 제공되며 
+에러가 있을 경우 해당 에러 메시지를 String 값으로 반환하고 에러가 없으면 null을 반환한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+검증이 null을 반환하면 정상, 아니면 에러 메시지를 반환한다.  
+  
+4. 이제 Form의 validate() 함수와 save() 함수를 한 번 실행한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+validate() 함수는 Form의 서브에 있는 모든 TextFormField의 validate 매개변수에 입력된 함수들을 실행한다. 모든 함수들이 
+null을 반환하면 validate() 함수가 true를 반환하고 만약에 어느 한 함수라도 String 값을 반환해서 에러를 발생시키면 
+validate() 함수는 false를 반환한다.  
+  
+save() 함수는 마찬가지로 모든 서브 TextFormField들에 onSaved 매개변수에 입력된 함수를 실행한다. 이 함수들은 작성한 
+것처럼 텍스트 필드의 값을 변수에 저장하는 역할을 한다. 그러니 validate() 함수를 실행해서 true를 반환받으면 텍스트 필드 
+검증에 문제가 없다는 뜻이니 save() 함수를 실행해서 텍스트 필드의 값들을 변수에 저장하면 된다.  
+  
+5. 위 코드를 추가한 후 빌드해 앱을 실행한다. 원하는 날짜를 하나 정하고 일정 추가 버튼을 누른다. 입력폼(ScheduleBottomSheet) 
+에서 시작 시간에 12, 종료 시간에 14, 내용에 프로그래밍 공부하기를 입력한 후 저장 버튼을 누르면 12, 14, 프로그래밍 공부하기가 
+순서대로 출력된다. 텍스트 필드에 입력된 값들이 변수에 잘 저장되고 있다는 의미다.  
+  
+6. LocalDatabase 클래스에 정의해놓은 createSchedule() 함수를 실행하려면 현재 선택된 날짜의 값을 ScheduleBottomSheet 
+위젯에서 갖고 있어야 한다. ScheduleBottomSheet 위젯에 매개변수를 새로 생성해서 HomeScreen으로부터 seletedDate 변수를 
+입력받는다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+lib -> screen -> home_screen.dart  
+  
+7. 저장 버튼을 눌렀을 때 SQLite 데이터베이스에 일정을 저장해야 한다. 이 기능은 미리 작성해놓은 LocalDatabase 클래스에서 
+수행할 수 있으니 GetIt을 통해 미리 생성해둔 LocalDatabase 인스턴스를 가져온 후 createSchedule() 함수를 실행한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+createSchedule() 함수를 실행하면 설계한 대로 일정 데이터를 SQLite 데이터베이스에 입력할 수 있다. 다만 매개변수에 꼭 
+SchedulesCompoanion을 입력해줘야 하는데 SchedulesCompanion에는 실제 Schedules 테이블에 입력될 값들을드리프트 패키지에서 
+제공하는 Value라는 클래스로 감싸서 입력해주면 된다.  
+  
+저장이 완료되면 뒤로 가기 기능을 실행해서 ScheduleBottomSheet를 닫는다.  
+  
+8. 코드를 저장한 후 다시 일정을 생성하면 저장 버튼 클릭 후 ScheduleBottomSheet 위젯이 닫힌다.  
+  
+
