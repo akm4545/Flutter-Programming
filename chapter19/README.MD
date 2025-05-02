@@ -121,6 +121,27 @@ calendar_scheduler_server이어야 한다. 아니라면 cd 명령으로 해당 �
 작업한다. 더 나아가 단순한 API 연동을 마친 후 캐시를 사용한 긍정적 응답을 적용해서 사용자의 레이턴시 체감을 최소화할 수 
 있는 방법을 알아본다.  
   
+# **REST API용으로 모델 구현하기**  
+model/schedule.dart 파일에 있는 Schedule은 드리프트 전용으로 구현된 모델이다. REST API를 연동할 떄 사용하기에 
+적합한 모델을 따로 구현한다.  
+  
+1. model/schedule_model.dart 파일을 생성한 후 Schedule에 해당되는 모델을 구현한다. 모델의 속성들은 Schedules 클래스와 
+똑같이 구현한다.  
+  
+lib -> model -> schedule_model.dart  
+  
+REST API 요청 응답을 받으면 JSON 형식으로 데이터를 받게 된다. JSON 형식 그대로 fromJson 생성자에 넣어주면 자동으로 
+ScheduleModel에 매핑되도록 코드를 작성했다.  
+  
+fromJson이 JSON으로부터 ScheduleModel을 만들어내는 기능이라면 toJson()은 ScheduleModel을 JSON 형식으로 변환하는 
+함수이다. 플러터에서 데이터를 관리할 때는 클래스 형태롤 관리하면 편하지만 서버로 네트워크 요청을 보낼 떄는 다시 JSON 
+형식으로 데이터를 변환해야 한다. 이 과정에서 toJson() 함수가 사용된다.  
+  
+copyWith() 함수는 플러터에서 굉장히 흔히 사용되는 함수다. 현대에는 불변 즉, 한 번 선언한 인스턴스를 다시 변경하지 않는 
+기법을 사용한다. 하지만 이미 존재하는 인스턴스에서 몇 개의 값만 변경하고 싶은 경우가 꼭 있다. 그럴 때 copyWith() 같은 
+함수를 생성해서 입력하지 않은 값들을 그대로 보존하고 입력해준 값들을 새로 저장할 수 있다.  
+  
+
 
   
 
