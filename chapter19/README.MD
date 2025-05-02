@@ -218,6 +218,19 @@ deleteSchedule() 함수는 createSchedule() 함수와 마찬가지로 API 요청
   
 lib -> provider -> schedule_provider.dart  
   
+# **프로바이더 초기화하기**  
+프로바이더는 글로벌 상태 관리 툴이기 때문에 한 번 최상위에 선언을 해주면 최하단 위젯까지 모두 프로바이더의 속성들을 
+사용할 수 있어야 한다. 이 작업이 가능하려면 프로젝트 최상위에 ScheduleProvider를 초기화하는 작업을 해야 한다.  
+  
+1. 우선 ScheduleRepository와 ScheduleProvider를 인스턴스화한다. 그리고 ChangeNotifierProvider 위젯으로 MaterialApp 
+위젯을 감싼다. ChangeNotifierProvider 위젯은 프로바이더를 현재 위치에 주입시키고 주입한 위치의 서브에 있는 모든 
+위젯에서 프로바이더를 사용하도록 해준다.  
+  
+lib -> main.dart  
+  
+ChangeNotifierProvider는 create와 child 매개변수를 제공해야 하며 child는 이미 알고 있는 것처럼 자식 위젯을 제공하면 
+된다. create 매개변수는 서브 위젯들에 제공하고 싶은 프로바이더, 즉 ScheduleProvider를 반환하는 함수를 입력해주면 된다.  
+  
 
 
   
