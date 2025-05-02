@@ -1,11 +1,14 @@
 import 'package:chapter19/component/custom_text_field.dart';
 import 'package:chapter19/const/colors.dart';
+import 'package:chapter19/model/schedule_model.dart';
+import 'package:chapter19/provider/schedule_provider.dart';
 import 'package:flutter/material.dart';
 
 // material.dart 패키지의 Column 클래스와 중복되니 드리프트에서는 숨기기
 import 'package:drift/drift.dart' hide Column;
 import 'package:get_it/get_it.dart';
 import 'package:chapter19/database/drift_database.dart';
+import 'package:provider/provider.dart';
 
 class ScheduleBottomSheet extends StatefulWidget {
   final DateTime selectedDate; // 선택된 날짜 상위 위젯에서 입력받기
@@ -91,7 +94,8 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton( // 저장 버튼
-                    onPressed: onSavePressed,
+                    // onPressed: onSavePressed,
+                    onPressed: () => onSavePressed(context), // 함수에 context 전달
                     style: ElevatedButton.styleFrom(
                       foregroundColor: PRIMARY_COLOR,
                     ),
@@ -106,16 +110,26 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
     );
   }
 
-  void onSavePressed() async {
+  void onSavePressed(BuildContext context) async {
     if(formKey.currentState!.validate()){ // 폼 검증하기
       formKey.currentState!.save(); // 폼 저장하기
 
-      await GetIt.I<LocalDatabase>().createSchedule( // 일정 생성하기
-        SchedulesCompanion(
-          startTime: Value(startTime!),
-          endTime: Value(endTime!),
-          content: Value(content!),
-          date: Value(widget.selectedDate),
+      // await GetIt.I<LocalDatabase>().createSchedule( // 일정 생성하기
+      //   SchedulesCompanion(
+      //     startTime: Value(startTime!),
+      //     endTime: Value(endTime!),
+      //     content: Value(content!),
+      //     date: Value(widget.selectedDate),
+      //   ),
+      // );
+
+      context.read<ScheduleProvider>().createSchedule(
+        schedule: ScheduleModel(
+          id: 'new_model', // 임시 ID
+          content: content!,
+          date: widget.selectedDate,
+          startTime: startTime!,
+          endTime: endTime!,
         ),
       );
 

@@ -231,6 +231,71 @@ lib -> main.dart
 ChangeNotifierProvider는 create와 child 매개변수를 제공해야 하며 child는 이미 알고 있는 것처럼 자식 위젯을 제공하면 
 된다. create 매개변수는 서브 위젯들에 제공하고 싶은 프로바이더, 즉 ScheduleProvider를 반환하는 함수를 입력해주면 된다.  
   
+# **드리프트를 프로바이더로 대체하기**  
+드리프트를 사용할 때는 StreamBuilder를 사용해서 Stream값을 리스닝했지만 프로바이더를 사용하면 더는 StreamBuilder를 
+사용할 필요가 없다. 프로바이더는 데이터를 불러올 수 있는 watch()와 read() 함수를 제공해주기 떄문이다. watch() 함수는 
+StreamBuilder와 같이 지속적으로 값이 변경될 때마다 즉, notifyListeners() 함수가 실행될 떄마다 build() 함수를 
+재실행해준다. read() 함수의 경우 FutureBuilder와 유사하며 단발성으로 값을 가져올 때 사용된다. 한 변수의 값에 따라 
+UI를 다르게 보여줘야 하는 경우 watch() 함수를 많이 사용하며 버튼 탭 같은 특정 액션 후에 값을 가져올 떄는 read() 함수를 
+많이 사용한다.  
+  
+1. 첫 번째로 HomeScreen 위젯을 StatefulWidget에서 StatelessWidget으로 변경하는 작업이 필요하다. 이제부터 StatefulWidget이 
+아닌 프로바이더로 상태(데이터)를 관리할 계획이기 떄문에 더는 메모리를 많이 차지하는 StatefulWidget을 사용할 필요가 없다. 
+StatelessWidget으로 변경하면 setState()를 더는 사용할 수 없으니 selectedDate 변수와 setState()와 관련된 코드를 
+삭제한다. 추가적으로 _HomeScreenState에 있는 build() 함수를 HomeScreen StatelessWidget으로 옮겨서 전환을 마친다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. 현재 HomeScreen에는 일정 개수를 보여주는 위치와 일정 리스트를 렌더링하는 곳에서 StreamBuilder를 사용한다. 두 위치에서 
+필요한 변숫값은 날짜에 해당되는 일정 리스트다. build() 함수의 맨 위에 SchduelProvider를 watch()하는 코드를 작성하고 현재 
+선택한 날짜에 해당되는 일정들을 불러온다.  
+  
+lib -> screen -> home_screen.dart  
+  
+Provider 패키지를 꼭 불러와야지만 context.watch() 함수를 실행할 수 있다.  
+Provider 패키지를 불러오면 BuildContext가 제공되는 어느 곳에서든 context.watch() 함수 및 context.read() 함수를 
+실행할 수 있다. context.watch() 함수에는 불러오고 싶은 Provider 타입을 제네릭으로 제공해주면 된다. context.watch()가 
+build() 함수 내에서 실행되는 순간 불러온 Provider에서 notifyListeners() 함수가 실행되면 build() 함수가 다시 실행된다. 
+결과적으로 새로 갱신된 값에 의해서 위젯이 새로 렌더링된다. context.watch()는 미리 main.dart 파일에 선언해둔 같은 
+인스턴스의 scheduleProvider 변수를 반환해준다.  
+  
+selectedDate 변수를 이제 더는 위젯에서 관리하지 않고 프로바이더에서 관리하기 때문에 provider로부터 selectedDate 값을 
+불러와야 한다.  
+  
+ScheduleProvider에는 일정을 날짜별로 정리한 cache 값을 저장해두었다. 그러니 현재 선택한 날짜에 해당되는 일정들을 불러오려면 
+cache 변수에서 selectedDate key에 해당되는 value를 불러오면 된다.  
+  
+3. 드리프트를 통해 StreamBuilder를 사용해야지만 불러올 수 있던 값들을 Provider를 통해서 모두 변수로 저장해두었으니 
+StreamBuilder를 하나씩 제거하는 작업을 진행한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+드리프트로 정의한 삭제 작업을 ScheduleProvider에 정의한 삭제 작업으로 대체한다.  
+  
+4. 일정을 생성하는 코드를 서버 연동 코드로 대체한다. 일정을 생성하는 코드는 ScheduleBottomSheet의 onSavePressed() 
+함수에 정의돼 있다. 삭제하는 기능과 마찬가지로 드리프트로 연동되어 있는 코드를 삭제하고 ScheduleProvider의 deleteSchedule()로 
+대체한다. 그리고 ScheduleBottomSheet에서도 Provider값을 불러와야 하기 떄문에 onSavedPressed() 함수의 첫 번째 매개변수에 
+BuildContext를 입력받도록 한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+일정 생성 요청을 보낼 때 ID는 어차피 사용되지 않으니 아무런 값이나 넣어줘도 괜찮다. 어떤 값을 넣어도 ID는 서버에서 
+자동으로 생성된 값으로 대체된다.  
+  
+5. 마지막으로 날짜 선택 코드를 변경한다. 기존에는 StatefulWidget의 setState() 함수를 이용해서 날짜를 변경했지만 이제 
+Provider로 날짜 변경을 실행해줘야 한다. HomeScreen의 onDaySelected() 함수에 BuildContext를 입력받고 ScheduleProvider의 
+changeSelectedDate() 함수를 실행한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+onDaySelected() 함수에 BuildContext를 포함해서 반환해준다.  
+  
+6. 드리프트로부터 프로바이더로 코드 전환이 잘되었는지 확인한다.  
+- 서버를 구동한다.  
+- 앱을 재실행하고 달력에서 원하는 날짜를 누르면 해당 날짜가 선택된다.  
+- 해당 날짜에 일정을 생성하면 생성한 일정이 HomeScreen에 생성된다.  
+- 생성된 일정을 왼쪽으로 밀어서 삭제하면 일정이 HomeScreen에서 제거된다.  
+  
 
 
   
