@@ -174,6 +174,50 @@ lib -> repository -> schedule_repository.dart
   
 lib -> repository -> schedule_repository.dart  
   
+# **글로벌 상태 관리 구현하기: ScheduleProvider**  
+프로바이더는 플러터 프레임워크 사용자들에게 인기 있는 글로벌 상태 관리 툴이다. 간단하고 빠르게 상태 관리 기능을 구현해서 
+직관적으로 사용할 수 있다는 장점이 있다. ChangeNotifier 클래스를 상속하기만 하면 어떤 클래스든 프로바이더로 상태 
+관리를 하도록 만들 수 있다.  
+  
+1. ScheduleProvider 클래스를 생성하고 material 패키지에서 제공하는 ChangeNotifier 클래스를 상속받는다. ScheduleProvider에는 
+변수 3개가 필요하다. 첫 번째는 바로 앞에서 구현한 ScheduleRepository, 두 번째는 선택한 날짜를 저장하는 selectedDate, 
+마지막으로 API 요청을 통해서 받아온 일정 정보를 저장할 cache 변수이다. provider/schedule_provider.dart 파일을 생성하고 
+ScheduleProvider 클래스를 선언한 다음 변수 3개를 선언한다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+2. ChangeNotifier는 일반 클래스처럼 기능을 정의하고 해당 기능들을 위젯에서 실행해주면 된다. ScheduleRepository에서 
+정의한 것처럼 일정을 불러오는 기능, 생성하는 기능, 삭제하는 기능을 구현해야 한다. 서버에서 받아온 값을 cache 변수에 집중하면서 
+일단 날짜별 일저을 불러오는 기능부터 구현한다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+cache.update를 통해 매개변수에 입력한 날짜의 일정들을 GET 메서드에서 받은 응답값으로 대체한다. ifAbsent 매개변수는 date
+에 해당되는 key 값이 존재하지 않을 때 실행되는 함수이니 똑같이 GET 메서드에서 받아온 응답값을 입력한다. notifyListeners()는 
+ChangeNotifier 클래스를 상속하는 이유다. notifyListeners() 함수를 실행하면 현재 클래스를 watch() 하는 모든 위젯들의 build() 
+함수를 다시 실행한다. 위젯들은 cache 변수를 바라보도록 할 계획이니 cache 변수가 업데이트될 때마다 notifyListeners() 함수를 
+실행해서 위젯을 다시 빌드한다.  
+  
+3. 이번엔 일정을 생성하는 createSchedule() 함수를 작업한다. createSchedule() 함수는 POST 메서드로 일정을 생성한 다음 
+cache 변수에 생성된 일정을 삽입해주면 된다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+새로운 일정을 생성하는 날짜에 해당되는 value에 새로운 일정을 추가한다. 그리고 모든 일정을 시작 시간 기준으로 오름차순 
+정렬한다. 만약에 해당되는 날짜에 값이 없다면 새로 생성한 일정이 있는 리스트를 추가한다.  
+  
+4. 일정을 삭제하는 deleteSchedule() 함수를 작성한다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+deleteSchedule() 함수는 createSchedule() 함수와 마찬가지로 API 요청이 끝나면 cache 변수에서 삭제한 일정을 지워주는 
+작업을 한다.  
+  
+5. 마지막으로 selectedDate를 변경하는 코드를 작성한다. changeSelectedDate() 라는 함수를 생성하고 단순히 매개변수로 
+입력받은 날짜 변수로 selectedDate 변수를 대체하는 코드를 작성하면 된다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
 
 
   
