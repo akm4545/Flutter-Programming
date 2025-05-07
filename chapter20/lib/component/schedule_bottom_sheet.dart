@@ -1,13 +1,13 @@
-import 'package:chapter19/component/custom_text_field.dart';
-import 'package:chapter19/const/colors.dart';
-import 'package:chapter19/model/schedule_model.dart';
-import 'package:chapter19/provider/schedule_provider.dart';
+import 'package:chapter20/component/custom_text_field.dart';
+import 'package:chapter20/const/colors.dart';
+import 'package:chapter20/model/schedule_model.dart';
+import 'package:chapter20/provider/schedule_provider.dart';
 import 'package:flutter/material.dart';
 
 // material.dart 패키지의 Column 클래스와 중복되니 드리프트에서는 숨기기
 import 'package:drift/drift.dart' hide Column;
 import 'package:get_it/get_it.dart';
-import 'package:chapter19/database/drift_database.dart';
+import 'package:chapter20/database/drift_database.dart';
 import 'package:provider/provider.dart';
 
 class ScheduleBottomSheet extends StatefulWidget {

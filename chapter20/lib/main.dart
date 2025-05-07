@@ -1,7 +1,7 @@
-import 'package:chapter19/database/drift_database.dart';
-import 'package:chapter19/provider/schedule_provider.dart';
-import 'package:chapter19/repository/schedule_repository.dart';
-import 'package:chapter19/screen/home_screen.dart';
+import 'package:chapter20/database/drift_database.dart';
+import 'package:chapter20/provider/schedule_provider.dart';
+import 'package:chapter20/repository/schedule_repository.dart';
+import 'package:chapter20/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:get_it/get_it.dart';

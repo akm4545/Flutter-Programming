@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chapter19/model/schedule.dart';
+import 'package:chapter20/model/schedule.dart';
 import 'package:drift/drift.dart';
 
 import 'package:drift/native.dart';
