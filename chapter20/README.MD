@@ -132,3 +132,15 @@ Firebase 플러그인들을 사용하려면 iOS 최소 버전(iOS Minimum Deploy
   
 ![img.png](image2/img4.png)  
   
+# **윈도우에서 설치 및 로그인**  
+1. 인터넷 브라우저를 이용해서 다음 링크로 접속한다  
+- firebase.google.com/docs/cli#install-cli-windows  
+  
+2. 접속한 사이트의 Windows용 파이어베이스 CLI 바이너리를 눌러서 설치 파일을 내려받는다.  
+  
+![img.png](image2/img5.png)  
+  
+3. 파이어베이스 CLI를 실행해서 로그인을 진행한다.  
+  
+![img.png](image2/img6.png)  
+  
