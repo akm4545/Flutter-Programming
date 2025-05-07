@@ -245,3 +245,18 @@ Firebase.initializeApp() 함수를 실행하면 플러터 프로젝트에 Fireba
 DefaultFirebaseOptions.currentPlatform을 입력해주면 lib/firebase_options.dart 파일에 설정된 프로젝트 설정으로 
 플러터 프로젝트에 파이어베이스 프로젝트를 설정할 수 있다.  
   
+# **일정 데이터 삽입하기**  
+1. 현재 component/schedule_bottom_sheet.dart 파일에 있는 ScheduleBottomSheet 위젯의 onSavePressed() 함수에서 
+저장 기능을 실행한다. 이 함수의 로직을 변경해서 파이어스토어에 데이터를 저장하도록 한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+ScheduleModel을 생성한다. ID 값은 UUID로 생성해서 입력해준다. FirebaseFirestore.instance.collection()을 실행하면 
+특정 컬렉션을 가져올 수 있다. collection() 함수의 첫 번째 매개변수에는 가져오고 싶은 컬렉션 이름을 입력하면 된다. 
+다음으로는 doc() 함수를 실행해서 저장하고 싶은 문서의 ID 값을 입력해주고 이어서 set() 함수를 실행한 후 저장하고 싶은 
+데이터를 입력해준다.  
+  
+2. 앱을 실행한 후 FloatingActionButton을 누르고 ScheduleBottomSheet를 실행해서 일정을 생성한다.  
+  
+3. 파이어스토어 콘솔로 이동해서 데이터가 잘 생성되었는지 확인한다.  
+  
