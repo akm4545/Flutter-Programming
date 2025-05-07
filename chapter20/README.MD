@@ -264,3 +264,31 @@ ScheduleModel을 생성한다. ID 값은 UUID로 생성해서 입력해준다. F
 schedule 컬렌션에 일정을 추가했으니 일정을 조회해서 달력의 특정 날짜가 선택될 때마다 해당 일정을 보여줘야 한다. 파이어스토어로부터 
 Stream을 이용해서 데이터를 받아온 후 일정 정보를 화면에 보여주도록 수정한다.  
   
+# **일정 데이터 받아오기**  
+1. lib/screen/home_screen.dart 파일의 HomeScreen 위젯에서 더는 provider가 필요 없다. build() 함수의 최상단에 
+선언해두었던 provider 관련 코드를 삭제한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+2. Provider를 사용할 떄는 provider의 내부에서 선택된 날짜를 관리했다. 하지만 이제는 provider를 사용하지 않으니 
+HomeScreen을 StatefulWidget으로 변경해서 선택된 날짜와 관련된 상태 관리를 진행한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+3. 이제 날짜별 일정 값을 파이어스토어로부터 조회해야 한다. Stream으로 값을 받아서 화면에 보여주려면 StreamBuilder를 
+사용해야 한다. 일정을 보여주고 있는 ListView 위젯을 StreamBuilder로 감싸서 일정들을 화면에 보여준다.  
+  
+lib -> screen -> home_screen.dart  
+  
+FirebaseFiresotre.collection('schedule').snapshots()를 실행하면 파이어스토어의 schedule 컬렉션에 있는 모든 
+데이터를 스트림으로 받아올 수 있다. 하지만 우리가 받아오고 싶은 일정은 selectedDate 값과 date 속성이 같은 일정이기 
+때문에 where() 함수를 실행해서 필터를 진행해준다. where() 함수의 첫 번째 매개변수에는 필터를 적용할 필드인 'date'
+를 입력하고 isEqualTo 매개변수에 등가비교를 할 값인 selectedDate를 년, 월, 일 순으로 입력해주면 된다. 그러면 schedule 
+컬렉션에 저장된 모든 일정 중에 현재 선택된 날짜인 selectedDate 값에 해당되는 date 속성을 갖고 있는 일정만 받아올 수 있다. 
+  
+QuerySnapshot의 data.docs값을 불러오면 쿼리에서 제공받은 모든 데이터를 리스트로 받아올 수 있다. 이 각 값은 QueryDocumentSnapshot 형태로 
+제공된다. 미리 만들어둔 ScheduleModel.fromJson 생성자는 Map<String, dynamic> 형태를 입력받기 떄문에 QueryDocumentSnapshot에 
+data() 함수를 실행해서 Map<String, dynamic> 형태로 데이터를 전환하면 ScheduleModel로 데이터를 매핑할 수 있다.  
+  
+4. 앱을 에뮬레이터 또는 시뮬레이터에서 실행한 후 일정을 생성한 날짜를 선택하면 삽입했던 일정이 조회되는 걸 확인할 수 있다.  
+  
