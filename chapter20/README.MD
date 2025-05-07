@@ -99,3 +99,19 @@ update() 함수를 실행하면 선택된 문서들을 update() 함수에 입력
   
 # **사전 준비**  
 # **pubspec.yaml 파일 설정하기**  
+기존에 추가되어 있는 플러그인 아래에 이번 프로젝트에서 사용할 파이어베이스 플러그인들을 추가한다.  
+  
+pubspec.yaml 참고  
+  
+# **iOS 네이티브 설정하기**  
+Firebase 플러그인들을 사용하려면 iOS 최소 버전(iOS Minimum Deployment Version)을 13 이상으로 설정해야 한다.  
+  
+1. iOS -> Runner -> Info.plist 파일을 열고 코드창의 맨 위에 Open iOS/macOS module in Xcode 버튼을 눌러서 XCode를 
+실행한다.  
+  
+![img.png](image/img15.png)  
+  
+2. Runner -> Runner -> General을 클릭한 후 Minimum Deployments iOS 버전을 13으로 입력한다.  
+  
+![img.png](image2/img.png)  
+  
