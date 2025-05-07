@@ -69,10 +69,29 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 8.0),
             // build() 함수 내부의 TodayBanner 위젯
-            TodayBanner(
-              selectedDate: selectedDate,
-              count: schedules.length,
+            StreamBuilder<QuerySnapshot>(
+              // ListView에 적용했던 같은 쿼리
+              stream: FirebaseFirestore.instance
+                .collection(
+                  'schedule'
+                )
+                .where(
+                  'date',
+                  isEqualTo: '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
+                )
+                .snapshots(),
+              builder: (context, snapshot) {
+                return TodayBanner(
+                  selectedDate: selectedDate,
+                  // 개수 가져오기
+                  count: snapshot.data?.docs.length ?? 0,
+                );
+              }
             ),
+            // TodayBanner(
+            //   selectedDate: selectedDate,
+            //   count: schedules.length,
+            // ),
             // StreamBuilder<List<Schedule>>( // 일정 Stream으로 받아오기
             //   stream: GetIt.I<LocalDatabase>().watchSchedules(selectedDate),
             //   builder: (context, snapshot) {

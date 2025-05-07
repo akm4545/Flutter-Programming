@@ -292,3 +292,11 @@ data() 함수를 실행해서 Map<String, dynamic> 형태로 데이터를 전환
   
 4. 앱을 에뮬레이터 또는 시뮬레이터에서 실행한 후 일정을 생성한 날짜를 선택하면 삽입했던 일정이 조회되는 걸 확인할 수 있다.  
   
+# **일정 개수 받아오기**  
+1. TodayBanner 위젯의 조회 데이터 개수를 변경한다. TodayBanner를 StreamBuilder로 감싸주고 받아오는 데이터 개수를 
+TodayBanner에 입력한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+데이터가 없는 상태여서 null이 반환되면 0을 화면에 보여준다.  
+  
