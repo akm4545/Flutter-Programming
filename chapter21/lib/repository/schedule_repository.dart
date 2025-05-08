@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chapter19/model/schedule_model.dart';
+import 'package:chapter21/model/schedule_model.dart';
 import 'package:dio/dio.dart';
 
 class ScheduleRepository {

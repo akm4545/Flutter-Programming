@@ -1,10 +1,10 @@
-import 'package:chapter19/component/main_calendar.dart';
-import 'package:chapter19/component/schedule_bottom_sheet.dart';
-import 'package:chapter19/component/schedule_card.dart';
-import 'package:chapter19/component/today_banner.dart';
-import 'package:chapter19/const/colors.dart';
-import 'package:chapter19/database/drift_database.dart';
-import 'package:chapter19/provider/schedule_provider.dart';
+import 'package:chapter21/component/main_calendar.dart';
+import 'package:chapter21/component/schedule_bottom_sheet.dart';
+import 'package:chapter21/component/schedule_card.dart';
+import 'package:chapter21/component/today_banner.dart';
+import 'package:chapter21/const/colors.dart';
+import 'package:chapter21/database/drift_database.dart';
+import 'package:chapter21/provider/schedule_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
