@@ -28,8 +28,25 @@ class _AuthScreenState extends State<AuthScreen> {
             // 로고를 화면 너비의 절반만큼의 크기로 렌더링하고 가운데 정렬한다
             Align(
               alignment: Alignment.center,
-              child: ,
-            )
+              child: Image.asset(
+                'assets/img/logo.png',
+                width: MediaQuery.of(context).size.width * 0.5,
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            // 로그인 텍스트 필드
+            TextFormField(),
+            const SizedBox(height: 16.0),
+            // 회원가입 버튼
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('회원가입'),
+            ),
+            // 로그인 버튼
+            ElevatedButton(
+              onPressed: () async {},
+              child: Text('로그인'),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:chapter21/database/drift_database.dart';
 import 'package:chapter21/provider/schedule_provider.dart';
 import 'package:chapter21/repository/schedule_repository.dart';
+import 'package:chapter21/screen/auth_screen.dart';
 import 'package:chapter21/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -26,7 +27,9 @@ void main() async {
     ChangeNotifierProvider( // Provider 하위 위젯에 제공하기
       create: (_) => scheduleProvider,
       child: MaterialApp(
-        home: HomeScreen(),
+        // 초기 화면인 AuthScreen으로 변경한다
+        home: AuthScreen(),
+        // home: HomeScreen(),
       ),
     ),
   );

@@ -155,4 +155,9 @@ lib -> screen -> auth_screen.dart
   
 lib -> screen -> auth_screen.dart  
   
+5. 생성된 UI를 확인하기 위해서 lib/main.dart 파일에서 초기 실행 화면을 AuthScreen으로 변경해준다. 프로젝트를 실행하면 
+간단한 로그인 기능이 렌더링된 화면을 볼 수 있다.  
+  
+lib -> main.dart  
+  
 
