@@ -160,4 +160,34 @@ lib -> screen -> auth_screen.dart
   
 lib -> main.dart  
   
+# **UI 디자인 개선하기**  
+현재 프로젝트 상태만으로 기능을 구현하는 데 문제는 없다. 다만 사용자가 호감을 느낄 디자인을 만드는 것도 앱 성공을 좌우하는 
+중요한 요소 중 하나다. 지금 화면에서 약간의 색감과 디자인을 변경해 더욱 호감가는 UI로 변경한다.  
+  
+1. 우선 앞으로 사용할 색상들을 정리한다. lib/const/colors.dart 파일에 로고 색상과 같은 색상인 SECONDARY_COLOR 변수와 
+텍스트 필드에 에러가 있을 때 메시지를 보여주는 용도로 사용할 색상인 ERROR_COLOR를 생성한다.  
+  
+lib -> const -> color.dart  
+  
+2. 현재 텍스트 필드의 디자인은 밑줄로만 되어 있다. 텍스트 필드의 디자인을 네모 형태로 일반화한다. lib/component/login_text_field.dart 
+파일을 생성하고 기본 디자인을 추가한 텍스트 필드를 제작한다.  
+  
+lib -> component -> login_text_field.dart  
+  
+활성화 상태란 텍스트 필드에 값을 입력할 수 있는 상태를 의미한다. 비활성화 상태는 반대로 텍스트 필드는 존재하지만 탭해도 
+문자를 입력하지 못하는 상태다. 텍스트 필드를 탭하면 보더가 포커스된 상태로 변하며 커서가 활성화되어 문자를 입력할 수 
+있는 상태가 된다. errorBorder는 텍스트 필드에 에러가 존재하는 상태이다. validator 함수의 유효성 검사를 통과하지 
+못하면 텍스트 필드는 에러 상태가 된다. focusedErrorBorder는 텍스트 필드를 탭해서 포커스가 되어 있는 상황에서 에러가 
+난 상태이다.  
+  
+3. 새로 만든 텍스트 필드를 AuthScreen에 적용한다. 미리 제작해둔 LoginTextField는 TextFormField에 디자인을 입히고 
+필요한 기능들을 매개변수로 노출한 컴포넌트이기 때문에 단순히 TextFormField들을 LoginTextField로 대체하면 된다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+4. 이번에는 버튼의 색상을 로고의 색상과 동일하게 변경한다. 그러고 나서 프로젝트를 재실행하면 기존보다 간결하게 변경된 
+디자인을 확인할 수 있다.  
+  
+lib -> screen -> auth_screen.dart  
+  
 

@@ -1,3 +1,5 @@
+import 'package:chapter21/component/login_text_field.dart';
+import 'package:chapter21/const/colors.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -35,15 +37,45 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             const SizedBox(height: 16.0),
             // 로그인 텍스트 필드
-            TextFormField(),
+            // TextFormField(),
+            LoginTextField(
+              // 추후 회원가입/로그인 로직을 작성할 때 사용된다
+              onSaved: (String? val) {}, 
+              validator: (String? val) {},
+              // 텍스트 필드에 어떤 값도 입력되지 않은 경우 이메일이라는
+              // 힌트 텍스트를 보여준다
+              hintText: '이메일',
+            ),
             const SizedBox(height: 16.0),
+            LoginTextField(
+              // 비밀번호를 입력할 때 보안을 위해 특수문자로 가려준다
+              obscureText: true,
+              onSaved: (String? val) {}, 
+              validator: (String? val) {},
+              hintText: '비밀번호',
+            ),
             // 회원가입 버튼
             ElevatedButton(
+              // 버튼 배경 색상 로고 색으로 변경
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: SECONDARY_COLOR,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+              ),
               onPressed: () {},
               child: Text('회원가입'),
             ),
             // 로그인 버튼
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: SECONDARY_COLOR,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)
+                ),
+              ),
               onPressed: () async {},
               child: Text('로그인'),
             ),
