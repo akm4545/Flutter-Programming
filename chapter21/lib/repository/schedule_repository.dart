@@ -10,6 +10,8 @@ class ScheduleRepository {
   final _targetUrl = 'http://${Platform.isAndroid ? '192.168.10.119' : 'localhost'}:3000/schedule';
 
   Future<List<ScheduleModel>> getSchedules({
+    // 함수를 실행할 때 액세스 토큰을 입력받는다
+    required String accessToken,
     required DateTime date,
   }) async {
     final resp = await _dio.get(
@@ -18,6 +20,12 @@ class ScheduleRepository {
         'date':
             '${date.year}${date.month.toString().padLeft(2, '0')}${date.day.toString().padLeft(2, '0')}',
       },
+      // 요청을 보낼때 헤더에 엑세스 토큰을 포함해서 보낸다
+      options: Options(
+        headers: {
+          'authorization': 'Bearer $accessToken',
+        },
+      ),
     );
 
     return resp.data // 모델 인스턴스로 데이터 매핑하기
@@ -27,22 +35,42 @@ class ScheduleRepository {
   }
 
   Future<String> createSchedule({
+    required String accessToken,
     required ScheduleModel schedule,
   }) async {
     final json = schedule.toJson(); // JSON으로 변환
 
-    final resp = await _dio.post(_targetUrl, data: json);
+    final resp = await _dio.post(
+      _targetUrl,
+      data: json,
+      options: Options(
+        headers: {
+          'authorization': 'Bearer $accessToken',
+        },
+      ),
+    );
 
     return resp.data?['id'];
   }
   
   Future<String> deleteSchedule({
+    required String accessToken,
     required String id,
   }) async {
-    final resp = await _dio.delete(_targetUrl, data: {
-      'id': id, // 삭제할 ID 값
-    });
+    final resp = await _dio.delete(
+      _targetUrl,
+      data: {
+        'id': id, // 삭제할 ID 값
+      },
+      options: Options(
+        headers:{
+          'authorization': 'Bearer $accessToken',
+        },
+      ),
+    );
     
     return resp.data?['id']; // 삭제된 ID값 반환
   }
+
+
 }
