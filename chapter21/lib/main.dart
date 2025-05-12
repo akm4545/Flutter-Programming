@@ -1,5 +1,6 @@
 import 'package:chapter21/database/drift_database.dart';
 import 'package:chapter21/provider/schedule_provider.dart';
+import 'package:chapter21/repository/auth_repository.dart';
 import 'package:chapter21/repository/schedule_repository.dart';
 import 'package:chapter21/screen/auth_screen.dart';
 import 'package:chapter21/screen/home_screen.dart';
@@ -20,8 +21,12 @@ void main() async {
   // GetIt에 데이터베이스 변수 주입하기
   GetIt.I.registerSingleton<LocalDatabase>(database);
 
-  final repository = ScheduleRepository();
-  final scheduleProvider = ScheduleProvider(repository: repository);
+  final scheduleRepository = ScheduleRepository();
+  final authRepository = AuthRepository();
+  final scheduleProvider = ScheduleProvider(
+    scheduleRepository: scheduleRepository,
+    authRepository: authRepository,
+  );
 
   runApp(
     ChangeNotifierProvider( // Provider 하위 위젯에 제공하기

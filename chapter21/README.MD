@@ -190,4 +190,89 @@ lib -> screen -> auth_screen.dart
   
 lib -> screen -> auth_screen.dart  
   
+# **인증 로직 구현하기**  
+이 프로젝트에는 인증 요청 관련 로직을 담당하는 AuthRepository와 일정 관련 요청을 담당하는 ScheduleRepository 그리고 
+상태 관리를 담당하는 ScheduleProvider가 있다. 이 세 가지를 사용해서 인증 로직을 구현한다. 사실 조금 더 확장성이 좋고 
+정돈된 코드를 작성하려면 AuthProvider를 추가하여 인증 관련 상태를 따로 관리하는게 효율적이다. 그렇지만 21장 프로젝트는 
+인증 과정을 보여주는 게 목적이며 AuthProvider를 추가하게 되면 목적과 관련 없는 코드를 너무 많이 추가하게 된다. 그렇기 
+떄문에 AuthProvider에 포함됐을 로직은 모두 ScheduleProvider에 작업한다.  
+  
+1. 인증 요청과 관련된 로직을 작성하기 위해 lib/repository/auth_repository.dart 파일을 생성한 다음 회원가입 요청부터 
+구현한다.  
+  
+lib -> repository -> auth_repository.dart  
+  
+2. 이번에는 로그인 로직을 작업한다. 회원가입은 바디의 텍스트 필드에 데이터를 입력해서 보내기 때문에 간단하다. 상대적으로 
+로그인 요청은 JWT를 이용한 인증 절차에서 배웠던 것처럼 이메일과 비밀번호를 base64로 인코딩해서 헤더로 보내줘야 한다는 
+차이가 있다.  
+  
+lib -> repository -> auth_repository.dart  
+  
+3. 다음으로 리프레시 토큰과 액세스 토큰을 재발급받는 요청을 작업한다. 사실상 토큰을 재발급받는 두 로직은 동일하며 요청을 
+보내는 URL만 다르다. 같은 로직을 반복하고 싶지 않다면 하나의 함수에 리프레시 토큰과 액세스 토큰 중 어떤 토큰을 재발급받을 
+것인지 명시하는 boolean으로 파라미터를 받고 URL만 변경해줘도 괜찮다. 이 프로젝트에서는 두 함수로 나눠서 작업한다.  
+  
+lib -> repository -> auth_repository.dart  
+  
+이제 서버와 통신하는 코드는 모두 준비했다. ScheduleProvider에 상태 관리 및 실제 UI에서 실행할 함수를 구현한다. ScheduleProvider 뿐만 
+아니라 이 프로젝트에 미리 작성되어 있는 코드는 모두 19장 코드 기반으로 구현되어 있다.  
+  
+4. ScheduleProvider 클래스에서 필요한 변수들을 정리한다. 우선 ScheduleProvider 뿐만 아니라 AuthRepository의 인증 
+관련 API 요청 로직 또한 사용해야 하기 때문에 매개변수로 입력받아야 한다. 추가로 리프레시 토큰과 액세스 토큰을 저장할 
+refreshToken과 accessToken 프로퍼티도 생성한다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+5. 토큰을 새로 발급했을 떄 refreshToken 프로퍼티와 accessToken 프로퍼티를 업데이트 해줄 수 있는 updateTokens() 함수를 
+구현한다. updateTokens() 함수의 로직은 리프레시 토큰과 액세스 토큰을 동시에 업데이트하거나 각자 하나씩만 업데이트할 수 있다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+6. 회원가입 로직을 구현한다. AuthRepository에서 통신 요청 로직을 모두 구현해놨기 떄문에 register() 함수에서는 AuthRepository에서 
+구현한 회원가입 로직의 register() 함수만 실행해주고 위에서 구현한 새로 발급받은 토큰으로 업데이트해주는 updateTokens() 함수만 
+실행해주면 된다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+7. 로그인과 로그아웃 기능을 추가한다. 로그인 기능은 회원가입 기능과 크게 다를 바가 없다. 텍스트 필드에 입력받은 이메일과 
+비밀번호를 가져외 login() 함수를 실행하여 로그인한다. 로그아웃 기능은 단순히 refreshToken과 accessToken을 null로 
+변환해주면 된다. 두 토큰이 모두 null인 상황이라면 로그인이 안 된 상황이다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+8. 이제 인증 관련 로직은 하나가 남았다. 리프레시 토큰과 액세스 토큰을 재발급받을 수 있는 rotateToken() 함수를 구현한다.  
+  
+lib -> provider -> schedule_provider.dart  
+  
+9. ScheduleProvider에 AuthRepository도 매개변수를 통해 입력받는 걸로 리팩토링했다. 다음으로 main.dart에서 ScheduleProvider를 
+인스턴스화할 때 AuthRepository 또한 주입해주도록 한다.  
+  
+lib -> main.dart  
+  
+회원가입과 로그인 로직 모두 완성했다. 이제 이메일과 비밀번호를 입력하고 회원가입 버튼을 눌렀을 때 해당 로직들이 실행되기만 
+하면 된다.  
+  
+10. AuthScreen의 Form에서 텍스트 필드의 유효성 검증을 할 때 실행할 함수를 구현한다. 이메일 텍스트 필드에서는 입력된 
+값이 이메일 유형인지 확인하고 비밀번호는 4~8자 사이의 문자로 입력했는지 확인한다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+추후 추가할 Form 위젯은 대표적으로 값을 검증하는 validate() 함수와 값을 저장하는 submit() 함수를 제공해준다. validate() 함수를 
+실행하면 하위에 있는 모든 TextFormField의 validator() 함수가 실행되며 입력값을 확인한다. submit() 함수를 실행하면 
+onSaved() 함수가 실행되며 값을 저장한다.  
+  
+11. TextFormField와 일반 TextField의 대표적인 차이점이 있다. TextFormField는 Form 위젯 하위에 입력됐을 때 Form의 
+validate() 함수와 save() 함수를 실행해서 모든 TextFormField의 검증과 값 저장을 한 번에 관리할 수 있다는 점이다. 
+TextFormField의 바로 상위 위젯인 Column을 Form으로 감싸고 Form을 제어할 수 있는 key를 입력한다. 추가로 Form의 save() 
+함수를 실행했을 때 email 프로퍼티와 password 프로퍼티에 값을 저장하는 로직을 구현한다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+12. 회원가입과 로그인 버튼을 눌렀을 때 Form 위젯 하위에 있는 모든 TextFormField를 검증해야 한다. 로그인 버튼과 
+회원가입 버튼을 눌렀을 때 모두 공통으로 필요한 로직이니 함수를 생성해서 공통되는 부분을 정리한다. Form 위젯의 Key 매개변수에 
+formKey 변수를 입력했으니 formKey의 validate() 함수를 실행하면 TextFormField들을 검증할 수 있고 save() 함수를 
+실행하면 TextFormField에 입력한 값들을 저장할 수 있다.  
+  
+lib -> screen -> auth_screen.dart  
+  
 
