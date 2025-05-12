@@ -323,3 +323,10 @@ lib -> repository -> schedule_repository.dart
   
 lib -> provider -> schedule_provider.dart  
   
+5. 회원가입 또는 로그인을 진행하고 홈 화면으로 이동한다. 홈 화면에서 기본적으로 선택되어 있는 날짜의 일정을 자동으로 
+가져오는 코드를 작성한다. 먼저 기존의 HomeScreen을 StatefulWidget을 상속받도록 변경하고 기존의 HomeScreen을 
+_HomeScreenState가 감싸도록 변경한다. 그런 다음 _HomeScreenState가 처음 생성되면 자동으로 실행되는 initState() 
+함수에서 일정 정보를 가져오는 함수를 실행한다.  
+  
+lib -> screen -> home_screen.dart  
+  
