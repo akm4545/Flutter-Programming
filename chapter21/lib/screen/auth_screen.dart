@@ -1,6 +1,10 @@
 import 'package:chapter21/component/login_text_field.dart';
 import 'package:chapter21/const/colors.dart';
+import 'package:chapter21/provider/schedule_provider.dart';
+import 'package:chapter21/screen/home_screen.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -27,6 +31,8 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ScheduleProvider>();
+
     return Scaffold(
       // 깔끔한 디자인을 위해 좌, 우로 패딩을 준다
       body: Padding(
@@ -110,7 +116,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  onRegisterPress(provider);
+                },
                 child: Text('회원가입'),
               ),
               // 로그인 버튼
@@ -122,7 +130,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       borderRadius: BorderRadius.circular(5.0)
                   ),
                 ),
-                onPressed: () async {},
+                onPressed: () {
+                  onLoginPress(provider);
+                },
                 child: Text('로그인'),
               ),
             ],
@@ -142,5 +152,81 @@ class _AuthScreenState extends State<AuthScreen> {
     formKey.currentState!.save();
 
     return true;
+  }
+
+  onRegisterPress(ScheduleProvider provider) async {
+    // 미리 만들어둔 함수로 form을 검증한다
+    if(!saveAndValidateForm()){
+      return;
+    }
+
+    // 에러가 있을 경우 값을 이 변수에 저장한다
+    String? message;
+
+    try{
+      // 회원가입 로직을 실행한다
+      await provider.register(
+          email: email,
+          password: password,
+      );
+    } on DioError catch (e) {
+      // 에러가 있을 경우 message 변수에 저장한다 만약 에러 메시지가 없다면
+      // 기본값을 입력한다
+      message = e.response?.data['message'] ?? '알 수 없는 오류가 발생했습니다.';
+    } catch (e) {
+      message = '알 수 없는 오류가 발생했습니다.';
+    } finally {
+      // 에러 메시지가 null이 아닐 경우 스낵바 값을 담아서 사용자에게 보여준다
+      if(message != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+          ),
+        );
+      }else{
+        // 에러가 없을 경우 홈 스크린으로 이동한다
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => HomeScreen(),
+          ),
+        );
+      }
+    }
+  }
+
+  onLoginPress(ScheduleProvider provider) async {
+    if(!saveAndValidateForm()){
+      return;
+    }
+
+    String? message;
+
+    try{
+      // register() 함수 대신에 login() 함수를 실행한다
+      await provider.login(
+        email: email,
+        password: password
+      );
+    } on DioError catch(e) {
+      // 에러가 있을 경우 message 변수에 저장한다. 만약 에러 메시지가 없다면
+      // 기본값을 입력한다
+      message = e.response?.data['message'] ?? '알 수 없는 오류가 발생횄습니다.';
+    } catch (e) {
+      message = '알 수 없는 오류가 발생했습니다.';
+    } finally {
+      if(message != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+          ),
+        );
+      }else{
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => HomeScreen(),
+          ),
+        );
+      }
+    }
   }
 }

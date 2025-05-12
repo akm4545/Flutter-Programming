@@ -275,4 +275,26 @@ formKey 변수를 입력했으니 formKey의 validate() 함수를 실행하면 T
   
 lib -> screen -> auth_screen.dart  
   
-
+13. 이제 Form을 이용해서 회원가입 로직과 로그인 로직을 완성하면 된다. 우선 회원가입 로직부터 구현한다. onRegisterPress() 
+함수를 생성하고 이 함수가 실행되면 Form 하위의 모든 TextFormField를 검증한다. 검증이 완료되면 텍스트 필드값을 저장한 
+후 ScheduleProvider의 register() 함수를 실행한다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+14. 로그인 로직은 ScheduleProvider의 register() 함수 대신에 login() 함수를 실행한다는 사실 외에는 onRegisterPress() 
+함수와 큰 차이가 없다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+15. 회원가입 버튼과 로그인 버튼이 클릭될 때마다 각각 기능에 적합한 함수를 실행하는 코드를 작성한다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+16. 마지막으로 로그아웃 버튼을 생성한다. 회원가입이나 로그인이 성공적으로 진행되면 현재 메인 화면인 HomeScreen으로 이동하도록 
+코드를 작성했다. 그래서 로그아웃 버튼은 HomeScreen에서 작업해야 한다. 현재 UI에서 로그아웃 버튼이 가장 어울릴만한 위치는 
+TodayBanner이다. TodayBanner에 로그아웃 아이콘을 추가하고 아이콘을 눌렀을 때 ScheduleProvider의 logout() 함수 
+실행 후 AuthScreen으로 되돌아가게 한다.  
+  
+lib -> component -> today_banner.dart  
+  
+17. 이제 작성한 코드를 테스트한다. 테스트할 때 calender_scheduler_server를 실행해야 한다.
