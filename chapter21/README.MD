@@ -330,3 +330,5 @@ _HomeScreenState가 감싸도록 변경한다. 그런 다음 _HomeScreenState가
   
 lib -> screen -> home_screen.dart  
   
+6. 일정 관련 요청 로직에 액세스 토큰을 포함하는 작업이 모두 끝났다.  
+  

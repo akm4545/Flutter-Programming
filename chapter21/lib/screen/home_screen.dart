@@ -9,20 +9,30 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-// class HomeScreen extends StatefulWidget {
+// class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
 //   const HomeScreen({Key? key}) : super(key: key);
 
-  // @override
-  // State<StatefulWidget> createState() => _HomeScreenState();
-// }
+  @override
+  State<StatefulWidget> createState() => _HomeScreenState();
+}
 
-// class _HomeScreenState extends State<HomeScreen> {
-//   DateTime selectedDate = DateTime.utc( // 선택된 날짜를 관리할 변수
-//     DateTime.now().year,
-//     DateTime.now().month,
-//     DateTime.now().day,
-//   );
+class _HomeScreenState extends State<HomeScreen> {
+  DateTime selectedDate = DateTime.utc( // 선택된 날짜를 관리할 변수
+    DateTime.now().year,
+    DateTime.now().month,
+    DateTime.now().day,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+
+    // HomeScreen 위젯이 생성되면 오늘 날짜의 일정을 바로 요청한다
+    context.read<ScheduleProvider>().getSchedules(
+      date: selectedDate,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

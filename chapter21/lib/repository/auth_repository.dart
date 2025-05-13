@@ -7,7 +7,8 @@ class AuthRepository {
   // Dio 인스턴스 생성
   final _dio = Dio();
   // 서버 주소
-  final _targetUrl = 'http://${Platform.isAndroid ? '10.0.2.2' : 'localhost'}:3000/auth';
+  // final _targetUrl = 'http://${Platform.isAndroid ? '10.0.2.2' : 'localhost'}:3000/auth';
+  final _targetUrl = 'http://${Platform.isAndroid ? '192.168.10.119' : 'localhost'}:3000/auth';
 
   // 회원가입 로직
   Future<({String refreshToken, String accessToken})> register({
