@@ -59,4 +59,8 @@ Auth0, Okta, Supabase는 이 기능을 유료로 제공하고 파이어베이스
 파이어베이스 추가 이후 실행했을 때 또는 macOS에서 안드로이드 시뮬레이터로 실행 시 multidex error가 발생하면 flutter run 
 --debug를 실행하여 설정을 진행한다.  
   
+# **Java 11 다운로드**  
+이 책은 Java 11로 실습을 진행한다. gradlew를 실행해서 앱의 setting 정보를 가져오려면 JDK 11 버전이 필요하다. Signing 
+Report 가져오기에서 에러가 날 경우 어떤 버전의 JDK가 필요한지 알려준다.  
+  
 
