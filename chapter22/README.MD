@@ -184,4 +184,21 @@ GoogleService-Info.plist 파일에서 RESERVED_CLIENT_ID 키에 해당되는 값
 # **레이아웃 구상하기**  
 캘린더 화면은 기존 UI를 그대로 사용한다. 필요한 스크린은 구글로 로그인 버튼이 있는 간단한 로그인 스크린을 추가로 만든다.  
   
+# **구현하기**  
+# **로그인 화면 구현하기**  
+1. 로그인 화면에서 구현할 버튼의 색상을 colors.dart 파일에 정의한다.  
+  
+lib -> const -> colors.dart  
+  
+2. lib/screen/auth_screen.dart 파일을 생성하고 로그인 화면을 제작한다. Column을 이용해서 로고와 구글로 로그인 버튼을 
+중앙 정렬한다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+3. main.dart 파일에서 초기 화면을 HomeScreen이 아닌 AuthScreen으로 변경해준다.  
+  
+lib -> main.dart  
+  
+4. 프로젝트를 실행하면 구글로 로그인 버튼이 생성된 로그인 스크린을 확인할 수 있다.  
+  
 

@@ -1,6 +1,7 @@
 import 'package:chapter22/database/drift_database.dart';
 import 'package:chapter22/provider/schedule_provider.dart';
 import 'package:chapter22/repository/schedule_repository.dart';
+import 'package:chapter22/screen/auth_screen.dart';
 import 'package:chapter22/screen/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,8 @@ void main() async {
     // ),
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: AuthScreen(),
+      // home: HomeScreen(),
     ),
   );
 }
