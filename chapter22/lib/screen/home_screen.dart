@@ -7,6 +7,7 @@ import 'package:chapter22/database/drift_database.dart';
 import 'package:chapter22/model/schedule_model.dart';
 import 'package:chapter22/provider/schedule_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
@@ -79,6 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   'date',
                   isEqualTo: '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
                 )
+                .where(
+                  'author',
+                  isEqualTo: FirebaseAuth.instance.currentUser!.email
+                )
                 .snapshots(),
               builder: (context, snapshot) {
                 return TodayBanner(
@@ -114,6 +119,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     'date',
                     isEqualTo:
                       '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
+                  )
+                  .where(
+                    'author',
+                    isEqualTo: FirebaseAuth.instance.currentUser!.email
                   )
                   .snapshots(),
                 builder: (context, snapshot) {

@@ -2,6 +2,7 @@ import 'package:chapter22/component/custom_text_field.dart';
 import 'package:chapter22/const/colors.dart';
 import 'package:chapter22/model/schedule_model.dart';
 import 'package:chapter22/provider/schedule_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // material.dart 패키지의 Column 클래스와 중복되니 드리프트에서는 숨기기
@@ -145,13 +146,32 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
         endTime: endTime!,
       );
 
+      // 현재 로그인한 사용자 정보를 가져온다
+      final user = FirebaseAuth.instance.currentUser;
+
+      // 만약 로그인한 사용자 정보를 가져오지 못한다면 다시 로그인을 요청한다
+      if(user == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('다시 로그인을 해주세요.'),
+          ),
+        );
+
+        Navigator.of(context).pop();
+
+        return;
+      }
+
       // 스케줄 모델 파이어스토어에 삽입하기
       await FirebaseFirestore.instance
         .collection(
           'schedule',
         )
         .doc(schedule.id)
-        .set(schedule.toJson());
+        .set({
+          ...schedule.toJson(),
+          'author': user.email,
+        });
 
       // 일정 생성 후 화면 뒤로 가기
       Navigator.of(context).pop();
