@@ -181,4 +181,7 @@ GoogleService-Info.plist 파일에서 RESERVED_CLIENT_ID 키에 해당되는 값
   
 ![img.png](image2/img6.png)  
   
+# **레이아웃 구상하기**  
+캘린더 화면은 기존 UI를 그대로 사용한다. 필요한 스크린은 구글로 로그인 버튼이 있는 간단한 로그인 스크린을 추가로 만든다.  
+  
 
