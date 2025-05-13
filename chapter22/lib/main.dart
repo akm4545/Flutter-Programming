@@ -1,13 +1,13 @@
-import 'package:chapter20/database/drift_database.dart';
-import 'package:chapter20/provider/schedule_provider.dart';
-import 'package:chapter20/repository/schedule_repository.dart';
-import 'package:chapter20/screen/home_screen.dart';
+import 'package:chapter22/database/drift_database.dart';
+import 'package:chapter22/provider/schedule_provider.dart';
+import 'package:chapter22/repository/schedule_repository.dart';
+import 'package:chapter22/screen/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:chapter20/firebase_options.dart';
+import 'package:chapter22/firebase_options.dart';
 
 
 void main() async {

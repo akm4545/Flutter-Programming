@@ -80,4 +80,10 @@ Report 가져오기에서 에러가 날 경우 어떤 버전의 JDK가 필요한
   
 ![img.png](image/img5.png)  
   
+# **pubspec.yaml 파일 설정하기**  
+구글 로그인 플러그인을 pubspec.yaml에 추가하고 이미지 파일 설정도 등록한다. 플러그인을 등록한 다음에는 pub get을 눌러
+플러그인 설정 업데이트를 완료한다.  
+  
+pubspec.yaml 참고  
+  
 

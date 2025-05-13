@@ -1,5 +1,5 @@
-import 'package:chapter20/repository/schedule_repository.dart';
-import 'package:chapter20/model/schedule_model.dart';
+import 'package:chapter22/repository/schedule_repository.dart';
+import 'package:chapter22/model/schedule_model.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 

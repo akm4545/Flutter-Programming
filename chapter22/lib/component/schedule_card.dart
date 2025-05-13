@@ -1,4 +1,4 @@
-import 'package:chapter20/const/colors.dart';
+import 'package:chapter22/const/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class ScheduleCard extends StatelessWidget {
