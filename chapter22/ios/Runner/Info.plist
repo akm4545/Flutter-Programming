@@ -45,5 +45,16 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	    <array>
+	        <dict>
+	            <key>CFBundleTypeRole</key>
+	            <string>Editor</string>
+	            <key>CFBundleURLSchemes</key>
+	            <array>
+	                <string>여기에 REVERSED_CLIENT_ID 값 붙여넣기</string>
+	            </array>
+	        </dict>
+	    </array>
 </dict>
 </plist>
