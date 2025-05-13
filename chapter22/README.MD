@@ -63,4 +63,21 @@ Auth0, Okta, Supabase는 이 기능을 유료로 제공하고 파이어베이스
 이 책은 Java 11로 실습을 진행한다. gradlew를 실행해서 앱의 setting 정보를 가져오려면 JDK 11 버전이 필요하다. Signing 
 Report 가져오기에서 에러가 날 경우 어떤 버전의 JDK가 필요한지 알려준다.  
   
+# **Signing Report 가져오기**  
+안드로이드 앱은 앱의 개발자를 인증하기 위해서 디지털 지문(digital signature)을 요구한다. 추가적으로 파이어베이스 플랫폼에서도 
+특정 서비스를 사용할 때 디지털 지문 등록을 요구한다. 플러터 프로젝트도 처음 생성했을 때 기본 전자 서명이 생성되며 이 
+전자 서명은 원한다면 추후 변경할 수 있다.  
+  
+1. 탐색기에서 android/gradlew 파일을 우클릭한 후 Open In -> Terminal을 선택한다. gradlew 파일은 안드로이드 환경에서 
+프로젝트를 실행해야 생긴다. iOS 환경이라면 gradlew 파일이 보이지 않을 수도 있다. 그럴 경우 Android 환경에서 프로젝트를 
+한 번 실행해서 gradlew 파일을 생성 후 이어서 실습을 진행한다.  
+  
+![img.png](image/img4.png)  
+  
+2. 실행된 터미널에서 맥 사용자는 ./gradlew signingReport를 실행해주고 윈도우 사용자는 .\gradlew.bat signingReport를 
+실행한다. 정상적으로 실행되면 상단으로 스크롤해서 "> Task :app:signingReport" 구문을 찾은 다음 Variant: debug를 확인하고 
+그 아래에 있는 SHA-1 값을 복사한다. 추후 디지털 지문의 SHA-1키를 입력하라고 하면 이 값을 입력하면 된다.  
+  
+![img.png](image/img5.png)  
+  
 
