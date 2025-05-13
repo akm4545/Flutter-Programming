@@ -166,4 +166,19 @@ flutterfire configure를 터미널에서 실행한 후 플러터 프로젝트와
   
 ![img.png](image2/img4.png)  
   
+# **iOS 네이티브 설정하기**  
+안드로이드의 경우 20장 파이어베이스 연동하기의 사전 준비에서 진행했던 대로 파이어베이스 프로젝트와 플러터 프로젝트를 
+연동하기만 하면 안드로이드 네이티브 설정은 추가적으로 해야할 게 없다. 하지만 iOS의 경우 Info.plist 파일을 수정해야 한다.  
+  
+1. ios/Runner/GoogleService-Info.plist 파일을 열고 REVERSED_CLIENT_ID 값을 찾는다. GoogleService-Info.plist 파일은 
+파이어베이스 기능 설정을 했던 것처럼 파이어베이스 프로젝트와 플러터 프로젝트를 연동하면 자동으로 생성되는 파일이다. 
+GoogleService-Info.plist 파일에서 RESERVED_CLIENT_ID 키에 해당되는 값을 복사한다. <string> 태그로 감싸진 값을 
+복사하면 된다.  
+  
+![img.png](image2/img5.png)  
+  
+2. 복사한 값을 ios/Runner/Info.plist 파일을 열어 맨 아래에 CFBundleURLTypes 값과 함께 추가해준다.  
+  
+![img.png](image2/img6.png)  
+  
 
