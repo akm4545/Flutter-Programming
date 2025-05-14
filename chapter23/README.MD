@@ -203,3 +203,70 @@ iOS 시뮬레이터에서 Unable to boot simulator 오류가 발생하면 시스
   
 ![img.png](image/img15.png)  
   
+# **일정 테이블 생성하기**  
+파이어스토어와 다르게 슈파베이스는 SQL 데이터베이스를 사용하기 떄문에 테이블 구조를 생성한 다음 데이터를 생성할 수 있다.  
+  
+1. 슈파베이스 대시보드로 이동한 다음 public 스키마를 선택한다. 그리고 중앙의 Create a new table 버튼을 눌러서 테이블 
+생성 창을 실행한다. public 스키마는 외부에 공개되는 기본 스키마로 슈파베이스 SDK를 이용해서 접근 가능한 테이블을 생성하는 
+위치다.  
+  
+![img.png](image2/img.png)  
+  
+2. Name 필드에는 테이블 이름을 지정하고 Description 필드는 테이블에 대한 설명을 입력하는 필드이다. Name은 schedule을 
+넣어주고 Description은 일정을 저장하는 테이블로 입력한다. 추가로 Enable Row Level Security (RLS) 체크 버튼을 눌러서 
+RLS를 활성화한다. 행 수준 보안에서 설명했든 RLS는 postgresql에서 테이블과 Row의 접근을 엄격히 제어할 수 있는 강력한 
+보안 기능이다.  
+  
+![img.png](image2/img2.png)  
+  
+3. 다음은 테이블의 컬럼을 생성해야 한다. 기본으로 각 행의 특수값인 id 컬럼과 행이 생성된 시간을 저장하는 created_at 컬럼이 있다. 
+여기에 일정의 날짜인 date를 글자 타입인 text 타입으로, 일정 내용인 content를 text 타입으로, 시작 시간인 start_time을 2바이트 
+크기의 정수인 int2 타입으로, 종료 시간인 end_time을 int2 타입으로 추가한다. 각 컬럼의 이름 아래쪽의 Add column 버튼을 
+누르면 컬럼 추가가 가능하다.  
+  
+![img.png](image2/img3.png)  
+  
+4. 다음은 컬럼의 제한 사항을 변경한다. 각 컬럼 오른쪽의 톱니바퀴 세팅 버튼을 누르면 제한 사항을 변경할 수 있다. content, 
+start_time, end_time 컬럼의 Is Nulable 제한 사항을 모두 비활성화한다. Nullable은 Null값을 허용하는 조건으로 Is 
+Nullable을 비활성화하면 값이 null이 될 수 없으며 꼭 값이 입력돼야 한다.  
+  
+![img.png](image2/img4.png)  
+  
+5. 마지막으로 어떤 사용자가 생성한 일정인지 알 수 있는 author 컬럼을 추가한다. Add column 버튼을 누른 후 컬럼 이름을 
+author로 설정한다. 그리고 타입을 UUID로 선택한 다음 is Nullable 체크를 해제한다.  
+  
+UUID는 다섯 개의 값이 -로 이어져 있는 형태를 띄고 있는 특수 문자열값으로 언제 생성해도 절대로 겹치지 않는 특성을 가진다.  
+  
+![img.png](image2/img5.png)  
+  
+6. 생성된 일정을 실제 사용자와 연동하기 위해 쇠고리 모양의 버튼을 눌러서 연동을 진행한다.  
+  
+![img.png](image2/img6.png)  
+  
+7. Foreign Key Relation 창이 실행되면 auth 스키마를 선택하고 users 테이블을 선택한다. 그리고 users 테이블의 id 
+컬럼을 선택해서 schedule 테이블의 author 컬럼과 연동한다. 나머지 옵션은 그대로 두고 Save 버튼을 눌러서 저장한다.  
+  
+![img.png](image2/img7.png)  
+  
+8. 쇠고리 버튼의 색이 변경되면 연동 성공이다. 앞으로 schedule 테이블에 데이터를 생성할 떄는 author 컬럼을 필수로 
+입력해줘야 한다. author 컬럼값은 users 테이블의 id 컬럼값과 연동되었으므로 꼭 users 테이블의 id 컬럼에 있는 값이어야 한다.  
+  
+![img.png](image2/img8.png)  
+  
+9. 이어서 id 컬럼의 타입을 int8에서 UUID로 변경한다. int8로 설정할 경우 1부터 오름차순으로 숫자가 하나씩 배정된다. 
+UUID를 선택할 경우 파이어스토어에서 사용했던 것과 같이 임의의 문자열값이 ID값으로 배정된다. 22장에서 파이어베이스 인증 
+기반으로 일정 CRUD 기능 변경하기에서 파이어스토어로 구현한 프로젝트의 ID에 UUID 타입을 사용했기 때문에 슈파베이스에서도 
+똑같이 UUID 타입을 사용한다.  
+  
+![img.png](image2/img9.png)  
+  
+10. 끝으로 author의 기본값을 지정하는 Defulat Value 필드에 auth.uid()를 입력해준다. auth.uid()는 슈파베이스에서 사용 
+가능한 특수한 값으로 사용자 고유의 id값을 의미한다. 다시 말해 auth.uid()는 현재 로그인되어 있는 사용자의 ID를 가져온다. 
+데이터를 입력하는 insert 요청이 실행될 때마다 현재 로그인되어 있는 사용자 ID를 자동으로 author 컬럼에 입력한다.  
+  
+![img.png](image2/img10.png)  
+  
+11. 최종적으로 Save 버튼을 눌러서 테이블 생성을 완료한다.  
+  
+![img.png](image2/img11.png)  
+  
