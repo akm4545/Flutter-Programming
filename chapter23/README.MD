@@ -41,3 +41,7 @@ PERMISSIVE와 RESTRICTIVE는 다수의 Policy가 같이 적용되는 상황에 O
 모든 Policy가 충족되어야 하는 AND 조건을 사용하게 된다. 만약 PERMISSIVE와 RESTRICTIVE Policy가 모두 존재한다면 
 각각 최소 하나의 Policy가 통과돼야만 쿠리 실행이 허가된다.  
   
+# **적용할 CRUD 기능 설정**  
+Policy를 적용할 CRUD 기능이다. SQL에서 실행 가능한 CRUD 기능인 SELECT, INSERT, UPDATE, DELETE 모두 입력 가능하며
+ALL 입력 시 모든 기능에서 Policy가 적용된다.  
+  
