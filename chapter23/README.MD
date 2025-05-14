@@ -118,4 +118,36 @@ API Key의 Copy 버튼을 누른 후 Project URL과 API Key를 안전한 곳에 
   
 ![img.png](image/img10.png)  
   
+# **슈파베이스 인증 설정하기**  
+슈파베이스 인증(supabase auth) 또한 파이어베이스 인증과 같이 다양한 인증 방법을 제공한다. 이번 프로젝트도 파이어베이스를 
+사용할 때 했던 방법처럼 구글 로그인을 사용할 계획이니 구글 로그인 설정을 진행한다. 이메일 회원가입/로그인은 기본으로 활성화되어 
+있고 다른 소셜 로그인을 사용하고 싶다면 입력이 필요한 값은 다르지만 구글 로그인 설정과 같은 방식으로 슈파베이스에 활성화를 
+해주면 된다.  
+  
+1. 슈파베이스 대시보드로 이동한 후 Authentication -> Providers를 클릭한다. 아래로 스크롤해서 구글 프로바이더를 찾은 
+후 클릭해서 옵션을 펼친다. 그다음 Enable Sign in with Google 버튼을 눌러서 활성화한 후 맨 아래의 Callback URL을 복사한다.  
+  
+![img.png](image/img11.png)  
+  
+2. OAuth 설정하기에서 진행했던 것처럼 파이어베이스 프로젝트와 연결된 구글 클라우드 콘솔로 이동한 후 메뉴 -> API 및 서비스 
+-> 사용자 인증 정보로 이동한다. 22장에서 OAuth 설정하기를 잘 진행했다면 OAuth 2.0 클라이언트 ID에 Android Client, 
+iOS Client, Web Client 세 개의 클라이언트 ID를 찾을 수 있다. Web client의 Client ID만 복사한다.  
+  
+![img.png](image/img12.png)  
+  
+3. 다시 슈파베이스 Authentication -> Providers 창으로 돌아와서 복사해둔 Web 클라이언트 ID와 클라이언트 Secret을 
+입력해준다. 클라이언트 Secret은 Web client를 누르면 상세 페이지에서 볼 수 있다. 그리고 Skip nonce checks 버튼을 클릭해서 
+활성화해준다. Nonce Check는 보안을 강화하는 기능이지만 iOS의 경우 Nonce Check가 불가능하기 떄문에 활성화가 필요한다. 
+모두 입력이 끝나면 Save 버튼을 눌러서 저장한다.  
+  
+iOS 클라이언트 ID는 나중에 플러터 코드를 작성할 때 사용한다. Setting Up Your Project라는 알림과 함께 로딩이 진행된다면 
+프로젝트가 생성될 때까지 대기해야 한다.  
+  
+![img.png](image/img13.png)  
+  
+4. 구글 로그인이 Enabled 상태가 되면 활성화 완료다.  
+  
+![img.png](image/img14.png)  
+  
+
 
