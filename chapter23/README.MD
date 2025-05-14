@@ -68,3 +68,16 @@ USING(true)를 입력하면 어떤 상황에서도 조회가 허가되는 조건
   
 ![img.png](image/img4.png)  
   
+# **PostgreSQL Policy 문법: 이메일에 따라 데이터를 업데이트할 수 있는 권한 예제**  
+슈파베이스에서 auth.jwt() 함수를 실행하면 JWT 정보를 가져올 수 있다. auth.jwt() ->> 'email'을 실행하면 현재 로그인한 
+사용자의 액세스 토큰에서 이메일 정보를 추출한다. 다음 예제는 테이블 email 컬럼에 데이터를 생성한 사용자의 이메일이 
+입력되는 걸 가정한다.  
+  
+![img.png](image/img5.png)  
+  
+# **PostgreSQL Policy 문법: 생성자만 데이터를 삭제할 수 있는 권한 예제**  
+다음 예제는 테이블 user_id 컬럼에 데이터를 생성한 사용자의 ID가 입력되는 걸 가정한다.  
+  
+![img.png](image/img6.png)  
+  
+
