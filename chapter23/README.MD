@@ -270,3 +270,22 @@ UUID를 선택할 경우 파이어스토어에서 사용했던 것과 같이 임
   
 ![img.png](image2/img11.png)  
   
+# **일정 테이블 RLS 설정하기**  
+테이블에 RLS 기능을 활성화시키면 RLS Policy로 권한을 허가해주기 전까지 어떤 데이터도 접근할 수 없는 것이 기본 설정이다. 
+RLS Policy를 추가해서 일정 생성자만 일정 데이터에 접근할 수 있도록 권한 설정을 진행한다.  
+  
+1. 슈파베이스 대시보드에서 Authentication 버튼을 누른 다음 Policies 버튼을 누른다. 오른쪽에 보이는 schedule 테이블의 
+New Policy 버튼을 눌러서 schedule 테이블과 관련된 RLS Policy를 생성하는 창을 실행한다.  
+  
+![img.png](image2/img12.png)  
+  
+2. 기본 템플릿을 제공해주는 Get started quickly 버튼과 전체 맞춤 설정이 가능한 For full customization 버튼이 있다. 
+우리는 직접 전체 맞춤 설정하는 방법을 학습해보기 위해 For full customization 버튼을 누른다.  
+  
+![img.png](image2/img13.png)  
+  
+3. 가장 먼저 Policy name에 이름을 정해 입력하고 Allowed operation에서 All을 선택하여 모든 CRUD 기능에 Policy를 
+적용한다. Target roles은 아무것도 선택하지 않고 기본값인 Defaults(public)가 지정되도록 한다.  
+  
+![img.png](image2/img14.png)  
+  
