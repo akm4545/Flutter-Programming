@@ -28,3 +28,10 @@ NoSQL 기반인 파이어베이스의 파이어스토어와 다르게 슈파베�
 실행할 수 있는 작업을 제한할 수 있다. 예를 들어 일정을 수정하거나 삭제하는 기능은 일정을 생성한 사용자만 할 수 있도록 
 제한할 수 있다.  
   
+# **PostgreSQL Policy 문법: 기본**  
+![img.png](image/img2.png)  
+  
+RLS Policy를 생성할 때 필수 코드는 CREATE POLICY {name} on {table_name}이다. 나머지 조건은 필요에 따라 추가하면 된다. 
+{name}에는 Policy의 이름을 입력하면 되고 {table_name}에는 Policy를 적용할 테이블의 이름을 입력하면 된다. 다음은 각 
+Policy에 대한 설명이다.  
+  
