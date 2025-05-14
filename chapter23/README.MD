@@ -62,3 +62,9 @@ USING(true)를 입력하면 어떤 상황에서도 조회가 허가되는 조건
   
 ![img.png](image/img3.png)  
   
+# **PostgreSQL Policy 문법: 인증된 사용자만 데이터를 생성할 수 있는 권한 예제**  
+슈파베이스는 authenticated라는 인증된 사용자에게만 부여되는 Role이 있다. TOauthenticated를 입력하면 인증된 사용자에게만 
+특정 Policy를 부여할 수 있다.  
+  
+![img.png](image/img4.png)  
+  
