@@ -45,3 +45,7 @@ PERMISSIVE와 RESTRICTIVE는 다수의 Policy가 같이 적용되는 상황에 O
 Policy를 적용할 CRUD 기능이다. SQL에서 실행 가능한 CRUD 기능인 SELECT, INSERT, UPDATE, DELETE 모두 입력 가능하며
 ALL 입력 시 모든 기능에서 Policy가 적용된다.  
   
+# **적용할 대상 설정**  
+Policy를 적용할 대상을 정한다. PostgreSQL에서 제공되는 데이터베이스 관련 권한들을 특정 이름으로 모아 놓은 Role을 
+입력하면 되며 기본값은 모두에게 적용되는 PUBLIC이다.  
+  
