@@ -92,4 +92,30 @@ USING(true)를 입력하면 어떤 상황에서도 조회가 허가되는 조건
 # **템플릿 프로젝트 다운로드**  
 22장 소셜 로그인과 파이어베이스 인증하기에서 구현했던 로직을 그대로 슈파베이스로 변경해서 구현하는 방식으로 진행한다.  
   
+# **슈파베이스 회원가입**  
+슈파베이스를 프로젝트에 적용하기 위해 슈파베이스 사이트에서 회원가입을 진행하고 대시보드 페이지로 이동해야 한다.  
+  
+1. https://supabase.com에 접속해서 오른쪽 위의 Sign In 버튼을 누르고 Sign Up Now 버튼을 누르고 회원가입을 진행한다. 
+깃허브 계정이 있으면 Continue with GitHub 버튼을 누르면 빠르게 회원가입을 할 수 있다.  
+  
+![img.png](image/img7.png)  
+  
+2. 회원가입을 하면 이동되는 화면이 대시보드이다. 앞으로 이 화면을 슈파베이스 대시보드라고 칭한다. 슈파베이스 대시보드에서 
+중앙의 New project 버튼을 누른다.  
+  
+![img.png](image/img8.png)  
+  
+3. 프로젝트 이름을 calendar_scheduler로 설정하고 데이터베이스 비밀번호를 입력한다. Region은 Northeast Asia(Seoul)을 
+선택한다. 마지막으로 Create new project 버튼을 누르면 프로젝트 생성이 진행된다.  
+  
+![img.png](image/img9.png)  
+  
+4. 프로젝트가 생성될 때까지 대기한 후 아래로 스크롤해서 Connecting to your new project 섹션을 찾는다. Project URL과 
+API Key의 Copy 버튼을 누른 후 Project URL과 API Key를 안전한 곳에 저장해둔다.  
+  
+혹시 화면이 똑같이 보이지 않으면 새로고침을 누른다. Setting Up Your Project라는 알림과 함께 로딩이 진행된다면 프로젝트가 
+생성될 때까지 대기해야 한다.  
+  
+![img.png](image/img10.png)  
+  
 
