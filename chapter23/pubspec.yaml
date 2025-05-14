@@ -48,7 +48,7 @@ dependencies:
   cloud_firestore: 5.4.4 # 파이어스토어 플러그인
   google_sign_in: 6.2.1 # 구글 로그인 플러그인
   firebase_auth: 5.3.1 # 파이어베이스 인증 플러그인
-  supabase_flutter: 1.10.24 # 수파베이스 플러그인
+  supabase_flutter: 1.10.24 # 슈파베이스 플러그인
 
 dev_dependencies:
   flutter_test:

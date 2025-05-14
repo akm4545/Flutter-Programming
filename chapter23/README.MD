@@ -164,3 +164,14 @@ flutterfire configure를 터미널에서 실행한 후 플러터 프로젝트와
 # **레이아웃 구상하기**  
 모든 UI는 22장 소셜 로그인과 파이어베이스 인증하기와 동일하게 진행하도록 한다.  
   
+# **구현하기**  
+# **슈파베이스 세팅하기**  
+슈파베이스를 프로젝트에서 사용하려면 프로젝트에 Project URL과 API Key를 등록해줘야 한다.  
+  
+1. lib/main.dart 파일에 슈파베이스를 초기화해준다. url 파라미터에 슈파베이스 회원가입에서 복사해두었던 Project URL 
+값을 입력해주고 anonKey 파라미터에는 API Key 값을 입력해준다.  
+  
+대시보드에서 Project URL과 anonKey가 보이지 않으면 Settings -> API 화면을 참고한다.  
+  
+lib -> main.dart  
+  
