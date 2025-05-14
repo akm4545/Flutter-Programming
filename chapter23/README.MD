@@ -35,3 +35,9 @@ RLS Policy를 생성할 때 필수 코드는 CREATE POLICY {name} on {table_name
 {name}에는 Policy의 이름을 입력하면 되고 {table_name}에는 Policy를 적용할 테이블의 이름을 입력하면 된다. 다음은 각 
 Policy에 대한 설명이다.  
   
+# **다수의 Policy 적용 시 권한 적용 설정**  
+PERMISSIVE와 RESTRICTIVE는 다수의 Policy가 같이 적용되는 상황에 OR 조건을 사용할지 AND 조건을 사용할지 결정하는 
+값이다. PREMISSIVE는 어느 쪽이든 하나의 Policy만 충족하면 되는 OR 조건을 사용하게 되고 RESTRICTIVE는 비교적 제한적으로 
+모든 Policy가 충족되어야 하는 AND 조건을 사용하게 된다. 만약 PERMISSIVE와 RESTRICTIVE Policy가 모두 존재한다면 
+각각 최소 하나의 Policy가 통과돼야만 쿠리 실행이 허가된다.  
+  
