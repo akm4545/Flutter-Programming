@@ -152,5 +152,5 @@ iOS 클라이언트 ID는 나중에 플러터 코드를 작성할 때 사용한�
 # **pubspec.yaml 파일 설정하기**  
 1. 슈파베이스 플러그인을 pubspec.yaml에 추가한다. 추가 후에는 반드시 pub get을 눌러 업데이트 한다.  
   
-pubspec.yaml 참고
-
+pubspec.yaml 참고  
+  
