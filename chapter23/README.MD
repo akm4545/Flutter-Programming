@@ -175,3 +175,31 @@ flutterfire configure를 터미널에서 실행한 후 플러터 프로젝트와
   
 lib -> main.dart  
   
+# **슈파베이스 인증 세팅하기**  
+파이어베이스에서도 그러하듯 슈파베이스에서도 인증은 매우 중요한 기능 중 하나이다. 슈파베이스에서 구글 로그인을 진행한다.  
+  
+1. lib/auth_screen.dart 파일에는 이미 구글로 로그인 버튼이 구현되어 있고 버튼을 누르면 실행되는 onGoogleLoginPress() 
+함수가 정의돼 있다. 현재 이 함수는 파이어베이스를 사용하여 구글 로그인을 진행하는 방식으로 정의되어 있다. 그러므로 슈파베이스로 
+로그인하는 방식으로 함수를 변경해줘야 한다. 파이어베이스의 signInWithCredential() 함수 대신 슈파베이스의 signInWithIdToken() 
+함수를 실행해서 로그인한다.  
+  
+lib -> screen -> auth_screen.dart  
+  
+provider 파라미터에 소셜 로그인 프로바이더를 입력해주고 idToken과 accessToken 파라미터에 각각 아이이 토큰과 액세스 
+토큰을 입력한다.  
+  
+2. 프로젝트를 실행하고 구글로 로그인 버튼을 눌러서 로그인을 실행해본다. 로그인이 성공적으로 진행되며 다음 화면으로 
+넘어가는 것을 확인할 수 있다. 이때 iOS로 구글 로그인을 사용하려면 22장의 ios/GoogleService-Info.plist에서 REVERSED_CLIENT_ID 
+아래에 있는 <string>...</string>을 복사해서 23장 프로젝트의 ios/GoogleService-Info.plist와 ios/info.plist에 붙여 
+넣는다.  
+  
+실행이 되지 않으면 android 폴더 삭제 후 flutter create .를 실행한다.  
+  
+iOS 시뮬레이터에서 Unable to boot simulator 오류가 발생하면 시스템 설정 -> 저장 공간에 있는 개발자 항목의 xcode 
+프로젝트 빌드 파일 -> xcode 캐시를 삭제하고 실행한다.  
+  
+3. 로그인이 성공적으로 진행되면서 사용자 생성이 잘 되었음을 슈파베이스 대시보드에서 확인한다. 슈파베이스 대시보드로 
+이동한 후 Table -> auth -> users를 클릭한 후 로그인한 이메일로 사용자가 하나 생성된 걸 확인한다.  
+  
+![img.png](image/img15.png)  
+  

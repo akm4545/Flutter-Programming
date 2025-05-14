@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -53,6 +54,8 @@ class AuthScreen extends StatelessWidget {
       scopes: [
         'email',
       ],
+      clientId: '{iOS Client ID 입력}',
+      serverClientId: '{Web Client ID 입력}',
     );
 
     try{
@@ -64,13 +67,27 @@ class AuthScreen extends StatelessWidget {
 
       // AuthCredential 객체를 상속받는 GoogleAuthProvider 객체를 생성한다
       // accessToken과 idToken만 제공하면 생성된다
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+      // final credential = GoogleAuthProvider.credential(
+      //   accessToken: googleAuth?.accessToken,
+      //   idToken: googleAuth?.idToken,
+      // );
+
+      // googleAuth 객체가 null이거나 idToken이 null이거나 accessToken이 null이면
+      // 인증이 정상적으로 진행된 상태가 아니기 때문에 에러를 던진다
+      if(googleAuth == null || googleAuth.idToken == null || googleAuth.accessToken == null) {
+        throw Exception('로그인 실패');
+      }
+
+      // 슈파베이스로 소셜 로그인을 진행하는 방법
+      await Supabase.instance.client.auth.signInWithIdToken(
+        provider: Provider.google,
+        idToken: googleAuth.idToken!,
+        accessToken: googleAuth.accessToken!,
       );
 
+
       // signInWithCredential() 함수를 이용하면 파이어베이스 인증을 할 수 있다
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      // await FirebaseAuth.instance.signInWithCredential(credential);
 
       // 인증이 끝나면 홈 스크린으로 이동한다
       Navigator.of(context).push(
