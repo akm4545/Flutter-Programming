@@ -262,4 +262,127 @@ key.properties 파일을 등록한다. android로 시작되는 블록을 찾아�
   
 ![img.png](image3/img12.png)  
   
+# **iOS 앱 배포하기**  
+iOS 앱을 배포하려면 애플 개발자 계정을 구매하고 iOS 배포 절차에 맞게 앱을 빌드해야 한다. iOS 빌드는 맥에서만 가능하기 떄문에 
+꼭 맥 컴퓨터를 사용해야 한다.  
+  
+1. https://developer.apple.com/programs/enroll/에 접속한 후 개인 계정 또는 기업 계정으로 개발자 등록을 진행한다. 애플 
+개발자 계정 등록은 매년 99달러를 지불해야 한다.  
+  
+![img.png](image3/img13.png)  
+  
+2. https://developer.apple.com/account/ios/identifier/bundle로 접속해서 등록한 애플 개발자 계정으로 로그인한다.  
+  
+3. 실행된 화면에서 Identifiers 탭을 클릭한 후 + 버튼을 눌러서 앱 ID를 생성하는 창을 실행한다.  
+  
+![img.png](image3/img14.png)  
+  
+4. App Ids를 선택한 후 Continue 버튼을 누른다.  
+  
+![img.png](image3/img15.png)  
+  
+5. App을 선택한 후 Continue를 누른다.  
+  
+![img.png](image4/img.png)  
+  
+6. Description에 앱 이름을 입력해주고 Bundle ID는 Explicit 버튼을 선택한다. Bundle ID 텍스트 필드에 미리 정해둔 앱의 
+Bundle ID를 입력한다. 마지막으로 Continue를 누르고 다음 화면에서 Register를 누른다.  
+  
+![img.png](image4/img2.png)  
+  
+7. https://appstoreconnect.apple.com/에 접속해서 App Store Connect를 실행한다. 그리고 나의 앱 버튼을 누른다.  
+  
+![img.png](image4/img3.png)  
+  
+8. 앱이라고 써져있는 글자 옆에 + 버튼을 누른 다음 신규 앱 버튼을 누른다.  
+  
+![img.png](image4/img4.png)  
+  
+9. 플랫폼에 iOS를 선택하고 앱의 이름을 입력한다. 기본 언어를 한국어로 선택하고 번들 ID를 눌러서 6번에서 미리 생성해둔 
+번들 ID를 누른다. SKU는 계정 내의 앱별 고유 식별 코드인데 번들 ID를 그대로 입력하면 된다. 마지막으로 전체 액세스 버튼을 
+누른 후 생성을 누른다.  
+  
+![img.png](image4/img5.png)  
+  
+10. Xcode를 실행한 후 [프로젝트 경로]/ios/Runner/Runner.xcworkspace 파일을 실행한다. 그리고 Runner 탭의 General 탭을 
+누른 후 Display Name을 앱 이름으로 변경하고 Bundle Identifier를 Bundle ID로 변경한다.  
+  
+![img.png](image4/img6.png)  
+  
+11. Product -> Destination -> Any iOS Device를 선택한다.  
+  
+![img.png](image4/img7.png)  
+  
+12. 빌드 파일을 업로드하려면 구매한 개발자 계정으로 로그인을 해야 한다. Runner -> Signing & Capabilities에서 Team을 
+선택한다. 로그인한 적이 없다면 Add an Account를 선택한 후 개발자 계정을 구매한 계정으로 로그인한다.  
+  
+![img.png](image4/img8.png)  
+  
+13. Product -> Archive를 눌러서 안드로이드의 앱번들과 유사한 형태인 ipa 파일을 생성한다.  
+  
+![img.png](image4/img9.png)  
+  
+14. 아카이브가 완료되면 아카이브가 된 파일 목록이 보인다. 최근 아카이브한 파일을 선택한 후 Distribute App 버튼을 누른다.  
+  
+![img.png](image4/img10.png)  
+  
+15. 배포할 타깃으로 App Store Connect를 선택한 다음 Next를 누른다.  
+  
+![img.png](image4/img11.png)  
+  
+16. Upload -> Next를 누른다.  
+  
+![img.png](image4/img12.png)  
+  
+17. 체크돼 있는 기본값들을 그대로 유지한 채로 Next를 누른다.  
+  
+![img.png](image4/img13.png)  
+  
+18. Automatically manage signing 버튼을 누른 후 Next 버튼을 누른다.  
+  
+![img.png](image4/img14.png)  
+  
+19. 새로운 창이 실행되면 Upload 버튼을 누른다.  
+  
+![img.png](image4/img15.png)  
+  
+20. 업로드가 완료되면 Done 버튼을 누른다.  
+  
+![img.png](image5/img.png)  
+  
+21. App Store Connect로 돌아가서 생성했던 앱을 선택한다. 이어서 TestFlight 탭으로 이동한다. 앱을 업로드하면 TestFlight에서 
+빌드를 처리하는 데 어느 정도 시간이 걸린다. 수십 분이 될 수도 있고 몇 시간이 될 수 도 있다.  
+  
+![img.png](image5/img2.png)  
+  
+22. 빌드 처리가 완료되면 관리 버튼을 눌러서 문서를 추가해준다.  
+  
+![img.png](image5/img3.png)  
+  
+23. 적합한 암호화 알고리즘을 선택해서 다음 버튼을 누른다.  
+  
+![img.png](image5/img4.png)  
+  
+24. 수출 규정 준수 정보에 적합한 값을 선택한 후 저장 버튼을 누른다.  
+  
+![img.png](image5/img5.png)  
+  
+25. 제출 준비 완료로 상태가 변경되면 App Store 버튼을 눌러서 탭을 이동한다.  
+  
+![img.png](image5/img6.png)  
+  
+26. 중간으로 스크롤 한 후 빌드 섹션을 찾아서 빌드 추가 버튼을 누른다.  
+  
+![img.png](image5/img7.png)  
+  
+27. 추가한 빌드를 누른 후 완료 버튼을 누른다.  
+  
+![img.png](image5/img8.png)  
+  
+28. 현재 페이지의 나머지 정보를 전부 입력하고 나면 심사에 추가 버튼이 활성화된다. 활성화되면 심사에 추가를 눌러서 앱을 
+출시한다.  
+  
+![img.png](image5/img9.png)  
+  
+
 
