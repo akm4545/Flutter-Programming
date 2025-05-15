@@ -80,3 +80,6 @@ pubspec.yaml 참고
   
 ![img.png](image2/img.png)  
   
+# **구현하기**  
+광고 기능을 추가하고 동작 테스트를 진행한다.  
+  
