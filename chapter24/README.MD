@@ -132,4 +132,8 @@ ListView.itemBuilder 대신에 ListView.separated를 사용하면 separatorBuild
 separatorBuilder는 itemBuilder가 반환한 위젯 사이사이에 보여줄 위젯을 렌더링할 때 사용된다. BannerAdWidget을 
 반환해서 일정의 사이사이에 광고를 그린다.  
   
+# **배포하기: 구글 스토어 & 애플 앱스토어**  
+안드로이드와 iOS 앱을 각 스토어에 배포한다. 먼저 배포에 필요한 준비인 앱 번들 ID 설정, 앱 버전 및 빌드 넘버 설정을 
+진행한다.  
+  
 
