@@ -83,3 +83,53 @@ pubspec.yaml 참고
 # **구현하기**  
 광고 기능을 추가하고 동작 테스트를 진행한다.  
   
+# **배너 광고 기능 추가하기**  
+애드몹에서 생성한 배너 광고 단위를 사용하여 달력 앱에 광고 기능을 추가한다.  
+  
+1. 애드몹 가입 및 앱 생성하기에서 진행하면서 발급받은 앱 ID를 프로젝트에 등록한다. android/app/src/main/AndroidManifest.xml 
+파일을 다음과 같이 수정한다.  
+  
+![img.png](image2/img2.png)  
+  
+2. 다음으로 iOS 설정을 진행한다. iOS는 ios/Runner/Info.plist 파일을 수정하면 된다. 마지막에 GADApplicationIdentifier 
+키로 앱 ID 값을 추가한다.  
+  
+![img.png](image2/img3.png)  
+  
+3. 앱이 초기화될 때 google_mobile_ads 플러그인을 같이 초기화해야 한다. main() 함수에 초기화를 진행한다.  
+  
+lib -> main.dart  
+  
+4. 일정 두 개마다 하나의 배너 광고를 삽입하는 코드를 작성한다. 배너 광고는 애드몹 가입 및 앱 생성하기에서 저장해둔 광고 
+ID를 사용하면 즉시 앱 수익화를 시작할 수 있다. 하지만 구글은 개발 환경에서 실제 광고 ID를 사용하는 걸 엄격히 금지한다. 
+그러니 개발할 때는 구글에서 제공하는 테스트 광고 ID를 사용해야 한다. lib/component/banner_ad_widget.dart 파일을 
+생성해서 배너 광고를 보여줄 위젯을 만든다.  
+  
+lib -> component -> banner_ad_widget.dart  
+  
+Platform.isIOS는 iOS일 때 true를 반환하고 아닐 때 false를 반환한다. 우리 앱은 모바일이니 true가 반환될 때 iOS용 
+테스트 광고 ID를 반환하고 false일 때 안드로이드용 테스트 광고 ID를 반환한다. 나중에 앱을 출시하면 이 광고 ID를 실제 
+발급받은 광고 ID로 대체해야 한다. 하지만 개발 도중에 실제 광고 ID를 사용하는 건 규정 위반이기 떄문에 꼭 테스트 광고 ID를 
+사용하자.  
+  
+BannerAd 클래스를 사용하면 광고를 생성할 수 있다. size에는 광고 크기를 입력할 수 있다. adUnitId는 광고 ID를 입력하는 
+매개변수이다.  
+  
+![img.png](image2/img4.png)  
+  
+광고의 생명주기 동안 이벤트를 받아볼 수 있다. onAdFailedToLoad 매개변수는 광고 로딩에 실패했을 때 실행된다. 로딩에 
+실패하면 ad.dispose()를 실행해서 광고를 삭제한다.  
+  
+![img.png](image2/img5.png)  
+  
+5. 생성한 BannerAdWidget을 HomeScreen의 ListView에 적용해서 한 개의 일정마다 한 개의 배너 광고가 실행되도록 한다.  
+  
+lib -> screen -> home_screen.dart  
+  
+ListView.itemBuilder 대신에 ListView.separated를 사용하면 separatorBuilder 매개변수가 추가된다. 리스트 내부의 
+위젯 사이사이에 또 다른 위젯을 입력하고 싶을 때 사용한다.  
+  
+separatorBuilder는 itemBuilder가 반환한 위젯 사이사이에 보여줄 위젯을 렌더링할 때 사용된다. BannerAdWidget을 
+반환해서 일정의 사이사이에 광고를 그린다.  
+  
+

@@ -1,3 +1,4 @@
+import 'package:chapter24/component/banner_ad_widget.dart';
 import 'package:chapter24/component/main_calendar.dart';
 import 'package:chapter24/component/schedule_bottom_sheet.dart';
 import 'package:chapter24/component/schedule_card.dart';
@@ -148,8 +149,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                     .toList();
 
-                  return ListView.builder(
+
+                  // return ListView.builder(
+                  // ListView.separated로 변경
+                  return ListView.separated(
                     itemCount: schedules.length,
+
+                    // 일정 중간중간에 실행될 함수
+                    separatorBuilder: (context, index) {
+                      return BannerAdWidget();
+                    },
                     itemBuilder: (context, index) {
                       final schedule = schedules[index];
 
