@@ -289,3 +289,18 @@ New Policy 버튼을 눌러서 schedule 테이블과 관련된 RLS Policy를 생
   
 ![img.png](image2/img14.png)  
   
+4. 이제 조건문을 작성한다. Allowed Operation에서 All을 선택했기 때문에 USING 조건과 WITH CHECK 조건을 모두 작성할 
+수 있다. 두 조건 모두 코드 auth.uid() = author를 입력해서 모든 CRUD 작업에서 현재 로그인한 사용자가 생성한 일정만 조회 
+및 업데이트가 가능하도록 한다. 코드 입력을 완료했으면 Review 버튼을 누른다.  
+  
+![img.png](image2/img15.png)  
+  
+5. 입력한 값들을 기반으로 생성된 쿼리문을 확인한 후 Save policy 버튼을 클릭한다.  
+  
+![img.png](image3/img.png)  
+  
+6. schedule 테이블에 Enable all for schedule creator Policy가 생성된 걸 확인한다.  
+  
+![img.png](image3/img2.png)  
+  
+
