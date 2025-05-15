@@ -1,4 +1,4 @@
-import 'package:chapter22/const/colors.dart';
+import 'package:chapter24/const/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

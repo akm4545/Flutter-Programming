@@ -1,14 +1,14 @@
-import 'package:chapter22/component/custom_text_field.dart';
-import 'package:chapter22/const/colors.dart';
-import 'package:chapter22/model/schedule_model.dart';
-import 'package:chapter22/provider/schedule_provider.dart';
+import 'package:chapter24/component/custom_text_field.dart';
+import 'package:chapter24/const/colors.dart';
+import 'package:chapter24/model/schedule_model.dart';
+import 'package:chapter24/provider/schedule_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // material.dart 패키지의 Column 클래스와 중복되니 드리프트에서는 숨기기
 import 'package:drift/drift.dart' hide Column;
 import 'package:get_it/get_it.dart';
-import 'package:chapter22/database/drift_database.dart';
+import 'package:chapter24/database/drift_database.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
