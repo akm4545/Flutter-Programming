@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 // class HomeScreen extends StatelessWidget {
 class HomeScreen extends StatefulWidget {
@@ -39,11 +40,19 @@ class _HomeScreenState extends State<HomeScreen> {
     // 선택된 날짜에 해당되는 일정들 가져오기
     // final schedules = provider.cache[selectedDate] ?? [];
 
+    // 선택된 날짜의 일정 정보를 가져오는 코드
+    final future = Supabase.instance.client.from('schedule')
+      .select<List<Map<String, dynamic>>>()
+      .eq(
+        'date',
+        '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}'
+      );
+
     return Scaffold(
       floatingActionButton: FloatingActionButton( // 새 일정 버튼
         backgroundColor: PRIMARY_COLOR,
-        onPressed: () {
-          showModalBottomSheet( // BottomSheet 열기
+        onPressed: () async {
+          await showModalBottomSheet( // BottomSheet 열기
             context: context,
             isDismissible: true, // 배경 탭했을 때 BottomSheet 닫기
             builder: (_) => ScheduleBottomSheet(
@@ -53,6 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
             // 정의하고 스크롤 가능하게 변경
             isScrollControlled: true,
           );
+
+          // 새로운 일정 생성이 완료되면 setState() 함수를 실행해서 build() 함수를
+          // 재실행한다
+          setState(() {});
         },
         child: Icon(
           Icons.add,
@@ -69,30 +82,40 @@ class _HomeScreenState extends State<HomeScreen> {
                 onDaySelected(selectedDate, focusedDate, context),
             ),
             SizedBox(height: 8.0),
-            // build() 함수 내부의 TodayBanner 위젯
-            StreamBuilder<QuerySnapshot>(
-              // ListView에 적용했던 같은 쿼리
-              stream: FirebaseFirestore.instance
-                .collection(
-                  'schedule'
-                )
-                .where(
-                  'date',
-                  isEqualTo: '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
-                )
-                .where(
-                  'author',
-                  isEqualTo: FirebaseAuth.instance.currentUser!.email
-                )
-                .snapshots(),
+            // StreamBuilder를 FutureBuilder로 변환
+            FutureBuilder<List<Map<String, dynamic>>>(
+              future: future,
               builder: (context, snapshot) {
                 return TodayBanner(
                   selectedDate: selectedDate,
-                  // 개수 가져오기
-                  count: snapshot.data?.docs.length ?? 0,
+                  count: snapshot.data?.length ?? 0,
                 );
-              }
+              },
             ),
+            // build() 함수 내부의 TodayBanner 위젯
+            // StreamBuilder<QuerySnapshot>(
+            //   // ListView에 적용했던 같은 쿼리
+            //   stream: FirebaseFirestore.instance
+            //     .collection(
+            //       'schedule'
+            //     )
+            //     .where(
+            //       'date',
+            //       isEqualTo: '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
+            //     )
+            //     .where(
+            //       'author',
+            //       isEqualTo: FirebaseAuth.instance.currentUser!.email
+            //     )
+            //     .snapshots(),
+            //   builder: (context, snapshot) {
+            //     return TodayBanner(
+            //       selectedDate: selectedDate,
+            //       // 개수 가져오기
+            //       count: snapshot.data?.docs.length ?? 0,
+            //     );
+            //   }
+            // ),
             // TodayBanner(
             //   selectedDate: selectedDate,
             //   count: schedules.length,
@@ -108,23 +131,9 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
             SizedBox(height: 8.0),
             Expanded( // 남는 공간을 모두 차지하기
-              // StreamBuilder 구현하기
-              child: StreamBuilder<QuerySnapshot>(
-                // 파이어스토어로부터 일정 정보 받아오기
-                stream: FirebaseFirestore.instance
-                  .collection(
-                    'schedule',
-                  )
-                  .where(
-                    'date',
-                    isEqualTo:
-                      '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
-                  )
-                  .where(
-                    'author',
-                    isEqualTo: FirebaseAuth.instance.currentUser!.email
-                  )
-                  .snapshots(),
+              // StreamBuilder를 FutureBuilder로 변환
+              child: FutureBuilder<List<Map<String, dynamic>>>(
+                future: future,
                 builder: (context, snapshot) {
                   // Stream을 가져오는 동안 에러가 났을 때 보여줄 화면
                   if(snapshot.hasError) {
@@ -139,12 +148,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
 
                   // ScheduleModel로 데이터 매핑하기
-                  final schedules = snapshot.data!.docs
+                  final schedules = snapshot.data!
                     .map(
-                      (QueryDocumentSnapshot e) => ScheduleModel.fromJson(
-                        // 데이터를 불러와서 map 변환
-                        json: (e.data() as Map<String, dynamic>),
-                      )
+                      (e) => ScheduleModel.fromJson(json: e),
                     )
                     .toList();
 
@@ -156,12 +162,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Dismissible(
                         key: ObjectKey(schedule.id),
                         direction: DismissDirection.startToEnd,
-                        onDismissed: (DismissDirection direction){
+                        onDismissed: (DismissDirection direction) async {
                           // 특정 문서 삭제하기
-                          FirebaseFirestore.instance
-                            .collection('schedule')
-                            .doc(schedule.id)
-                            .delete();
+                          // FirebaseFirestore.instance
+                          //   .collection('schedule')
+                          //   .doc(schedule.id)
+                          //   .delete();
+
+                          // delete() 함수를 실행할 때 match() 함수에 삭제할 값의
+                          // 조건을 입력하면 된다
+                          await Supabase.instance.client
+                            .from('schedule')
+                            .delete()
+                            .match({
+                              'id': schedule.id,
+                            });
+
+                          // 삭제 결과를 즉각 반영하기 위해 build() 함수를 실행한다
+                          setState(() {});
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -178,6 +196,78 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
               ),
+
+
+              // StreamBuilder 구현하기
+              // child: StreamBuilder<QuerySnapshot>(
+              //   // 파이어스토어로부터 일정 정보 받아오기
+              //   stream: FirebaseFirestore.instance
+              //     .collection(
+              //       'schedule',
+              //     )
+              //     .where(
+              //       'date',
+              //       isEqualTo:
+              //         '${selectedDate.year}${selectedDate.month.toString().padLeft(2, '0')}${selectedDate.day.toString().padLeft(2, '0')}',
+              //     )
+              //     .where(
+              //       'author',
+              //       isEqualTo: FirebaseAuth.instance.currentUser!.email
+              //     )
+              //     .snapshots(),
+              //   builder: (context, snapshot) {
+              //     // Stream을 가져오는 동안 에러가 났을 때 보여줄 화면
+              //     if(snapshot.hasError) {
+              //       return Center(
+              //         child: Text('일정 정보를 가져오지 못했습니다.'),
+              //       );
+              //     }
+              //
+              //     // 로딩 중일 때 보여줄 화면
+              //     if(snapshot.connectionState == ConnectionState.waiting){
+              //       return Container();
+              //     }
+              //
+              //     // ScheduleModel로 데이터 매핑하기
+              //     final schedules = snapshot.data!.docs
+              //       .map(
+              //         (QueryDocumentSnapshot e) => ScheduleModel.fromJson(
+              //           // 데이터를 불러와서 map 변환
+              //           json: (e.data() as Map<String, dynamic>),
+              //         )
+              //       )
+              //       .toList();
+              //
+              //     return ListView.builder(
+              //       itemCount: schedules.length,
+              //       itemBuilder: (context, index) {
+              //         final schedule = schedules[index];
+              //
+              //         return Dismissible(
+              //           key: ObjectKey(schedule.id),
+              //           direction: DismissDirection.startToEnd,
+              //           onDismissed: (DismissDirection direction){
+              //             // 특정 문서 삭제하기
+              //             FirebaseFirestore.instance
+              //               .collection('schedule')
+              //               .doc(schedule.id)
+              //               .delete();
+              //           },
+              //           child: Padding(
+              //             padding: const EdgeInsets.only(
+              //               bottom: 8.0, left: 8.0, right: 8.0,
+              //             ),
+              //             child: ScheduleCard(
+              //               startTime: schedule.startTime,
+              //               endTime: schedule.endTime,
+              //               content: schedule.content,
+              //             ),
+              //           ),
+              //         );
+              //       },
+              //     );
+              //   },
+              // ),
 
               // child: ListView.builder(
               //   // 리스트에 입력할 값들의 총 개수

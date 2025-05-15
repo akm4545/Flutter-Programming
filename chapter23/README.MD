@@ -303,4 +303,35 @@ New Policy 버튼을 눌러서 schedule 테이블과 관련된 RLS Policy를 생
   
 ![img.png](image3/img2.png)  
   
-
+# **일정 CRUD 로직 작성하기**  
+슈파베이스로 구현한 인증 기능을 기반으로 일정 관리 로직을 변경한다.  
+  
+1. 먼저 일정을 생성하는 플러터 코드를 작성한다. 일정 생성 로직은 lib/component/schedule_bottom_sheet.dart 파일의 
+onSavePressed() 함수에 정의되어 있다. 파이어스토어에 일정을 추가하는 로직이 작성되어 있던 이 부분을 삭제하고 슈파베이스 
+데이터베이스에 일정을 삽입하는 코드를 추가한다.  
+  
+lib -> component -> schedule_bottom_sheet.dart  
+  
+슈파베이스에 INSERT문을 실행하기 위해서는 먼저 from() 함수에 대상 테이블 이름을 입력해준다. 다음으로 insert() 함수에 
+생성한 데이터 정보를 Map 형태로 입력한다. 만약 insert() 함수에 select() 함수를 이어서 실행하면 저장된 값을 반환받을 
+수도 있다.  
+  
+2. 다트 언어에서는 키값을 작성할 때 첫 글자를 제외한 나머지 단어의 첫 번째 알파벳을 대문자로 작성하는 카멜 표기법을 
+사용한다. 그러나 PostgreSQL 컬럼은 단어 사이를 _로 구분하는게 일반적이다. 그래서 ScheduleModel의 toJson() 함수를 
+변형해서 startTime과 endTime으로 변환되던 키값들을 start_time과 end_time으로 변경한다.  
+  
+lib -> model -> schedule_model.dart  
+  
+3. 일정 정보를 불러오는 작업을 진행한다. 파이어스토어는 자동으로 데이터를 실시간으로 저장 및 동기화하는 Real Time 쿼리가 
+활성화되기 때문에 수시로 변하는 데이터에 적합한 StreamBuilder 위젯을 사용한다. 슈파베이스 프로젝트는 리얼 타입을 활성화하지 
+않았기 떄문에 일회성 응답에 적합한 FutureBuilder 위젯을 사용해서 일정 정보를 가져온다. 만약 슈파베이스에서 리얼 타임을 
+활성화했다면 마찬가지로 StreamBuilder를 이용해서 지속적으로 일정 정보 업데이트를 받아올 수 있다.  
+  
+lib -> model -> home_screen.dart  
+  
+4. 일정 조회와 생성 기능을 구현했으니 이번에는 삭제인 DELETE 기능을 구현한다. Dismissible 위젯의 onDismissed() 함수에는 
+파이어베이스 파이어스토어의 delete() 함수를 이용한 삭제 기능이 구현되어 있다. 이 부분을 슈파베이스의 delete() 함수로 
+수정해서 일정을 삭제할 수 있도록 바꾼다.  
+  
+lib -> screen -> home_screen.dart  
+  

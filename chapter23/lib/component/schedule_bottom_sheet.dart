@@ -10,6 +10,7 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:get_it/get_it.dart';
 import 'package:chapter23/database/drift_database.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -147,31 +148,39 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
       );
 
       // 현재 로그인한 사용자 정보를 가져온다
-      final user = FirebaseAuth.instance.currentUser;
+      // final user = FirebaseAuth.instance.currentUser;
 
       // 만약 로그인한 사용자 정보를 가져오지 못한다면 다시 로그인을 요청한다
-      if(user == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('다시 로그인을 해주세요.'),
-          ),
-        );
-
-        Navigator.of(context).pop();
-
-        return;
-      }
+      // if(user == null) {
+      //   ScaffoldMessenger.of(context).showSnackBar(
+      //     SnackBar(
+      //       content: Text('다시 로그인을 해주세요.'),
+      //     ),
+      //   );
+      //
+      //   Navigator.of(context).pop();
+      //
+      //   return;
+      // }
 
       // 스케줄 모델 파이어스토어에 삽입하기
-      await FirebaseFirestore.instance
-        .collection(
-          'schedule',
-        )
-        .doc(schedule.id)
-        .set({
-          ...schedule.toJson(),
-          'author': user.email,
-        });
+      // await FirebaseFirestore.instance
+      //   .collection(
+      //     'schedule',
+      //   )
+      //   .doc(schedule.id)
+      //   .set({
+      //     ...schedule.toJson(),
+      //     'author': user.email,
+      //   });
+
+      // 슈파베이스 인스턴스 불러오기
+      final supabase = Supabase.instance.client;
+
+      // 슈파베이스 schedule 테이블에 데이터 삽입
+      await supabase.from('schedule').insert(
+        schedule.toJson(),
+      );
 
       // 일정 생성 후 화면 뒤로 가기
       Navigator.of(context).pop();
