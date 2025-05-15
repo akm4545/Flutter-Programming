@@ -63,7 +63,7 @@ class TodayBanner extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

@@ -343,3 +343,13 @@ lib -> screen -> home_screen.dart
   
 lib -> component -> today_banner.dart  
   
+# **핵심 요약**  
+1. 슈파베이스는 파이어베이스와 비슷한 올인원 벡엔드 솔루션이다.  
+2. NoSQL 데이터베이스를 사용하는 파이어스토어와 다르게 슈파베이스는 SQL 데이터베이스인 PostgreSQL을 사용한다.  
+3. 슈파베이스 인증 또한 파이어베이스 인증처럼 다양한 소셜 로그인을 지원한다.  
+4. 슈파베이스는 SQL 데이터베이스를 사용하기 때문에 테이블을 생성하는 과정이 필수다.  
+5. RLS 설정을 통해 슈파베이스 데이터베이스에 접근할 수 있는 권한을 손쉽게 제어할 수 있다.  
+6. 이메일 로그인은 기본으로 활성화되어 있으며 다음 함수를 이용해서 회원가입 및 로그인을 진행할 수 있다.  
+- 회원가입: Supabase.instance.client.auth.signUp()  
+- 로그인: Supabase.instance.client.auth.signInWithPassword()  
+7. 슈파베이스의 Real Time 기능을 사용하면 파이어스토어처럼 실시간으로 데이터를 받아올 수 있다.
