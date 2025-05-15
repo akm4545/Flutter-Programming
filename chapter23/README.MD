@@ -335,3 +335,11 @@ lib -> model -> home_screen.dart
   
 lib -> screen -> home_screen.dart  
   
+# **로그아웃 기능 구현하기**  
+로그아웃 기능은 22장에서 진행했던 형태와 동일하다. 다만 로그아웃 버튼을 눌렀을 때 실행할 기능만 슈파베이스 기반의 기능으로 
+변경한다.  
+  
+1. TodayBanner의 오른쪽 끝에 로그아웃 아이콘을 생성하고 슈파베이스 로그아웃 기능을 구현한다.  
+  
+lib -> component -> today_banner.dart  
+  

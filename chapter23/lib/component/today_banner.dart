@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class TodayBanner extends StatelessWidget {
   final DateTime selectedDate; // 선택된 날짜
@@ -39,23 +40,30 @@ class TodayBanner extends StatelessWidget {
               style: textStyle,
             ),
             const SizedBox(width: 8.0),
-            GestureDetector(
-              onTap: () async {
-                // 구글 로그인/로그아웃
-                await GoogleSignIn().signOut();
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    // 구글 로그인/로그아웃
+                    // await GoogleSignIn().signOut();
 
-                // 파이어베이스 인증 로그아웃 함수
-                await FirebaseAuth.instance.signOut();
+                    // 슈파베이스의 signOut() 함수를 실행하면 로그아웃할 수 있다
+                    await Supabase.instance.client.auth.signOut();
 
-                // 홈 스크린으로 돌아가기
-                Navigator.of(context).pop();
-              },
-              child: Icon(
-                Icons.logout,
-                size: 16.0,
-                color: Colors.white,
-              ),
-            ),
+                    // 파이어베이스 인증 로그아웃 함수
+                    // await FirebaseAuth.instance.signOut();
+
+                    // 홈 스크린으로 돌아가기
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(
+                    Icons.logout,
+                    size: 16.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
