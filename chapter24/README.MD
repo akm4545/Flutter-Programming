@@ -6,3 +6,10 @@
   
 ![img.png](image/img.png)  
 ![img.png](image/img2.png)  
+  
+# **사전 준비**  
+# **pubspec.yaml 파일 설정하기**  
+1. 프로젝트에 광고를 추가하려면 google_mobile_ads 플러그인을 사용해야 하니 pubspec.yaml 파일에 추가한다.  
+  
+pubspec.yaml 참고  
+  
