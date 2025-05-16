@@ -129,4 +129,10 @@ Show Context Action으로 실행할 수 있는 기능은 다양하다. 자주 �
   
 ![img.png](image/img12.png)  
   
-import 추가하기
+# **import 추가하기**  
+매번 직접 import 문을 작성하는 건 여간 귀찮은 일이 아니다. 만약에 임포트할 함수나 클래스 또는 변수 명칭을 정확히 알고 
+있다면 해당 명칭을 먼저 작성한 후 Show Context Action을 실행한다. 그럼 해당 값을 임포트할 수 있는 경로들이 옵션으로 
+제시된다. 원하는 경로를 선택하면 import문이 추가된다.  
+  
+![img.png](image/img13.png)  
+  
