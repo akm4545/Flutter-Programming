@@ -94,4 +94,10 @@ Option + L을, 윈도우에서는 Control + Alt + L을 실행하면 된다.
 ![img.png](image/img6.png)  
 ![img.png](image/img7.png)  
   
-
+# **Show Context Action**  
+안드로이드 스튜디오에 플러터 플러그인을 설치하면 유용한 자동화 기능이 추가된다. 사용 방법은 Show Context Action을 
+실행하고 싶은 코드 위에 커서를 올려놓은 뒤 맥에서는 Option + Enter를, 윈도우에서는 Alt + Enter를 실행하면 된다.  
+  
+Show Context Action으로 실행할 수 있는 기능은 다양하다. 자주 사용하는 위젯 감싸기, 위젯 삭제하기, 스테이트리스 위젯을 
+스테이트풀 위젯으로 변경하기, 함수를 비동기로 변경하기 기능, import 추가하기가 있다.  
+  
