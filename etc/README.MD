@@ -65,3 +65,14 @@ lib -> main.dart
 ![img.png](image/img.png)  
 ![img.png](image/img2.png)  
   
+# **앱 이름과 아이콘 설정 방법**  
+앱을 출시하기 전에 앱의 서비스 내용과 어울리는 이름과 아이콘을 설정하는 건 매우 중요한 일이다. 플러터에서도 물론 앱 이름과 
+아이콘을 완전히 커스터마이즈할 수 있다.  
+  
+![img.png](image/img3.png)  
+![img.png](image/img4.png)  
+  
+아이콘 파일 위치를 지정한 다음 flutter pub run flutter_launcher_icons:main을 실핸한다. iOS와 안드로이드에 모두 
+자동으로 아이콘이 등록된다.  
+  
+
