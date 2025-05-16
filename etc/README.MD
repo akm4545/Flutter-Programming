@@ -151,3 +151,16 @@ Show Context Action으로 실행할 수 있는 기능은 다양하다. 자주 �
   
 Kotlin 버전 정보는 다음 링크에서 확인할 수 있다. https://kotlinlang.org/docs/releases.html#release-details  
   
+# **Multidex error (안드로이드에서만 발생)**  
+안드로이드에서 앱 개발을 하다 코드가 많아지고 라이브러리도 늘어나면서 규모가 커질 수 있다. 이런 경우 종종 빌드 시 에러가 
+발생한다. 하나의 프로젝트에서 64000개 이상의 앱을 정의했다면 Multidex를 활성화해줘야 한다. 프로젝트를 실행했을 때 
+다음과 같은 에러가 난다면 Multidex 에러다.  
+  
+![img.png](image2/img.png)  
+  
+Multidex 에러가 날 경우 터미널에서 프로젝트 위치로 이동한 다음 터미널 탭에서 flutter run --debug를 실행해주고 실행할 
+안드로이드 에뮬레이터를 선택해준다. 이때 Multidex 지원이 필요하다면 Do you want to continue with adding multidex 
+support for Android? 라는 질문이 나오고 y를 입력해주면 Multidex 지원이 자동으로 설정된다.  
+  
+![img.png](image2/img2.png)  
+  
