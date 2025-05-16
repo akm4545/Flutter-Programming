@@ -122,3 +122,11 @@ Show Context Action으로 실행할 수 있는 기능은 다양하다. 자주 �
   
 ![img.png](image/img11.png)  
   
+# **동기 함수 비동기 함수로 전환하기**  
+동기 함수를 비동기 함수로 전환하는 일도 흔히 있다. 비동기 함수로 변경하고 싶은 동기 함수에 Show Context Action을 
+실행하면 Convert to async function body 옵션을 볼 수 있다. 해당 옵션을 선택하면 반환 타입이 Future로 감싸지고 
+함수에 async 키워드가 추가된다.  
+  
+![img.png](image/img12.png)  
+  
+import 추가하기
